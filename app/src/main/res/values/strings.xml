@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SublimadeFashionApp</string>
+    <string name="inicio">Inicio</string>
+    <string name="catalogo">Catalogo</string>
+    <string name="deseados">Deseados</string>
+    <string name="carrito">Carrito</string>
 </resources>
