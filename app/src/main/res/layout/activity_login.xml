@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".login">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sublimade"
+            android:textSize="70dp"
+            android:fontFamily="cursive"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <EditText
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:text="usuario"/>
+        <EditText
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:text="Contraseña"
+            android:id="@+id/caja"
+            />
+        <Button
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:text="Iniciar"
+
+            android:background="#2C68F8"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="¿No tienes cuenta? registrate"
+            android:textColor="#2C68F8"
+            android:id="@+id/b1"/>
+    </LinearLayout>
+
+</LinearLayout>
