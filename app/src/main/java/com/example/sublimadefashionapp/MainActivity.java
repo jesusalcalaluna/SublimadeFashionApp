@@ -1,52 +1,72 @@
 package com.example.sublimadefashionapp;
 
+import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Objects;
 
-    private TextView info;
-    //Barra de navegacion
-    private BottomNavigationView bottomNavigationView;
+public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener,CatalogoFragment.OnFragmentInteractionListener,
+        CarritoFragment.OnFragmentInteractionListener, DeseadosFragment.OnFragmentInteractionListener{
 
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
-        info = (TextView) findViewById(R.id.Info);
+
+        id = "iniciofragment";
+        InicioFragment fragment = InicioFragment.newInstance("id", id);
+        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,fragment).commit();
+        //Barra de navegacion
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
+
 
         //Metodo de la barra de navegacion
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 switch (menuItem.getItemId()){
                     case R.id.carritoItem:
-                        //Toast.makeText(MainActivity.this ,"Carrito",Toast.LENGTH_SHORT).show();
-                        info.setText(R.string.carrito);
+                        id = "carritofragment";
+                        CarritoFragment carritoFragment = CarritoFragment.newInstance("id", id);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,carritoFragment).commit();
                         break;
                     case R.id.catalogoItem:
-                        //Toast.makeText(MainActivity.this ,"Catalogo",Toast.LENGTH_SHORT).show();
-                        info.setText(R.string.catalogo);
+                        id = "catalogofragment";
+                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("id", id);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,catalogoFragment).commit();
                         break;
                     case R.id.inicioItem:
-                        //Toast.makeText(MainActivity.this ,"Inicio",Toast.LENGTH_SHORT).show();
-                        info.setText(R.string.inicio);
+                        id = "iniciofragment";
+                        InicioFragment inicioFragment = InicioFragment.newInstance("id", id);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,inicioFragment).commit();
                         break;
                     case R.id.deseadosItem:
-                        //Toast.makeText(MainActivity.this ,"Deseados",Toast.LENGTH_SHORT).show();
-                        info.setText(R.string.deseados);
+                        id = "deseadosfragment";
+                        DeseadosFragment deseadosFragment = DeseadosFragment.newInstance("id", id);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,deseadosFragment).commit();
                         break;
                 }
 
                 return true;
             }
         });//Final del metodo de la barra de navegacion
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
