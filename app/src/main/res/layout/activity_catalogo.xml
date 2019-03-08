@@ -64,7 +64,6 @@
                     android:text="Detalles"
                     android:textColor="#FFFFFF"
                     android:background="#212121"
-                    android:shadowRadius="2dp"
                     android:layout_below="@+id/ProdType"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
