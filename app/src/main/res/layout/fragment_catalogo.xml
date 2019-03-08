@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Catalogo"
+    tools:context=".CatalogoFragment"
     android:orientation="vertical"
     android:background="#D6CDCD">
 
-    <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.CardView
         android:layout_width="390dp"
         android:layout_height="200dp"
@@ -65,7 +64,6 @@
                     android:text="Detalles"
                     android:textColor="#FFFFFF"
                     android:background="#212121"
-                    android:shadowRadius="2dp"
                     android:layout_below="@+id/ProdType"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
@@ -82,5 +80,4 @@
         </FrameLayout>
 
     </android.support.v7.widget.CardView>
-
-</>
+</LinearLayout>
