@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/oldwhitebackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CatalogoFragment"
-    android:orientation="vertical"
-    android:background="#D6CDCD">
+    tools:context=".Catalogo"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="390dp"
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:text="Detalles"
                     android:textColor="#FFFFFF"
-                    android:background="#212121"
+                    android:background="@drawable/detalle_button"
                     android:layout_below="@+id/ProdType"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
@@ -80,4 +80,5 @@
         </FrameLayout>
 
     </android.support.v7.widget.CardView>
+
 </LinearLayout>
