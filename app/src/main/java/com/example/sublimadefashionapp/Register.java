@@ -34,12 +34,12 @@ public class Register extends AppCompatActivity implements GoogleApiClient.OnCon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register); GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail()
-                .requestIdToken(getString(R.string.Idtoken)).build();
+                .requestIdToken(getString(R.string.token)).build();
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
 
-        signInButton = findViewById(R.id.signInButton);
+            signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +56,7 @@ public class Register extends AppCompatActivity implements GoogleApiClient.OnCon
 
                     //metodo que lleva a activity home una vez se haya logeado
                     goMainScreen();
-                    startActivity(new Intent(Register.this, Catalogo.class));
+                    startActivity(new Intent(Register.this, MainActivity.class));
                 }
                 else
                 {
