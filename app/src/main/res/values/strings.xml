@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">SublimadeFashionApp</string>
     <string name="inicio">Inicio</string>
-    <string name="catalogo">Catalogo</string>
     <string name="deseados">Deseados</string>
     <string name="carrito">Carrito</string>
     <string name="Idtoken">379055742683-il9n9bdthvg9np0b4auq6miqlubkecqt.apps.googleusercontent.com</string>
-
+    <string name="catalogo">Catalogo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
