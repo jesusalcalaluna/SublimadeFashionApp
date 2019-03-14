@@ -1,37 +1,41 @@
 package com.example.sublimadefashionapp;
 
-import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
-import java.util.Objects;
+import com.example.sublimadefashionapp.Fragments.CarritoFragment;
+import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
+import com.example.sublimadefashionapp.Fragments.DeseadosFragment;
+import com.example.sublimadefashionapp.Fragments.InicioFragment;
 
-public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener,CatalogoFragment.OnFragmentInteractionListener,
+public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener, CatalogoFragment.OnFragmentInteractionListener,
         CarritoFragment.OnFragmentInteractionListener, DeseadosFragment.OnFragmentInteractionListener{
 
     String id;
+    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setToolbar();
 
         id = "iniciofragment";
         InicioFragment fragment = InicioFragment.newInstance("id", id);
         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,fragment).commit();
         //Barra de navegacion
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
+        //SideBar menu
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
-        //Metodo de la barra de navegacion
+        //Metodo de la barra de navegacion inferior
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
             @Override
@@ -62,8 +66,27 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
                 return true;
             }
-        });//Final del metodo de la barra de navegacion
+        });//Final del metodo de la barra de navegacion inferior
     }
+
+    private void setToolbar(){
+        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_menu);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    //Metodo para abrir sidebar (menu lateral)
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                //abrir menu lateral
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }//Fin del Metodo para abrir sidebar (menu lateral)
 
     @Override
     public void onFragmentInteraction(Uri uri) {
