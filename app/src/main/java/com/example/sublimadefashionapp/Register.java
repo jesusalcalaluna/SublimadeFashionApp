@@ -56,7 +56,7 @@ public class Register extends AppCompatActivity implements GoogleApiClient.OnCon
 
                     //metodo que lleva a activity home una vez se haya logeado
                     goMainScreen();
-                    startActivity(new Intent(Register.this, Catalogo.class));
+                    startActivity(new Intent(Register.this, MainActivity.class));
                 }
                 else
                 {
