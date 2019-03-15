@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
         if (firebaseUser != null) {
             txtDisplayName.setText(firebaseUser.getDisplayName());
-            txtEmail.setText(firebaseUser.getDisplayName());
+         //   txtEmail.setText(firebaseUser.getDisplayName());
 
         }
 
