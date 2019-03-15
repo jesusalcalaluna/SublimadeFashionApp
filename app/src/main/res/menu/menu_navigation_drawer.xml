@@ -3,42 +3,26 @@
     <group>
         <item
 
-            android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/inicio"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Perfil"
             />
         <item
 
-            android:icon="@drawable/ic_attach_money_black_24dp"
-            android:title="@string/catalogo"
+            android:icon="@drawable/ic_access_time_black_24dp"
+            android:title="Compras"
             />
         <item
 
             android:icon="@drawable/ic_favorite_border_black_24dp"
-            android:title="@string/deseados"
+            android:title="Pedidos"
             />
-        <item
 
-            android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="@string/carrito"
-            />
     </group>
     <item android:title="Otras opciones">
         <menu>
             <item
-                android:icon="@drawable/ic_home_black_24dp"
-                android:title="@string/inicio"
-                />
-            <item
-                android:icon="@drawable/ic_attach_money_black_24dp"
-                android:title="@string/catalogo"
-                />
-            <item
-                android:icon="@drawable/ic_favorite_border_black_24dp"
-                android:title="@string/deseados"
-                />
-            <item
                 android:icon="@drawable/ic_shopping_cart_black_24dp"
-                android:title="@string/carrito"
+                android:title="Cerror Sesion"
                 />
         </menu>
     </item>

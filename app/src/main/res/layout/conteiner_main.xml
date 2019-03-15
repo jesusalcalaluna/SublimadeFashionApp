@@ -17,7 +17,7 @@
             layout="@layout/toolbar"/>
 
         <FrameLayout
-            android:id="@+id/conteiner"
+            android:id="@+id/conteiner_bottomnavigation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
@@ -26,7 +26,7 @@
 
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation_view"
+        android:id="@+id/bottmnavigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

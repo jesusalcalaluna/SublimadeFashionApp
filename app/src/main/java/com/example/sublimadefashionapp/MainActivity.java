@@ -3,12 +3,14 @@ package com.example.sublimadefashionapp;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.sublimadefashionapp.Fragments.CarritoFragment;
@@ -23,36 +25,42 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
     String id;
     private DrawerLayout drawerLayout;
-    private TextView txtEmail;
+    private NavigationView navigationView;
+    private TextView txtNombreUsuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        TextView txtDisplayName = findViewById(R.id.prueba);
-        txtEmail = (TextView) findViewById(R.id.correousuario);
+        //setContentView(R.layout.header_navigation_drawer);
         setToolbar();
 
-        if (firebaseUser != null) {
-            txtDisplayName.setText(firebaseUser.getDisplayName());
-            txtEmail.setText(firebaseUser.getDisplayName());
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        }
-
-
-
-
-
+        //Fragment Inicial del BottomNavigation
         id = "iniciofragment";
         InicioFragment fragment = InicioFragment.newInstance("id", id);
-        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,fragment).commit();
-        //Barra de navegacion
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation_view);
+        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,fragment).commit();
+
         //SideBar menu
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
+        //Navigation View
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        View header = navigationView.getHeaderView(0);
+        txtNombreUsuario = (TextView) header.findViewById(R.id.txtnombreusuario);
+        
+        if (firebaseUser != null) {
+            txtNombreUsuario.setText(firebaseUser.getDisplayName());
+        }
+        //Metodo del Navigation View
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                return false;
+            }
+        });
+        //Barra de navegacion
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottmnavigation_view);
         //Metodo de la barra de navegacion inferior
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -63,22 +71,22 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                     case R.id.carritoItem:
                         id = "carritofragment";
                         CarritoFragment carritoFragment = CarritoFragment.newInstance("id", id);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,carritoFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,carritoFragment).commit();
                         break;
                     case R.id.catalogoItem:
                         id = "catalogofragment";
                         CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("id", id);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,catalogoFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
                         break;
                     case R.id.inicioItem:
                         id = "iniciofragment";
                         InicioFragment inicioFragment = InicioFragment.newInstance("id", id);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,inicioFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,inicioFragment).commit();
                         break;
                     case R.id.deseadosItem:
                         id = "deseadosfragment";
                         DeseadosFragment deseadosFragment = DeseadosFragment.newInstance("id", id);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,deseadosFragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,deseadosFragment).commit();
                         break;
                 }
 
