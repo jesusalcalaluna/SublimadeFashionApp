@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View header = navigationView.getHeaderView(0);
         txtNombreUsuario = (TextView) header.findViewById(R.id.txtnombreusuario);
-        
+
         if (firebaseUser != null) {
             txtNombreUsuario.setText(firebaseUser.getDisplayName());
         }
