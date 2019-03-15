@@ -9,22 +9,40 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.example.sublimadefashionapp.Fragments.CarritoFragment;
 import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
 import com.example.sublimadefashionapp.Fragments.DeseadosFragment;
 import com.example.sublimadefashionapp.Fragments.InicioFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener, CatalogoFragment.OnFragmentInteractionListener,
         CarritoFragment.OnFragmentInteractionListener, DeseadosFragment.OnFragmentInteractionListener{
 
     String id;
     private DrawerLayout drawerLayout;
+    private TextView txtEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        TextView txtDisplayName = findViewById(R.id.prueba);
+        txtEmail = (TextView) findViewById(R.id.correousuario);
         setToolbar();
+
+        if (firebaseUser != null) {
+            txtDisplayName.setText(firebaseUser.getDisplayName());
+            txtEmail.setText(firebaseUser.getDisplayName());
+
+        }
+
+
+
+
 
         id = "iniciofragment";
         InicioFragment fragment = InicioFragment.newInstance("id", id);

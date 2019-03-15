@@ -3,6 +3,7 @@
 xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+    android:orientation="vertical"
 xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <include
@@ -16,5 +17,11 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     android:layout_gravity="start"
     app:menu="@menu/menu_navigation_drawer"
     app:headerLayout="@layout/header_navigation_drawer"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prueba"
+        android:gravity="center"
+        android:text="xzczsaasasasx"/>
 
 </android.support.v4.widget.DrawerLayout>
