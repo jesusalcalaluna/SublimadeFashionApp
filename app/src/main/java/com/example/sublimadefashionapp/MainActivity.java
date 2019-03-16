@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
     String id;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    BottomNavigationView bottomNavigationView;
     private TextView txtNombreUsuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +57,26 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                return false;
+                switch (menuItem.getItemId()){
+                    case R.id.perfilItem:
+
+                        break;
+                    case R.id.comprasItem:
+
+                        break;
+                    case R.id.pedidosItem:
+
+                        break;
+                    case R.id.cerrarsesionItem:
+
+                        break;
+                }
+
+                return true;
             }
         });
         //Barra de navegacion
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottmnavigation_view);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottmnavigation_view);
         //Metodo de la barra de navegacion inferior
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
