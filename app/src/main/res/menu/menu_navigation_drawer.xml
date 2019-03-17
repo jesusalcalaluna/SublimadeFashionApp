@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/perfilItem"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/perfil"
+            />
+        <item
+            android:id="@+id/comprasItem"
+            android:icon="@drawable/ic_access_time_black_24dp"
+            android:title="@string/compras"
+            />
+        <item
+            android:id="@+id/pedidosItem"
+            android:icon="@drawable/ic_local_shipping_black_24dp"
+            android:title="@string/pedidos"
+            />
+
+    </group>
+    <item android:title="Otras opciones">
+        <menu>
+            <item
+                android:id="@+id/cerrarsesionItem"
+                android:icon="@drawable/ic_close_black_24dp"
+                android:title="@string/cerrar_sesion"
+                />
+        </menu>
+    </item>
+
+</menu>

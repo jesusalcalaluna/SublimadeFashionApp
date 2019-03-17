@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "379055742683",
+    "firebase_url": "https://pruebochon1.firebaseio.com",
+    "project_id": "pruebochon1",
+    "storage_bucket": "pruebochon1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379055742683:android:0589553f6875b1ef",
+        "android_client_info": {
+          "package_name": "com.example.prueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379055742683-il9n9bdthvg9np0b4auq6miqlubkecqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6SJIcv3cwTxJrTm4VSwZXUwsQVfEupwo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379055742683:android:3118f6c1f699066f",
+        "android_client_info": {
+          "package_name": "com.example.sublimadefashionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379055742683-2h6nnr2nrm7f2ruad7j2p5dll4vlcce3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sublimadefashionapp",
+            "certificate_hash": "2dc61da0d9215d27b2a6e7d15c97ebbf48dd7be8"
+          }
+        },
+        {
+          "client_id": "379055742683-il9n9bdthvg9np0b4auq6miqlubkecqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6SJIcv3cwTxJrTm4VSwZXUwsQVfEupwo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "379055742683-il9n9bdthvg9np0b4auq6miqlubkecqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
