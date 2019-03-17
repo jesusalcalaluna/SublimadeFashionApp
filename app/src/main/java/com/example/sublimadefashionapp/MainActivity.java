@@ -7,18 +7,34 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+
+import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener,CatalogoFragment.OnFragmentInteractionListener,
         CarritoFragment.OnFragmentInteractionListener, DeseadosFragment.OnFragmentInteractionListener{
-
+    RecyclerView rvCatalogo;
     String id;
+    List<Producto> lp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +63,27 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         id = "catalogofragment";
                         CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("id", id);
                         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner,catalogoFragment).commit();
+
+                        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, "http://sublimade.com/android/catalogo", null,
+                                new Response.Listener<JSONArray>() {
+                                    @Override
+                                    public void onResponse(JSONArray response) {
+                                        try {
+                                            Gson g = new Gson();
+                                            Type t = new TypeToken<List<Producto>>(){}.getType();
+                                            List<Producto> lp = g.fromJson(response.toString(), t);
+                                            AdaptadorProducto adapt= new AdaptadorProducto(lp);
+                                            rvCatalogo.setAdapter(adapt);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("error", error.getMessage());
+                            }
+                        });
                         break;
                     case R.id.inicioItem:
                         id = "iniciofragment";
