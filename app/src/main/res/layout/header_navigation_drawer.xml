@@ -10,16 +10,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hola Usuario"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="@color/colorTextLightPrimary"
+            android:id="@+id/txtnombreusuario"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cerrar Sesion"
-            android:textSize="15dp"
-            android:textColor="@color/colorTextLightSecondary"/>
+            android:text="hola"
+            android:textSize="15sp"
+            android:textColor="@color/colorTextLightSecondary"
+            android:id="@+id/correousuario"/>
     </LinearLayout>
 
 

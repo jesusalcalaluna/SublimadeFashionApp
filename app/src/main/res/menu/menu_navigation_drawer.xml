@@ -2,43 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-
-            android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/inicio"
+            android:id="@+id/perfilItem"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/perfil"
             />
         <item
-
-            android:icon="@drawable/ic_attach_money_black_24dp"
-            android:title="@string/catalogo"
+            android:id="@+id/comprasItem"
+            android:icon="@drawable/ic_access_time_black_24dp"
+            android:title="@string/compras"
             />
         <item
-
-            android:icon="@drawable/ic_favorite_border_black_24dp"
-            android:title="@string/deseados"
+            android:id="@+id/pedidosItem"
+            android:icon="@drawable/ic_local_shipping_black_24dp"
+            android:title="@string/pedidos"
             />
-        <item
 
-            android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="@string/carrito"
-            />
     </group>
     <item android:title="Otras opciones">
         <menu>
             <item
-                android:icon="@drawable/ic_home_black_24dp"
-                android:title="@string/inicio"
-                />
-            <item
-                android:icon="@drawable/ic_attach_money_black_24dp"
-                android:title="@string/catalogo"
-                />
-            <item
-                android:icon="@drawable/ic_favorite_border_black_24dp"
-                android:title="@string/deseados"
-                />
-            <item
-                android:icon="@drawable/ic_shopping_cart_black_24dp"
-                android:title="@string/carrito"
+                android:id="@+id/cerrarsesionItem"
+                android:icon="@drawable/ic_close_black_24dp"
+                android:title="@string/cerrar_sesion"
                 />
         </menu>
     </item>
