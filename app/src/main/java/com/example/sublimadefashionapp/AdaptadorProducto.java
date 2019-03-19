@@ -44,7 +44,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
     @NonNull
     @Override
     public ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_catalogo, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.catalogo_card, viewGroup, false);
         ProductoViewHolder pvh = new ProductoViewHolder(v);
         return pvh;
     }
