@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/oldwhitebackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Catalogo"
+    tools:context=".Fragments.CatalogoFragment"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
