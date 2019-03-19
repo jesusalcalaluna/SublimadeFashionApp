@@ -5,80 +5,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/oldwhitebackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Catalogo"
+    tools:context=".Fragments.CatalogoFragment"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="390dp"
-        android:layout_height="200dp"
-        app:cardCornerRadius="10dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="140dp"
-                android:layout_height="170dp"
-                android:src="@drawable/ic_launcher_background"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="20dp"
-                android:scaleType="centerCrop"/>
-            <RelativeLayout
-                android:layout_width="230dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left|center_horizontal"
-                android:padding="20dp">
+    <!-- TODO: Update blank fragment layout -->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Producto"
-                    android:textSize="28dp"
-                    android:id="@+id/ProdName"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MXN$"
-                    android:textSize="22dp"
-                    android:layout_below="@+id/ProdName"
-                    android:id="@+id/moneda"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="200"
-                    android:textSize="22dp"
-                    android:layout_below="@+id/ProdName"
-                    android:id="@+id/ProdPrice"
-                    android:layout_toRightOf="@id/moneda"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Playera"
-                    android:textSize="20dp"
-                    android:layout_below="@+id/ProdPrice"
-                    android:id="@+id/ProdType"/>
-                <Button
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:text="Detalles"
-                    android:textColor="#FFFFFF"
-                    android:background="@drawable/detalle_button"
-                    android:layout_below="@+id/ProdType"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/btnDetails"/>
-                <ImageView
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:layout_toRightOf="@+id/btnDetails"
-                    android:layout_below="@id/ProdType"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@android:drawable/star_off"/>
-            </RelativeLayout>
-        </FrameLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvCatalogo">
 
-    </android.support.v7.widget.CardView>
+    </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>
