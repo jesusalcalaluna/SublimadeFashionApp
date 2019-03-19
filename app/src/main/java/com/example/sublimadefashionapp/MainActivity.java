@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         setContentView(R.layout.activity_main);
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        TextView txtDisplayName = findViewById(R.id.prueba);
+        //TextView txtDisplayName = findViewById(R.id.prueba);
         txtEmail = (TextView) findViewById(R.id.correousuario);
         setToolbar();
 
         if (firebaseUser != null) {
-            txtDisplayName.setText(firebaseUser.getDisplayName());
+        //    txtDisplayName.setText(firebaseUser.getDisplayName());
          //   txtEmail.setText(firebaseUser.getDisplayName());
-
+            FirebaseAuth.getInstance().signOut();
         }
 
 
