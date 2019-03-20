@@ -51,11 +51,13 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //setContentView(R.layout.header_navigation_drawer);
         setToolbar();
 
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
 
         //Fragment Inicial del BottomNavigation
         id = "iniciofragment";
@@ -87,7 +89,9 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
                         break;
                     case R.id.cerrarsesionItem:
-
+                        if(firebaseUser != null){
+                            firebaseAuth.getInstance().signOut();
+                        }
                         break;
                 }
 
