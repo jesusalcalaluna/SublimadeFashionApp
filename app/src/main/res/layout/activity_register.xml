@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="vertical">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="0dp"
     android:orientation="vertical"
     tools:context=".Register">
 
@@ -11,10 +16,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="150dp"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:background="#2C68F8"
+        android:background="@color/colorSublimadeDark"
         android:gravity="center"
         >
         <TextView
@@ -33,34 +38,39 @@
             android:fontFamily="sans-serif-thin"
             android:textColor="#fff"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="503dp"
+        android:layout_margin="30dp"
         android:layout_weight=".5"
-        android:orientation="vertical"
         android:gravity="center"
-        >
+        android:orientation="vertical">
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inicia secion con Google"/>
         <com.google.android.gms.common.SignInButton
+            android:id="@+id/signInButton"
+            android:layout_width="178dp"
+            android:layout_height="wrap_content" />
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/signInButton">
+            android:text="o"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="reqgistrate con nosotros"/>
 
-        </com.google.android.gms.common.SignInButton>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:gravity="center_horizontal"
-        >
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/btnRegistrateaqui"
+            android:layout_width="178dp"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            android:text="registrate con tu correo"
-            android:textColor="#2C68F8"
-            android:id="@+id/b2"/>
+            android:backgroundTint="@color/colorSublimadeDark"
+            android:text="Aqui!"
+            android:textColor="@color/colorTextLightPrimary" />
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

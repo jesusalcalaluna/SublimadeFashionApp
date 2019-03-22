@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        tools:context=".Register">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@color/colorSublimadeDark"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sublimade"
+                android:textSize="70dp"
+                android:fontFamily="cursive"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registrate para ver nuestras promociones"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="#fff"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_account_circle_black_24dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/ETxtNombre"
+                        android:layout_width="188dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/ETxtApellido"
+                        android:layout_width="192dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/ETxtFechaNacimiento"
+                    android:layout_width="301dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="40sp"
+                        android:background="@drawable/ic_phone_black_24dp" />
+
+                    <EditText
+                        android:id="@+id/ETxtTelCasa"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="40sp"
+                        android:background="@drawable/ic_phone_black_24dp" />
+
+                    <EditText
+                        android:id="@+id/EtxtTelCel"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Hola"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/ETxtDireccion"
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/ETxtCP"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sexo:" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonMasculino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Masculino" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonFemenino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Femenino" />
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/ETxtEmail"
+                    android:layout_width="372dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+                <EditText
+                    android:id="@+id/ETxtContraseña"
+                    android:layout_width="372dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <Button
+            android:id="@+id/btnregistrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Registrar"
+            android:background="@color/colorSublimadeDark"
+            android:textColor="@color/colorTextLightPrimary"
+            android:onClick="enviar"/>
+
+    </LinearLayout>
+</ScrollView>
