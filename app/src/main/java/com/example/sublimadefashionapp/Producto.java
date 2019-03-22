@@ -7,14 +7,25 @@ public class Producto {
     int id_diseño;
     int id_tipo_producto;
     String sexo;
+    String categoria;
 
-    public Producto(int id_producto, String nombre, double costo_unitario, int id_diseño, int id_tipo_producto, String sexo) {
+
+
+    public Producto(String categoria, int id_producto, String nombre, double costo_unitario, int id_diseño, int id_tipo_producto, String sexo) {
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.costo_unitario = costo_unitario;
         this.id_diseño = id_diseño;
         this.id_tipo_producto = id_tipo_producto;
         this.sexo = sexo;
+        this.categoria = categoria;
+    }
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public int getId_producto() {
