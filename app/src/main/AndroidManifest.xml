@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DetallesProducto"></activity>
+        <activity android:name=".perfil"></activity>
         <activity android:name=".Registercontra" />
         <activity android:name=".Registercorreo" />
         <activity android:name=".Register">

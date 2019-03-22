@@ -1,5 +1,6 @@
 package com.example.sublimadefashionapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,10 +12,12 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Display;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -80,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.perfilItem:
-
+                        Intent intent=new Intent(MainActivity.this, perfil.class);
+                        startActivity(intent);
                         break;
                     case R.id.comprasItem:
 
