@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/oldwhitebackground"
     android:orientation="vertical"
-    tools:context=".editarperfil">
+    tools:context=".perfil">
 
     <LinearLayout
         android:layout_width="match_parent"

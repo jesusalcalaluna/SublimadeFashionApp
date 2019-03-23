@@ -22,44 +22,25 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         this.productos = productos;
     }
 
-    public static class ProductoViewHolder extends RecyclerView.ViewHolder{
-        CardView cv;
-        TextView  Nombre;
-        TextView Precio;
-        TextView Tipo;
-        ImageView Imagen;
-
-
-        public ProductoViewHolder(@NonNull View itemView) {
-            super(itemView);
-            cv = (CardView)itemView.findViewById(R.id.cvCatalogo);
-            Nombre = (TextView) itemView.findViewById(R.id.ProdName);
-            Precio = (TextView) itemView.findViewById(R.id.ProdPrice);
-            Tipo = (TextView) itemView.findViewById(R.id.ProdType);
-            Imagen = (ImageView) itemView.findViewById(R.id.ProdImage);
-
-        }
-    }
-
     @NonNull
     @Override
-    public ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.catalogo_card, viewGroup, false);
-        ProductoViewHolder pvh = new ProductoViewHolder(v);
-        return pvh;
+    public AdaptadorProducto.ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.catalogo_card, null, false);
+        return new ProductoViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductoViewHolder productoViewHolder, int i) {
-        productoViewHolder.Nombre.setText(productos.get(i).getNombre());
-        productoViewHolder.Precio.setText(String.valueOf(productos.get(i).getCosto_unitario()));
-        productoViewHolder.Tipo.setText(productos.get(i).getId_tipo_producto());
+    public void onBindViewHolder(@NonNull AdaptadorProducto.ProductoViewHolder productoViewHolder, int i) {
+        Producto p = productos.get(i);
 
-    }
+        String Nombre = p.getNombre();
+        String Precio = String.valueOf(p.getCosto_unitario());
+        String Categoria = String.valueOf(p.getCategoria());
 
-    @Override
-    public long getItemId(int position) {
-        return productos.get(position).getId_producto();
+        productoViewHolder.nombre.setText(Nombre);
+        productoViewHolder.precio.setText(Precio);
+        productoViewHolder.categoria.setText(Categoria);
+
     }
 
     @Override
@@ -67,5 +48,15 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         return productos.size();
     }
 
+    public class ProductoViewHolder extends RecyclerView.ViewHolder{
 
+        TextView nombre, precio, categoria;
+        public ProductoViewHolder(@NonNull View itemView) {
+            super(itemView);
+            nombre = itemView.findViewById(R.id.ProdName);
+            precio = itemView.findViewById(R.id.ProdPrice);
+            categoria = itemView.findViewById(R.id.ProdCat);
+
+        }
+    }
 }

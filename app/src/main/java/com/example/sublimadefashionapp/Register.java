@@ -24,29 +24,31 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class Register extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class Register extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private GoogleApiClient googleApiClient;
     private SignInButton signInButton;
     public static final int SIGN_IN_CODE=777;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+    private Button btnregistrate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register); GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail()
+        setContentView(R.layout.activity_register);
+        btnregistrate = (Button) findViewById(R.id.btnRegistrateaqui);
+        btnregistrate.setOnClickListener(this);
+        GoogleSignInOptions gso = new GoogleSignInOptions
+                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
                 .requestIdToken(getString(R.string.token)).build();
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
 
-            signInButton = findViewById(R.id.signInButton);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                startActivityForResult(intent,SIGN_IN_CODE);
-            }
-        });
+        signInButton = findViewById(R.id.signInButton);
+        signInButton.setOnClickListener(this);
+
+
         firebaseAuth= FirebaseAuth.getInstance();
         authStateListener= new FirebaseAuth.AuthStateListener() {
             @Override
@@ -66,6 +68,24 @@ public class Register extends AppCompatActivity implements GoogleApiClient.OnCon
             }
         };
     }
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+            case R.id.btnRegistrateaqui:
+                Intent intent = new Intent(this,RegistroUsuarioActivity.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.signInButton:
+                Intent signInIntent =Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                startActivityForResult(signInIntent,SIGN_IN_CODE);
+                break;
+        }
+
+    }
+
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {

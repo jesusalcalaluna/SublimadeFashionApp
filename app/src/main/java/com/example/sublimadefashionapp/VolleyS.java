@@ -19,7 +19,7 @@ public class VolleyS {
         }
         return vs;
     }
-    public RequestQueue getRq(Context c){
+    public RequestQueue getRq(){
         return rq;
     }
 }
