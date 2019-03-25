@@ -109,7 +109,7 @@ public class CatalogoFragment extends Fragment {
                 Log.d("error", error.getMessage());
             }
         });
-        VolleyS.getInstance(getContext()).getRq(getContext()).add(jar);
+      //  VolleyS.getInstance(getContext()).getRq(getContext()).add(jar);
         return view;
     }
 

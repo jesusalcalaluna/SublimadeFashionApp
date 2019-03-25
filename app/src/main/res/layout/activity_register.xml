@@ -1,76 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:scrollbars="vertical">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Register">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
         android:background="@color/colorSublimadeDark"
-        android:gravity="center"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sublimade"
-            android:textSize="70dp"
-            android:fontFamily="cursive"
-            android:textColor="#fff"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrate para ver nuestras promociones"
-            android:textSize="20dp"
-            android:fontFamily="sans-serif-thin"
-            android:textColor="#fff"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="503dp"
-        android:layout_margin="30dp"
-        android:layout_weight=".5"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inicia secion con Google"/>
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/signInButton"
-            android:layout_width="178dp"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="o"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="reqgistrate con nosotros"/>
+            android:fontFamily="cursive"
+            android:text="Sublimade"
+            android:textColor="#fff"
+            android:textSize="70dp" />
 
-        <Button
-            android:id="@+id/btnRegistrateaqui"
-            android:layout_width="178dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorSublimadeDark"
-            android:text="Aqui!"
-            android:textColor="@color/colorTextLightPrimary" />
+            android:fontFamily="sans-serif-thin"
+            android:text="Registrate para ver nuestras promociones"
+            android:textColor="#fff"
+            android:padding="20dp"
+            android:textSize="15dp" />
     </LinearLayout>
+
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="0dp"
+     android:layout_weight="1.2"
+     android:orientation="vertical"
+     android:gravity="center"
+    >
+
+     <com.google.android.gms.common.SignInButton
+         android:id="@+id/signInButton"
+         android:layout_width="300dp"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"/>
+     <Button
+         android:id="@+id/btnRegistrateaqui"
+         android:layout_width="300dp"
+         android:layout_height="wrap_content"
+         android:background="@drawable/btn_redondeado_negro"
+         android:text="Registrar"
+         android:layout_margin="10dp"
+         android:textColor="@color/colorTextLightPrimary"
+         />
+
+
+
+ </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".45"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿ya tienes cuenta? "
+            android:layout_marginTop="30dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="iniciar"
+            android:text="Inicia sesion."
+            android:textColor="#247ACF"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+
 </LinearLayout>
-</ScrollView>

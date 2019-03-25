@@ -62,7 +62,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
                 }
                 else
                 {
-                    Toast.makeText(Register.this, "¡Welcome ",Toast.LENGTH_LONG).show();
+
 
                 }
             }
@@ -144,5 +144,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         if(authStateListener!=null){
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
+    }
+
+    public void iniciar(View view) {
+        Intent intent = new Intent(this,login.class);
+        startActivity(intent);
+        finish();
     }
 }
