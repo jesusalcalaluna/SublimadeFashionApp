@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
         if (firebaseUser != null) {
             txtNombreUsuario.setText(firebaseUser.getDisplayName());
+
         }
         //Metodo del Navigation View
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

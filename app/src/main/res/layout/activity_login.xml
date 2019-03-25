@@ -7,20 +7,20 @@
     android:orientation="vertical"
     tools:context=".login">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_weight="1.5"
+        android:gravity="center|bottom"
+
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sublimade"
-            android:textSize="70dp"
+            android:textSize="50dp"
             android:fontFamily="cursive"
+            android:layout_marginTop="40dp"
             android:textColor="#000"/>
 
     </LinearLayout>
@@ -29,25 +29,37 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="vertical"
-        android:gravity="center"
+        android:gravity="center|top"
+
         >
         <EditText
-            android:layout_width="290dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:text="usuario"/>
+            android:hint="usuario"
+            android:background="@drawable/input"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:layout_margin="10dp"/>
         <EditText
-            android:layout_width="290dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:text="Contraseña"
-            android:id="@+id/caja"
+            android:hint="Contraseña"
+            android:password="true"
+            android:background="@drawable/input"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:layout_margin="10dp"
             />
         <Button
-            android:layout_width="290dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:textColor="#FFF"
             android:text="Iniciar"
+            android:layout_margin="20dp"
 
-            android:background="#2C68F8"/>
+            android:background="@drawable/btn_redondeado_negro"/>
 
     </LinearLayout>
     <LinearLayout
@@ -56,13 +68,18 @@
         android:layout_weight="1"
         android:gravity="center_horizontal"
         >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:text="¿No tienes cuenta? registrate"
-            android:textColor="#2C68F8"
-            android:id="@+id/b1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No tienes cuenta? "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="intntregistrar"
+                android:text="Registrate"
+                android:textColor="#247ACF"/>
+
     </LinearLayout>
 
 </LinearLayout>
