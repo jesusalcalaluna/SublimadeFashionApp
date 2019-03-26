@@ -9,13 +9,13 @@ public class VolleyS {
     private RequestQueue rq;
     private static VolleyS vs = null;
 
-    private VolleyS(Context c){
-        rq = Volley.newRequestQueue(c);
+    private VolleyS(Context context){
+        rq = Volley.newRequestQueue(context);
     }
 
-    public static VolleyS getInstance(Context c){
+    public static VolleyS getInstance(Context context){
         if(vs==null){
-            vs =  new VolleyS(c);
+            vs =  new VolleyS(context);
         }
         return vs;
     }

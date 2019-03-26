@@ -4,7 +4,9 @@ import android.app.DatePickerDialog;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -18,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class RegistroUsuarioActivity extends AppCompatActivity {
@@ -27,6 +30,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
     DatePickerDialog datePicker;
     EditText nombre, apellido, fechanacimiento, telcasa, telcel, direccion, codigopostal, email,contraseña;
     RadioButton masculino, femenino;
+    Button registrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +42,17 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         telcel = (EditText) findViewById(R.id.EtxtTelCel);
         direccion = (EditText) findViewById(R.id.ETxtDireccion);
         codigopostal = (EditText) findViewById(R.id.ETxtCP);
-        email = (EditText) findViewById(R.id.ETxtNombre);
-        contraseña = (EditText) findViewById(R.id.ETxtNombre);
+        email = (EditText) findViewById(R.id.ETxtEmail);
+        contraseña = (EditText) findViewById(R.id.ETxtContraseña);
         masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
-        femenino = (RadioButton) findViewById(R.id.radioButtonMasculino);
+        femenino = (RadioButton) findViewById(R.id.radioButtonFemenino);
+        registrar = (Button) findViewById(R.id.btnregistrar);
 
         ETxtFechaNacimiento = (EditText) findViewById(R.id.ETxtFechaNacimiento);
         ETxtFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 calendar = Calendar.getInstance();
                 int dia = calendar.get(Calendar.DAY_OF_MONTH);
                 int mes = calendar.get(Calendar.MONTH);
@@ -54,7 +60,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
                 datePicker = new DatePickerDialog(RegistroUsuarioActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ETxtFechaNacimiento.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+                        ETxtFechaNacimiento.setText(year+"-"+(month+1)+"-"+dayOfMonth);
                     }
                 },dia,mes,anio);
                 datePicker.show();
@@ -66,7 +72,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
 
     public void enviar(View view) throws JSONException {
         JSONObject persona = new JSONObject();
-        persona.put("nombre",nombre.getText().toString());
+        /*persona.put("nombre",nombre.getText().toString());
         persona.put("apellido",apellido.getText().toString());
         persona.put("nacimiento",fechanacimiento.getText().toString());
         persona.put("telefono",telcasa.getText().toString());
@@ -74,18 +80,30 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         persona.put("direccion",direccion.getText().toString());
         persona.put("cp",codigopostal.getText().toString());
         persona.put("email",email.getText().toString());
-        persona.put("contrasena",contraseña.getText().toString());
+        persona.put("contrasena",contraseña.getText().toString());*/
+        persona.put("nombre","jesus");
+        persona.put("apellido","Alcala");
+        persona.put("nacimiento","1997-01-14");
+        persona.put("telefono","9711179568");
+        persona.put("celular","8711179568");
+        persona.put("direccion","calle 1");
+        persona.put("cp","27084");
+        persona.put("email","jesusalcalaluna@yahoo.com");
+        persona.put("contrasena","123");
 
-        if(femenino.isChecked()){
-            Toast.makeText(this,femenino.getText().toString(),Toast.LENGTH_LONG).show();
+        persona.put("sexo","Masculino");
+        /*if(femenino.isChecked()){
+            persona.put("sexo",femenino.getText().toString());
         }
         if (masculino.isChecked()){
-            Toast.makeText(this,masculino.getText().toString(),Toast.LENGTH_LONG).show();
-        }
+            persona.put("sexo",masculino.getText().toString());
+        }*/
+
+        Log.e("persona", String.valueOf(persona));
 
 
 
-        /*JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://nuevo.rnrsiilge-org.mx/baraja/enviar", persona, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://www.sublimade.mipantano.com9/android/registro.usuario", persona, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
@@ -94,9 +112,10 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(RegistroUsuarioActivity.this,error.toString(),Toast.LENGTH_LONG).show();
 
             }
         });
-        VolleyS.getInstance(this).getRq().add(jor);*/
+        VolleyS.getInstance(this).getRq().add(jor);
     }
 }
