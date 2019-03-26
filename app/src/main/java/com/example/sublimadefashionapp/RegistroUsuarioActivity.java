@@ -43,7 +43,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         direccion = (EditText) findViewById(R.id.ETxtDireccion);
         codigopostal = (EditText) findViewById(R.id.ETxtCP);
         email = (EditText) findViewById(R.id.ETxtEmail);
-        contraseña = (EditText) findViewById(R.id.ETxtContraseña);
+        contraseña = (EditText) findViewById(R.id.ETxtContrasena);
         masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
         femenino = (RadioButton) findViewById(R.id.radioButtonFemenino);
         registrar = (Button) findViewById(R.id.btnregistrar);
