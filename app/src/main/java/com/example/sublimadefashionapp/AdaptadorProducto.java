@@ -12,6 +12,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.ProductoViewHolder> {
@@ -36,10 +39,13 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         String Nombre = p.getNombre();
         String Precio = String.valueOf(p.getCosto_unitario());
         String Categoria = String.valueOf(p.getCategoria());
+        String Diseno =  String.valueOf(p.getId_diseño());
 
         productoViewHolder.nombre.setText(Nombre);
         productoViewHolder.precio.setText(Precio);
         productoViewHolder.categoria.setText(Categoria);
+
+        Picasso.get().load("sublimade.mipantano.com/storage/disenos/"+Diseno).into(productoViewHolder.diseno);
 
     }
 
@@ -51,11 +57,13 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
     public class ProductoViewHolder extends RecyclerView.ViewHolder{
 
         TextView nombre, precio, categoria;
+        ImageView diseno;
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.ProdName);
             precio = itemView.findViewById(R.id.ProdPrice);
             categoria = itemView.findViewById(R.id.ProdCat);
+            diseno = itemView.findViewById(R.id.ProdImage);
 
         }
     }

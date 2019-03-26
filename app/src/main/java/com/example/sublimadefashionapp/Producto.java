@@ -4,14 +4,14 @@ public class Producto {
     int id_producto;
     String nombre;
     double costo_unitario;
-    int id_diseño;
+    String id_diseño;
     int id_tipo_producto;
     String sexo;
     String categoria;
 
 
 
-    public Producto(String categoria, int id_producto, String nombre, double costo_unitario, int id_diseño, int id_tipo_producto, String sexo) {
+    public Producto(String categoria, int id_producto, String nombre, double costo_unitario, String id_diseño, int id_tipo_producto, String sexo) {
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.costo_unitario = costo_unitario;
@@ -52,11 +52,11 @@ public class Producto {
         this.costo_unitario = costo_unitario;
     }
 
-    public int getId_diseño() {
+    public String getId_diseño() {
         return id_diseño;
     }
 
-    public void setId_diseño(int id_diseño) {
+    public void setId_diseño(String id_diseño) {
         this.id_diseño = id_diseño;
     }
 
