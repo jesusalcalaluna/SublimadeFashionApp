@@ -43,7 +43,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         direccion = (EditText) findViewById(R.id.ETxtDireccion);
         codigopostal = (EditText) findViewById(R.id.ETxtCP);
         email = (EditText) findViewById(R.id.ETxtEmail);
-        contraseña = (EditText) findViewById(R.id.ETxtContraseña);
+        contraseña = (EditText) findViewById(R.id.ETxtContrasena);
         masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
         femenino = (RadioButton) findViewById(R.id.radioButtonFemenino);
         registrar = (Button) findViewById(R.id.btnregistrar);
@@ -86,9 +86,9 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         persona.put("nacimiento","1997-01-14");
         persona.put("telefono","9711179568");
         persona.put("celular","8711179568");
-        persona.put("direccion","calle 1");
+        persona.put("direccion","svdfvdfb");
         persona.put("cp","27084");
-        persona.put("email","jesusalcalaluna@yahoo.com");
+        persona.put("email","dgdfbdfdbdfb");
         persona.put("contrasena","123");
 
         persona.put("sexo","Masculino");
@@ -99,11 +99,11 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             persona.put("sexo",masculino.getText().toString());
         }*/
 
-        Log.e("persona", String.valueOf(persona));
+        Log.e("JSONObjetPersona", String.valueOf(persona));
 
 
 
-        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://www.sublimade.mipantano.com9/android/registro.usuario", persona, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://sublimade.mipantano.com/registro.usuario", persona, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
@@ -113,6 +113,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(RegistroUsuarioActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                Log.e("JSONObjeterror", String.valueOf(error));
 
             }
         });

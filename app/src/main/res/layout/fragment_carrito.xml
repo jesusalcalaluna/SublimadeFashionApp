@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.CarritoFragment">
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rvCarrito"
+        android:layout_gravity="center_horizontal">
+
+    </android.support.v7.widget.RecyclerView>
     <TextView
         android:id="@+id/Info"
         android:layout_width="wrap_content"
