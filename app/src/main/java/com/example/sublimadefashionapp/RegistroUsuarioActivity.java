@@ -93,24 +93,28 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         persona.put("nacimiento","1997-01-14");
         persona.put("telefono","9711179568");
         persona.put("celular","8711179568");
-        persona.put("direccion","calle 1");
+        persona.put("direccion","svdfvdfb");
         persona.put("cp","27084");
+
       //  persona.put("email","jesusalcalaluna@yahoo.com");
        // persona.put("contrasena","123");
 
-        persona.put("sexo","Masculino");
-        /*if(femenino.isChecked()){
+        persona.put("email","dgdfbdfdbdfb");
+        persona.put("contrasena","123");
+                /*if(femenino.isChecked()){
             persona.put("sexo",femenino.getText().toString());
         }
         if (masculino.isChecked()){
             persona.put("sexo",masculino.getText().toString());
         }*/
 
-        Log.e("persona", String.valueOf(persona));
+        Log.e("JSONObjetPersona", String.valueOf(persona));
+
 
 
 
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://www.sublimade.mipantano.com/registro.usuario.android", persona, new Response.Listener<JSONObject>() {
+
             @Override
             public void onResponse(JSONObject response) {
 
@@ -120,6 +124,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(RegistroUsuarioActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                Log.e("JSONObjeterror", String.valueOf(error));
 
             }
         });
