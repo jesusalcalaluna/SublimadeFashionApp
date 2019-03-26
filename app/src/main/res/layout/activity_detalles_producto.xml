@@ -5,20 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetallesProducto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F2F2F2">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/detailsProdrv"
-        android:layout_gravity="center_horizontal">
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/detailsProdrv"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_weight="4">-->
 
 
-    </android.support.v7.widget.RecyclerView>
+    <!--</android.support.v7.widget.RecyclerView>-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="10dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/accept_button"
+        android:src="@drawable/carrito_mas"/>
+
+
 
 
 </LinearLayout>

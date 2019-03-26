@@ -11,6 +11,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -30,16 +35,30 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdaptadorProducto.ProductoViewHolder productoViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final AdaptadorProducto.ProductoViewHolder productoViewHolder, int i) {
         Producto p = productos.get(i);
 
         String Nombre = p.getNombre();
         String Precio = String.valueOf(p.getCosto_unitario());
         String Categoria = String.valueOf(p.getCategoria());
+        String Diseno =  String.valueOf(p.getDiseno());
 
         productoViewHolder.nombre.setText(Nombre);
         productoViewHolder.precio.setText(Precio);
         productoViewHolder.categoria.setText(Categoria);
+
+        Picasso.get().load("http://sublimade.mipantano.com/storage/disenos/"+Diseno).into(productoViewHolder.diseno, new Callback() {
+            @Override
+            public void onSuccess() {
+               Toast.makeText(productoViewHolder.itemView.getContext(), "Simon", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Toast.makeText(productoViewHolder.itemView.getContext(), "Nel", Toast.LENGTH_LONG).show();
+
+            }
+        });
 
     }
 
@@ -51,11 +70,13 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
     public class ProductoViewHolder extends RecyclerView.ViewHolder{
 
         TextView nombre, precio, categoria;
+        ImageView diseno;
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.ProdName);
             precio = itemView.findViewById(R.id.ProdPrice);
             categoria = itemView.findViewById(R.id.ProdCat);
+            diseno = itemView.findViewById(R.id.ProdImage);
 
         }
     }
