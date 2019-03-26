@@ -12,16 +12,21 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistroUsuarioActivity extends AppCompatActivity {
 
@@ -43,7 +48,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         direccion = (EditText) findViewById(R.id.ETxtDireccion);
         codigopostal = (EditText) findViewById(R.id.ETxtCP);
         email = (EditText) findViewById(R.id.ETxtEmail);
-        contraseña = (EditText) findViewById(R.id.ETxtContraseña);
+        contraseña = (EditText) findViewById(R.id.ETxtContrasena);
         masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
         femenino = (RadioButton) findViewById(R.id.radioButtonFemenino);
         registrar = (Button) findViewById(R.id.btnregistrar);
@@ -52,6 +57,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         ETxtFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                datePicker.show();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 calendar = Calendar.getInstance();
                 int dia = calendar.get(Calendar.DAY_OF_MONTH);
@@ -71,6 +77,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
     }
 
     public void enviar(View view) throws JSONException {
+
         JSONObject persona = new JSONObject();
         /*persona.put("nombre",nombre.getText().toString());
         persona.put("apellido",apellido.getText().toString());
@@ -88,8 +95,8 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         persona.put("celular","8711179568");
         persona.put("direccion","calle 1");
         persona.put("cp","27084");
-        persona.put("email","jesusalcalaluna@yahoo.com");
-        persona.put("contrasena","123");
+      //  persona.put("email","jesusalcalaluna@yahoo.com");
+       // persona.put("contrasena","123");
 
         persona.put("sexo","Masculino");
         /*if(femenino.isChecked()){
@@ -103,7 +110,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
 
 
 
-        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://www.sublimade.mipantano.com9/android/registro.usuario", persona, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://www.sublimade.mipantano.com/registro.usuario.android", persona, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 

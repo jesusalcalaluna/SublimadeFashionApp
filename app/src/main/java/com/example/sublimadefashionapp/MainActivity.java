@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         InicioFragment fragment = InicioFragment.newInstance("id", id);
         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,fragment).commit();
 
-        //SideBar menu
+        //SideBar menux
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         //Navigation View
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
         if (firebaseUser != null) {
             txtNombreUsuario.setText(firebaseUser.getDisplayName());
+
 
         }
         //Metodo del Navigation View
@@ -96,6 +97,9 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                     case R.id.cerrarsesionItem:
                         if(firebaseUser != null){
                             firebaseAuth.getInstance().signOut();
+                            finish();
+                            Intent inten=new Intent(MainActivity.this, login.class);
+                            startActivity(inten);
                         }
                         break;
                 }
