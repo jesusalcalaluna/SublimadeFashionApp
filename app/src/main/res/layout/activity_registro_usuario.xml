@@ -173,19 +173,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Femenino" />
-                    <EditText
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Nacimineto"
-                        android:background="@drawable/input"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="10dp"
-                        android:layout_margin="10dp"
-                        android:id="@+id/ETxtFechaNacimiento"/>
+
 
                 </RadioGroup>
-
+        <EditText
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:hint="Nacimineto"
+            android:background="@drawable/input"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:layout_margin="10dp"
+            android:id="@+id/ETxtFechaNacimiento"/>
             </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
