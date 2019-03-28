@@ -23,11 +23,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -43,7 +46,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener, CatalogoFragment.OnFragmentInteractionListener,
         CarritoFragment.OnFragmentInteractionListener, DeseadosFragment.OnFragmentInteractionListener{
     RecyclerView rvCatalogo;
-    String id;
+    String id,nombre,correo,celular,uid;
     List<Producto> lp;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -76,8 +79,15 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
         if (firebaseUser != null) {
             txtNombreUsuario.setText(firebaseUser.getDisplayName());
-
-
+                nombre=firebaseUser.getDisplayName();
+                celular=firebaseUser.getPhoneNumber();
+                correo=firebaseUser.getEmail();
+                uid=firebaseUser.getUid();
+            try {
+                enviarcuenta();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
         //Metodo del Navigation View
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -142,6 +152,36 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
             }
         });//Final del metodo de la barra de navegacion inferior
     }
+
+    private void enviarcuenta() throws JSONException {
+
+
+
+            JSONObject persona = new JSONObject();
+            persona.put("nombre",nombre);
+            persona.put("celular",celular);
+            persona.put("email",correo);
+            persona.put("contrasena",uid);
+
+
+            String url = "http://www.sublimade.mipantano.com/registro.usuario.android";
+
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, persona, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.d("Mensaje", response.toString());
+                    Toast.makeText(MainActivity.this, "Persona" + response.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            VolleyS.getInstance(this).getRq().add(request);
+        }
+
+
 
     private void setToolbar(){
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
