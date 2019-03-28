@@ -39,6 +39,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         btnregistrate.setOnClickListener(this);
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestProfile()
                 .requestEmail()
                 .requestIdToken(getString(R.string.token)).build();
         googleApiClient = new GoogleApiClient.Builder(this)

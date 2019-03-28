@@ -12,16 +12,21 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistroUsuarioActivity extends AppCompatActivity {
 
@@ -52,6 +57,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         ETxtFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 calendar = Calendar.getInstance();
                 int dia = calendar.get(Calendar.DAY_OF_MONTH);
@@ -70,53 +76,41 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
 
     }
 
-    public void enviar(View view) throws JSONException {
-        JSONObject persona = new JSONObject();
-        /*persona.put("nombre",nombre.getText().toString());
+
+    public void enviar (View view) throws JSONException{
+
+         JSONObject persona = new JSONObject();
+        persona.put("nombre",nombre.getText().toString());
         persona.put("apellido",apellido.getText().toString());
         persona.put("nacimiento",fechanacimiento.getText().toString());
-        persona.put("telefono",telcasa.getText().toString());
         persona.put("celular",telcel.getText().toString());
+        persona.put("telefono",telcasa.getText().toString());
         persona.put("direccion",direccion.getText().toString());
         persona.put("cp",codigopostal.getText().toString());
         persona.put("email",email.getText().toString());
-        persona.put("contrasena",contraseña.getText().toString());*/
-        persona.put("nombre","jesus");
-        persona.put("apellido","Alcala");
-        persona.put("nacimiento","1997-01-14");
-        persona.put("telefono","9711179568");
-        persona.put("celular","8711179568");
-        persona.put("direccion","svdfvdfb");
-        persona.put("cp","27084");
-        persona.put("email","dgdfbdfdbdfb");
-        persona.put("contrasena","123");
-
-        persona.put("sexo","Masculino");
-        /*if(femenino.isChecked()){
+        persona.put("contrasena",contraseña.getText().toString());
+        if(masculino.isChecked()){
+            persona.put("sexo",masculino.getText().toString());
+        }
+        if(femenino.isChecked()){
             persona.put("sexo",femenino.getText().toString());
         }
-        if (masculino.isChecked()){
-            persona.put("sexo",masculino.getText().toString());
-        }*/
 
-        Log.e("JSONObjetPersona", String.valueOf(persona));
+        String url = "http://www.sublimade.mipantano.com/registro.usuario.android";
 
-
-
-        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://sublimade.mipantano.com/registro.usuario", persona, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, persona, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
-                Toast.makeText(RegistroUsuarioActivity.this,"Objeto" + response.toString(),Toast.LENGTH_SHORT).show();
+                Log.d("Mensaje", response.toString());
+                Toast.makeText(RegistroUsuarioActivity.this, "Persona" + response.toString(), Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(RegistroUsuarioActivity.this,error.toString(),Toast.LENGTH_LONG).show();
-                Log.e("JSONObjeterror", String.valueOf(error));
 
             }
         });
-        VolleyS.getInstance(this).getRq().add(jor);
+        VolleyS.getInstance(this).getRq().add(request);
     }
+
 }
