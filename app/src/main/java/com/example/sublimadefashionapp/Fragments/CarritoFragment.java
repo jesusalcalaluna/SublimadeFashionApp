@@ -4,11 +4,28 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.sublimadefashionapp.AdaptadorProducto;
+import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.VolleyS;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 
 /**
@@ -65,8 +82,32 @@ public class CarritoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_carrito, container, false);;
-        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_carrito, container, false);
+
+        final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
+        rvCarrito.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, "http://sublimade.mipantano.com/android/catalogo", null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            Gson g = new Gson();
+                            Type t = new TypeToken<List<Producto>>(){}.getType();
+                            List<Producto> lp = g.fromJson(response.toString(), t);
+                            AdaptadorProducto adapt= new AdaptadorProducto(lp);
+                            rvCarrito.setAdapter(adapt);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("error", error.getMessage());
+            }
+        });
+        VolleyS.getInstance(getContext()).getRq().add(jar);
+
         return view;
     }
 
