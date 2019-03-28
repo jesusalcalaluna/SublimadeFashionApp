@@ -58,8 +58,22 @@
             android:textColor="#FFF"
             android:text="Iniciar"
             android:layout_margin="20dp"
-
             android:background="@drawable/btn_redondeado_negro"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicia sesion con Google"
+                android:id="@+id/signInButton"
+                android:textColor="#247ACF"
+                />
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -76,7 +90,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="intntregistrar"
+                android:id="@+id/as"
                 android:text="Registrate"
                 android:textColor="#247ACF"/>
 
