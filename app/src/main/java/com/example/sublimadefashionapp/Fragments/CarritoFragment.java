@@ -84,7 +84,7 @@ public class CarritoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_carrito, container, false);
 
-        final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
+       final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
         rvCarrito.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
         JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, "http://sublimade.mipantano.com/android/catalogo", null,
                 new Response.Listener<JSONArray>() {
@@ -94,7 +94,7 @@ public class CarritoFragment extends Fragment {
                             Gson g = new Gson();
                             Type t = new TypeToken<List<Producto>>(){}.getType();
                             List<Producto> lp = g.fromJson(response.toString(), t);
-                            AdaptadorProducto adapt= new AdaptadorProducto(lp);
+                            AdaptadorProducto adapt= new AdaptadorProducto(lp, getContext());
                             rvCarrito.setAdapter(adapt);
                         } catch (Exception e) {
                             e.printStackTrace();

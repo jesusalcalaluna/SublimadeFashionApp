@@ -45,7 +45,6 @@
                     android:layout_height="wrap_content"
                     android:text="200"
                     android:textSize="18dp"
-
                     android:layout_below="@+id/ProdName"
                     android:id="@+id/ProdPrice"
                     android:textStyle="bold"

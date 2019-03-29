@@ -8,15 +8,15 @@
     android:orientation="vertical"
     android:background="#F2F2F2">
 
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/detailsProdrv"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:layout_weight="4">-->
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailsProdrv"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="4">
 
 
-    <!--</android.support.v7.widget.RecyclerView>-->
+    </android.support.v7.widget.RecyclerView>
 
     <ImageButton
         android:layout_width="150dp"

@@ -97,7 +97,7 @@ public class CatalogoFragment extends Fragment {
                             Gson g = new Gson();
                             Type t = new TypeToken<List<Producto>>(){}.getType();
                             List<Producto> lp = g.fromJson(response.toString(), t);
-                            AdaptadorProducto adapt= new AdaptadorProducto(lp);
+                            AdaptadorProducto adapt= new AdaptadorProducto(lp, getContext());
                             rvCatalogo.setAdapter(adapt);
                         } catch (Exception e) {
                             e.printStackTrace();
