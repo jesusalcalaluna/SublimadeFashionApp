@@ -3,79 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/oldwhitebackground"
     android:orientation="vertical"
     tools:context=".perfil">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight=".8"
+        android:background="@color/colorSublimadeDark"
         android:orientation="vertical"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:fontFamily="cursive"
+            android:textColor="@color/colorSublimadeLight"
+            android:text="Editar perfil"
+            android:textSize="50dp"
+            android:gravity="center"
             />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:orientation="horizontal"
-            >
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:background="@drawable/rectangulo_fondo"
-                android:textColor="#000000"
-                android:textSize="50dp"
-                android:textAlignment="center"
-                android:text="Editar
-Perfil"
-                />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            >
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="2dp"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="8"
-                android:layout_height="2dp"
-                android:background="#000000"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="2dp"/>
-        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,21 +30,23 @@ Perfil"
         android:layout_weight="4"
         android:orientation="vertical"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:textSize="24"
+            android:textAlignment="center"
+            android:text="Ingresa los datos que deseas
+cambiar de tu cuenta y presiona
+'Guardar cambios'"
+            android:gravity="center"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
             >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textColor="#000000"
-                android:text="Nombre de usuario"
-                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -112,7 +61,13 @@ Perfil"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="3"
-                    android:background="@drawable/edittext"
+                    android:hint="Nombre de usuario"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/input"
+                    android:layout_gravity="center"
                     />
                 <View
                     android:layout_width="0dp"
@@ -126,15 +81,6 @@ Perfil"
             android:layout_weight="1"
             android:orientation="vertical"
             >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textColor="#000000"
-                android:text="Contraseña"
-                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -149,45 +95,13 @@ Perfil"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="3"
-                    android:background="@drawable/edittext"
-                    />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="2dp"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textColor="#000000"
-                android:text="Número de teléfono"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
-                >
-                <View
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="2dp"/>
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="3"
-                    android:background="@drawable/edittext"
+                    android:hint="Contraseña"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/input"
                     />
                 <View
                     android:layout_width="0dp"
@@ -202,15 +116,6 @@ Perfil"
             android:layout_weight="1"
             android:orientation="vertical"
             >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textColor="#000000"
-                android:text="Dirección"
-                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -225,7 +130,48 @@ Perfil"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="3"
-                    android:background="@drawable/edittext"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_margin="10dp"
+                    android:hint="Número de teléfono"
+                    android:layout_gravity="center"
+                    android:background="@drawable/input"
+                    />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                >
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="2dp"/>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="3"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_margin="10dp"
+                    android:hint="Dirección"
+                    android:layout_gravity="center"
+                    android:background="@drawable/input"
                     />
                 <View
                     android:layout_width="0dp"
@@ -261,8 +207,9 @@ Perfil"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:background="@drawable/accept_button"
+                android:background="@drawable/btn_redondeado_negro"
                 android:textColor="#ffffff"
+                android:textAllCaps="false"
                 android:text="Guardar Cambios"
                 />
             <View

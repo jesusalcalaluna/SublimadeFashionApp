@@ -3,7 +3,7 @@
     <item android:width="90dp" android:height="37dp">
         <shape android:shape="rectangle">
             <corners android:radius="18dp" />
-            <solid android:color="#ff67b8ff" />
+            <solid android:color="#212121" />
             <item android:name="android:shadowColor">#3d000000</item>
             <!-- TextView shadow offsets do not respect scale. -->
             <item android:name="android:shadowDx">0</item>

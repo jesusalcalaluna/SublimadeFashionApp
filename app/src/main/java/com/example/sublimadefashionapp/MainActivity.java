@@ -108,9 +108,10 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         if(firebaseUser != null){
                             firebaseAuth.getInstance().signOut();
                             finish();
-                            Intent inten=new Intent(MainActivity.this, login.class);
-                            startActivity(inten);
+
                         }
+                        Intent inten=new Intent(MainActivity.this, login.class);
+                        startActivity(inten);
                         break;
                 }
 

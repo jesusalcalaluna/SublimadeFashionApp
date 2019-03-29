@@ -48,12 +48,13 @@
          android:id="@+id/signInButton"
          android:layout_width="300dp"
          android:layout_height="wrap_content"
-         android:background="@drawable/btn_redondeado_negro"
+         android:background="@drawable/btn_redondeado_blanco"
          android:layout_margin="10dp"/>
      <Button
          android:id="@+id/btnRegistrateaqui"
          android:layout_width="300dp"
          android:layout_height="wrap_content"
+         android:textAllCaps="false"
          android:background="@drawable/btn_redondeado_negro"
          android:text="Registrar"
          android:layout_margin="10dp"
