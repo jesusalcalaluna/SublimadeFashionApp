@@ -1,6 +1,7 @@
 package com.example.sublimadefashionapp;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.auth.api.Auth;
 import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
@@ -28,7 +30,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistroUsuarioActivity extends AppCompatActivity {
+public class RegistroUsuarioActivity extends AppCompatActivity  {
 
     EditText ETxtFechaNacimiento;
     Calendar calendar;
@@ -66,18 +68,15 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
                 datePicker = new DatePickerDialog(RegistroUsuarioActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        ETxtFechaNacimiento.setText(year+"-"+(month+1)+"-"+dayOfMonth);
+                        ETxtFechaNacimiento.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
                     }
-                },dia,mes,anio);
+                }, dia, mes, anio);
                 datePicker.show();
             }
         });
-
-
     }
 
-
-    public void enviar (View view) throws JSONException{
+    public void enviar(View view) throws JSONException{
 
          JSONObject persona = new JSONObject();
         persona.put("nombre",nombre.getText().toString());
@@ -103,6 +102,9 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.d("Mensaje", response.toString());
                 Toast.makeText(RegistroUsuarioActivity.this, "Persona" + response.toString(), Toast.LENGTH_SHORT).show();
+
+
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -112,5 +114,5 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         });
         VolleyS.getInstance(this).getRq().add(request);
     }
-
 }
+
