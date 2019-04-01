@@ -101,8 +101,14 @@ public class RegistroUsuarioActivity extends AppCompatActivity  {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("Mensaje", response.toString());
-                Toast.makeText(RegistroUsuarioActivity.this, "Persona" + response.toString(), Toast.LENGTH_SHORT).show();
+                try {
+                    datos.token=response.getString("api_token");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
+                Intent intent = new Intent(RegistroUsuarioActivity.this,MainActivity.class);
+                startActivity(intent);
 
 
             }
