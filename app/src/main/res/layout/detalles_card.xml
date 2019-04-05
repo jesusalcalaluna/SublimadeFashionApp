@@ -1,206 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="@color/colorFondo">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="370dp"
-        android:layout_height="500dp"
-        android:id="@+id/cvDetalles"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"
-        app:cardCornerRadius="10dp">
-
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
+            android:id="@+id/cvDetalles"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="3dp">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
-                <View
+                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.1"/>
-
-                <ImageView
-                    android:layout_width="270dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:id="@id/ProdImage"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10"
                     android:orientation="vertical">
-
-                    <LinearLayout
+                    <View
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1.3"
-                        android:orientation="horizontal"
-                        >
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Producto"
-                            android:textColor="@color/colorSublimadeDark"
-                            android:textSize="24dp"
-                            android:textStyle="bold"
-                            android:id="@+id/ProdName"/>
-
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_weight="0.1"/>
+                    <ImageView
+                        android:layout_width="270dp"
                         android:layout_height="0dp"
+                        android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
-                        android:orientation="horizontal"
-                        >
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="MXN$"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:textColor="#F44336"
-                            />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="200"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:id="@+id/ProdPrice"
-                            android:textColor="#F44336"/>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"/>
-                    </LinearLayout>
-
+                        android:id="@id/ProdImage"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="8"
-                        android:orientation="horizontal"
-                        >
-
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10"
+                        android:orientation="vertical">
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:orientation="vertical"
-                            >
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                />
-                            <RadioGroup
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="5"
-                                android:id="@+id/ProdSize">
-
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="20dp"
-                                    android:text="Chica"
-                                    android:id="@+id/SizeSmall"/>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="20dp"
-                                    android:text="Mediana"
-                                    android:id="@+id/SizeMedium"/>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="20dp"
-                                    android:text="Grande"
-                                    android:id="@+id/SizeLarge"/>
-
-
-                            </RadioGroup>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:orientation="vertical"
-                            >
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1.3"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:textStyle="bold"
-                                android:text="Cantidad"
-                                android:textColor="@color/colorSublimadeDark"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                />
-                            <NumberPicker
+                                android:id="@+id/ProdName"
                                 android:layout_width="wrap_content"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:id="@+id/Quantity"
-                                android:layout_gravity="center_horizontal">
-                            </NumberPicker>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1" />
+                                android:layout_height="wrap_content"
+                                android:text="Producto"
+                                android:textColor="#FFFF"
+                                android:textSize="24dp"
+                                android:textStyle="bold" />
                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="MXN$"
+                                android:textColor="#F44336"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.2"
+                                android:text="200"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                android:id="@+id/ProdPrice"
+                                android:textColor="#F44336"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="8"
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:orientation="vertical">
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+                                <RadioGroup
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="5"
+                                    android:id="@+id/ProdSize">
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="20dp"
+                                        android:text="Chica"
+                                        android:id="@+id/SizeSmall"/>
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="20dp"
+                                        android:text="Mediana"
+                                        android:id="@+id/SizeMedium"/>
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="20dp"
+                                        android:text="Grande"
+                                        android:id="@+id/SizeLarge"/>
+                                </RadioGroup>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:textStyle="bold"
+                                    android:text="Cantidad"
+                                    android:textColor="#FFFF"
+                                    android:textSize="20dp"
+                                    android:gravity="center"
+                                    />
+                                <NumberPicker
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:id="@+id/Quantity"
+                                    android:layout_gravity="center_horizontal">
+                                </NumberPicker>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"/>
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
-
-
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
                 </LinearLayout>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
             </LinearLayout>
-
-
-        </LinearLayout>
-
-
-    </android.support.v7.widget.CardView>
-
+        </android.support.v7.widget.CardView>
 </LinearLayout>
-

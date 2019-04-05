@@ -5,29 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetallesProducto"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="#F2F2F2">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/detailsProdrv"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="4">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"/>
 
 
-    </android.support.v7.widget.RecyclerView>
-
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="10dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/accept_button"
-        android:src="@drawable/carrito_mas"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/detailsProdrv"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:layout_gravity="center">
+            </android.support.v7.widget.RecyclerView>
 
 
 
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.6">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"/>
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/btn_pill_azul"
+                    android:src="@drawable/carrito_mas_48"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+
+            <xyz.hanks.library.bang.SmallBangView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/heart_gris_96"/>
+
+            </xyz.hanks.library.bang.SmallBangView>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"/>
+    </LinearLayout>
 
 </LinearLayout>
