@@ -2,6 +2,7 @@ package com.example.sublimadefashionapp;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -9,10 +10,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Display;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -22,19 +22,13 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Objects;
+
 import com.example.sublimadefashionapp.Fragments.CarritoFragment;
 import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
 import com.example.sublimadefashionapp.Fragments.DeseadosFragment;
@@ -46,14 +40,14 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener, CatalogoFragment.OnFragmentInteractionListener,
         CarritoFragment.OnFragmentInteractionListener, DeseadosFragment.OnFragmentInteractionListener{
     RecyclerView rvCatalogo;
-    String id,nombre,correo,celular,uid;
+    String id,nombre,correo,celular,uid, itemselected;
     List<Producto> lp;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     BottomNavigationView bottomNavigationView;
     private TextView txtNombreUsuario;
 
-    @Override
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -93,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
                 switch (menuItem.getItemId()){
                     case R.id.perfilItem:
                         Intent intent=new Intent(MainActivity.this, perfil.class);
@@ -126,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
+                itemselected= String.valueOf(menuItem.getItemId());
+
                 switch (menuItem.getItemId()){
                     case R.id.carritoItem:
                         id = "carritofragment";
@@ -153,6 +150,13 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
             }
         });//Final del metodo de la barra de navegacion inferior
     }
+
+//Método para toolbar
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//                getMenuInflater().inflate(R.menu.menu_catalogo_filtros, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
     private void enviarcuenta() throws JSONException {
 
@@ -195,6 +199,15 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case R.id.filtro:
+                Intent intent=new Intent(MainActivity.this, filtrosActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.search:
+                onSearchRequested();
+                return true;
+
             case android.R.id.home:
                 //abrir menu lateral
                 drawerLayout.openDrawer(GravityCompat.START);
