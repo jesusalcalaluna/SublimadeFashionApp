@@ -61,40 +61,6 @@ cambiar de tu cuenta y presiona
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="3"
-                    android:hint="Nombre de usuario"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/input"
-                    android:layout_gravity="center"
-                    />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="2dp"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
-                >
-                <View
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="2dp"/>
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="3"
                     android:hint="Contraseña"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
