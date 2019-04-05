@@ -113,7 +113,8 @@
                                         android:layout_height="wrap_content"
                                         android:textSize="20dp"
                                         android:text="Chica"
-                                        android:id="@+id/SizeSmall"/>
+                                        android:id="@+id/SizeSmall"
+                                        style="@style/Theme.AppCompat"/>
                                     <RadioButton
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
