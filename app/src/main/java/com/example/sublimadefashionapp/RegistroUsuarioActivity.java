@@ -18,16 +18,21 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.sublimadefashionapp.Modelos.User;
 import com.google.android.gms.auth.api.Auth;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RegistroUsuarioActivity extends AppCompatActivity  {
@@ -95,21 +100,31 @@ public class RegistroUsuarioActivity extends AppCompatActivity  {
             persona.put("sexo",femenino.getText().toString());
         }
 
-        String url = "http://www.sublimade.mipantano.com/registro.usuario.android";
+        String url = "http://www.sublimade.mipantano.com/api/registro.android";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, persona, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("Mensaje", response.toString());
                 try {
-                    datos.token=response.getString("api_token");
+                    String mail = response.getString("e_mail");
+                    String id = response.getString("id_persona");
+                    String t_u = response.getString("tipo_usuario");
+                    String pass = response.getString("pass");
+                    String tkn = response.getString("api_token");
+
+                    User.id_persona=id;
+                    User.e_mail=mail;
+                    User.pass=pass;
+                    User.tipo_usuario=t_u;
+                    User.api_token=tkn;
+
+                    Intent intent = new Intent(RegistroUsuarioActivity.this,MainActivity.class);
+                    startActivity(intent);
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                Intent intent = new Intent(RegistroUsuarioActivity.this,MainActivity.class);
-                startActivity(intent);
-
 
             }
         }, new Response.ErrorListener() {

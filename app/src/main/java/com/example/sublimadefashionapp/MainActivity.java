@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.sublimadefashionapp.Modelos.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
     BottomNavigationView bottomNavigationView;
     private TextView txtNombreUsuario;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +78,17 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View header = navigationView.getHeaderView(0);
         txtNombreUsuario = (TextView) header.findViewById(R.id.txtnombreusuario);
+
+
+       if(User.api_token !=null){
+          // Toast.makeText(MainActivity.this, datos.Usuario.api_token.toString(), Toast.LENGTH_LONG).show();
+          txtNombreUsuario.setText(User.e_mail.toString());
+             Toast.makeText(MainActivity.this, User.pass, Toast.LENGTH_LONG).show();
+       }
+
+
+
+
 
         if (firebaseUser != null) {
             txtNombreUsuario.setText(firebaseUser.getDisplayName());
