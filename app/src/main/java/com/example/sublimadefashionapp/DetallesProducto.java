@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Objects;
 
 public class DetallesProducto extends AppCompatActivity {
 
@@ -30,11 +31,8 @@ public class DetallesProducto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles_producto);
 
-        ActionBar ab = getSupportActionBar();
-        if(ab != null){
-            ab.setDefaultDisplayHomeAsUpEnabled(true);
-            
-        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
 
         final RecyclerView rv = findViewById(R.id.detailsProdrv);
         rv.setLayoutManager(new LinearLayoutManager(this ,LinearLayoutManager.VERTICAL,false));
@@ -57,6 +55,7 @@ public class DetallesProducto extends AppCompatActivity {
                             List<Producto> lp = g.fromJson(response.toString(), t);
                             AdaptadorDetallesProducto adapt= new AdaptadorDetallesProducto(lp);
                             rv.setAdapter(adapt);
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

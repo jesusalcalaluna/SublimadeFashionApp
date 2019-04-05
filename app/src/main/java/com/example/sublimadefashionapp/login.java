@@ -7,9 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.sublimadefashionapp.Modelos.User;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -24,14 +30,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class login extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private GoogleApiClient googleApiClient;
     private TextView signInButton, as;
+    Button btnlogin;
     public static final int SIGN_IN_CODE=777;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+    EditText contrasena, usuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +58,19 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
+        usuario=findViewById(R.id.edtusuario);
+        contrasena=findViewById(R.id.edtcontrasena);
+
+
 
         signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(this);
 
         as = findViewById(R.id.as);
         as.setOnClickListener(this);
+
+        btnlogin = findViewById(R.id.loginbtn);
+
 
 
         firebaseAuth= FirebaseAuth.getInstance();
@@ -72,6 +92,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
             }
         };
 
+
     }
     @Override
     public void onClick(View view) {
@@ -82,6 +103,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
                 Intent signInIntent =Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
                 startActivityForResult(signInIntent,SIGN_IN_CODE);
                 break;
+
             case R.id.as:
                 Intent intent = new Intent(login.this,Register.class);
                 startActivity(intent);
@@ -155,4 +177,30 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
         startActivity(intent);
         finish();
     }
+
+    public void iniciarlogin(View view) throws JSONException {
+
+
+            JSONObject persona = new JSONObject();
+            persona.put("e_mail",usuario.getText().toString());
+            persona.put("pass",contrasena.getText().toString());
+
+            String url = "http://www.sublimade.mipantano.com/api/android.iniciarsession";
+
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, persona, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            VolleyS.getInstance(this).getRq().add(request);
+        }
 }

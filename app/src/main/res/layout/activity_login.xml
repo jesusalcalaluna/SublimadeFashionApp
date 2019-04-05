@@ -35,12 +35,13 @@
         <EditText
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:hint="usuario"
+            android:hint="Usuario"
             android:background="@drawable/input"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:id="@+id/edtusuario"/>
         <EditText
             android:layout_width="320dp"
             android:layout_height="wrap_content"
@@ -51,6 +52,7 @@
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:layout_margin="10dp"
+            android:id="@+id/edtcontrasena"
             />
         <Button
             android:layout_width="320dp"
@@ -58,7 +60,9 @@
             android:textColor="#FFF"
             android:text="Iniciar"
             android:layout_margin="20dp"
-            android:background="@drawable/btn_redondeado_negro"/>
+            android:background="@drawable/btn_redondeado_negro"
+            android:id="@+id/loginbtn"
+            android:onClick="iniciarlogin"/>
 
 
 
