@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.google.android.gms.auth.api.Auth;
@@ -191,14 +192,13 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
                 @Override
                 public void onResponse(JSONObject response) {
 
-
-
+                
 
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
                 }
             });
             VolleyS.getInstance(this).getRq().add(request);
