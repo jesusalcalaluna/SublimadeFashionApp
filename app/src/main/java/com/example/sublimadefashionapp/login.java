@@ -191,9 +191,26 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, persona, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
+                    try {
+                        String mail = response.getString("e_mail");
+                        String id = response.getString("id_persona");
+                        String t_u = response.getString("tipo_usuario");
+                        String pass = response.getString("pass");
+                        String tkn = response.getString("api_token");
 
-                
+                        User.id_persona=id;
+                        User.e_mail=mail;
+                        User.pass=pass;
+                        User.tipo_usuario=t_u;
+                        User.api_token=tkn;
 
+                        Intent intent = new Intent(login.this,MainActivity.class);
+                        startActivity(intent);
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
