@@ -102,7 +102,7 @@ public class DetallesProducto extends AppCompatActivity{
         }
         prod.put("cantidad", cantidad.getValue());
         prod.put("id", id);
-        prod.put("id_persona", User.id_persona);
+        prod.put("id_usuario", User.id_persona);
 
 
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://sublimade.mipantano.com/android/addcarrito", prod, new Response.Listener<JSONObject>() {
