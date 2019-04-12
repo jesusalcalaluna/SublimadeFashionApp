@@ -31,20 +31,14 @@ import java.util.Objects;
 
 public class DetallesProducto extends AppCompatActivity{
 
-    NumberPicker cantidad;
-    RadioGroup talla;
-    RadioButton chico, mediano, grande;
+
 
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles_producto);
-        cantidad = findViewById(R.id.Quantity);
-        talla = findViewById(R.id.ProdSize);
-        chico = findViewById(R.id.SizeSmall);
-        mediano = findViewById(R.id.SizeMedium);
-        grande = findViewById(R.id.SizeLarge);
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
@@ -87,40 +81,4 @@ public class DetallesProducto extends AppCompatActivity{
 
     }
 
-    public void AddToCart(View view) throws JSONException {
-
-        int id = getIntent().getExtras().getInt("id");
-        JSONObject prod = new JSONObject();
-        if(chico.isChecked()){
-            prod.put("talla", chico.getText());
-        }
-        if(mediano.isChecked()){
-            prod.put("talla", mediano.getText());
-        }
-        if(grande.isChecked()){
-            prod.put("talla", grande.getText());
-        }
-        prod.put("cantidad", cantidad.getValue());
-        prod.put("id", id);
-        prod.put("id_usuario", User.id_persona);
-
-
-        JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://sublimade.mipantano.com/android/addcarrito", prod, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Toast.makeText(DetallesProducto.this, "Producto añadido al carrito", Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        VolleyS.getInstance(this).getRq().add(jor);
-
-
-       //JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, );
-
-    }
 }
