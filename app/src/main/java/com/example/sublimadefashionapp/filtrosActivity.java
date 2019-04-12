@@ -34,26 +34,26 @@ public class filtrosActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-        String url = "http://www.sublimade.mipantano.com/api/android.obtenercategoria";
-
-        JsonArrayRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                try {
-
-                  categorias.setDisplayedValues(new String[]{response.toString()});
-
-                } catch (JSONException e){
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(filtrosActivity.this, error.toString(), Toast.LENGTH_LONG).show();
-            }
-        });
-        VolleyS.getInstance(this).getRq().add(request);
+//        String url = "http://www.sublimade.mipantano.com/api/android.obtenercategoria";
+//
+//        JsonArrayRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+//            @Override
+//            public void onResponse(JSONArray response) {
+//                try {
+//
+//                  categorias.setDisplayedValues(response.);
+//
+//                } catch (JSONException e){
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(filtrosActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//        VolleyS.getInstance(this).getRq().add(request);
 
 
 
