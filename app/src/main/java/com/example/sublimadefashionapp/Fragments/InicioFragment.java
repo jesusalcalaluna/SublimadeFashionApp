@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -57,8 +59,7 @@ public class InicioFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private static String categoria;
-
+    private String categoria;
     private OnFragmentInteractionListener mListener;
 
     public InicioFragment() {
@@ -74,7 +75,7 @@ public class InicioFragment extends Fragment {
      * @return A new instance of fragment InicioFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static InicioFragment newInstance(String param1, String param2) {
+    public static InicioFragment newInstance(String param1, String param2,String categoria) {
         InicioFragment fragment = new InicioFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -116,6 +117,7 @@ public class InicioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
                              setHasOptionsMenu(true);
+
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
         final RecyclerView rvCatalogo = view.findViewById(R.id.rvinicio);
         rvCatalogo.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
@@ -138,7 +140,6 @@ public class InicioFragment extends Fragment {
             Toast.makeText(getContext(),mImagesTitle[position], Toast.LENGTH_SHORT).show();
            }
        });
-
         JSONObject filtro=new JSONObject();
         try {
             filtro.put("sexo", mParam1);
@@ -170,6 +171,12 @@ public class InicioFragment extends Fragment {
         });
         VolleyS.getInstance(getContext()).getRq().add(jar);
         return view;
+
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_catalogo_filtros,menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

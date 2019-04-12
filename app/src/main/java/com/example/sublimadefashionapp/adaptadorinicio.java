@@ -30,14 +30,14 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
 
     @NonNull
     @Override
-    public ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public adaptadorinicio.ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.inicio_card, null, false);
-        return new adaptadorinicio.ProductoViewHolder(v);
+        return new ProductoViewHolder(v);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ProductoViewHolder productoViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final adaptadorinicio.ProductoViewHolder productoViewHolder, int i) {
         Producto p = productos.get(i);
 
         final int Id = p.getId_producto();
