@@ -181,7 +181,6 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
 
     public void iniciarlogin(View view) throws JSONException {
 
-
             JSONObject persona = new JSONObject();
             persona.put("e_mail",usuario.getText().toString());
             persona.put("pass",contrasena.getText().toString());

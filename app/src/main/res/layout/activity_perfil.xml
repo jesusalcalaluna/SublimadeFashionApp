@@ -58,17 +58,17 @@ cambiar de tu cuenta y presiona
                     android:layout_weight="1"
                     android:layout_height="2dp"/>
                 <EditText
+                    android:id="@+id/TelCasa"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_weight="3"
-                    android:hint=" Teléfono de casa"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="3"
                     android:background="@drawable/input"
-                    />
+                    android:hint="Teléfono de casa"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp" />
                 <View
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -97,6 +97,7 @@ cambiar de tu cuenta y presiona
                     android:layout_height="50dp"
                     android:layout_weight="3"
                     android:paddingTop="10dp"
+                    android:id="@+id/TelCel"
                     android:paddingBottom="10dp"
                     android:paddingLeft="10dp"
                     android:layout_margin="10dp"
@@ -114,7 +115,7 @@ cambiar de tu cuenta y presiona
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="vertical"
             >
             <LinearLayout
@@ -129,8 +130,9 @@ cambiar de tu cuenta y presiona
                     android:layout_height="2dp"/>
                 <EditText
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:layout_weight="3"
+                    android:id="@+id/direccion"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:paddingLeft="10dp"
@@ -168,6 +170,7 @@ cambiar de tu cuenta y presiona
                     android:layout_weight="3"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
+                    android:id="@+id/cp"
                     android:paddingLeft="10dp"
                     android:layout_margin="10dp"
                     android:hint="Código postal"
@@ -208,6 +211,8 @@ cambiar de tu cuenta y presiona
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:onClick="onClick"
+                android:id="@+id/guardarcambios"
                 android:background="@drawable/btn_redondeado_negro"
                 android:textColor="#ffffff"
                 android:textAllCaps="false"
