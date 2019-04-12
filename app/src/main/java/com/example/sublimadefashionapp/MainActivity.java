@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
         //Fragment Inicial del BottomNavigation
         id = "iniciofragment";
-        final InicioFragment fragment = InicioFragment.newInstance("id", id);
+        final InicioFragment fragment = InicioFragment.newInstance("id", id,"todo");
         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,fragment).commit();
 
         //SideBar menux
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         break;
                     case R.id.inicioItem:
                         id = "iniciofragment";
-                        InicioFragment inicioFragment = InicioFragment.newInstance("id", id);
+                        InicioFragment inicioFragment = InicioFragment.newInstance("id", id,"todo");
                         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,inicioFragment).commit();
                         break;
                     case R.id.deseadosItem:
