@@ -34,7 +34,7 @@ public class filtrosActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-        String url = "http://www.sublimade.mipantano.com/api/android.obtenercategorias";
+        String url = "http://www.sublimade.mipantano.com/api/android.obtenercategoria";
 
         JsonArrayRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
