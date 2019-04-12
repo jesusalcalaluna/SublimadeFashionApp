@@ -167,7 +167,6 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
 
         JSONObject persona = new JSONObject();
         persona.put("e_mail",firebaseUser.getEmail());
-        persona.put("pass",firebaseUser.getUid());
 
 
         String url = "http://www.sublimade.mipantano.com/api/android.iniciarsession.google";

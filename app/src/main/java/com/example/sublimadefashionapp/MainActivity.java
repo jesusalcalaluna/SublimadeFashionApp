@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         break;
                     case R.id.catalogoItem:
                         id = "catalogofragment";
-                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("id", id);
+                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("todo", "todo","todo");
                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
                         break;
                     case R.id.inicioItem:
