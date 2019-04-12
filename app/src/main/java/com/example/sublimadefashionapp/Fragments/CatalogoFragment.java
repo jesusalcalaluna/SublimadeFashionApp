@@ -112,10 +112,10 @@ public class CatalogoFragment extends Fragment {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jar = new JsonObjectRequest(Request.Method.POST, "http://sublimade.mipantano.com/api/android/catalogo", filtro,
-                                    new Response.Listener<JSONObject>() {
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, "http://sublimade.mipantano.com/api/android/catalogo", null,
+                                    new Response.Listener<JSONArray>() {
                                         @Override
-                                        public void onResponse(JSONObject response) {
+                                        public void onResponse(JSONArray response) {
                                             try {
                                                 Gson g = new Gson();
                                                 Type t = new TypeToken<List<Producto>>(){}.getType();
