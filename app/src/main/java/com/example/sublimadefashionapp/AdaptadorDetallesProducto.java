@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,13 +52,10 @@ public class AdaptadorDetallesProducto extends RecyclerView.Adapter<AdaptadorDet
         Picasso.get().load("http://sublimade.mipantano.com/storage/disenos/"+Diseno).into(productoViewHolder.diseno, new Callback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(productoViewHolder.itemView.getContext(), "Simon", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onError(Exception e) {
-                Toast.makeText(productoViewHolder.itemView.getContext(), "Nel", Toast.LENGTH_LONG).show();
-
             }
         });
 
@@ -73,12 +72,13 @@ public class AdaptadorDetallesProducto extends RecyclerView.Adapter<AdaptadorDet
         TextView nombre, precio;
         ImageView diseno;
         NumberPicker np;
+
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.ProdName);
             precio = itemView.findViewById(R.id.ProdPrice);
             diseno = itemView.findViewById(R.id.ProdImage);
-            np = itemView.findViewById(R.id.Quantity);
+
 
         }
     }

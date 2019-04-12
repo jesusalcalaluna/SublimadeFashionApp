@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.squareup.picasso.Callback;
@@ -38,11 +41,12 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
     public void onBindViewHolder(@NonNull final AdaptadorProducto.ProductoViewHolder productoViewHolder, int i) {
         Producto p = productos.get(i);
 
-        final Integer Id = p.getId_producto();
+        final int Id = p.getId_producto();
         String Nombre = p.getNombre();
         String Precio = String.valueOf(p.getCosto_unitario());
         String Categoria = String.valueOf(p.getCategoria());
         String Diseno =  String.valueOf(p.getDiseno());
+
 
         productoViewHolder.nombre.setText(Nombre);
         productoViewHolder.precio.setText(Precio);
@@ -60,13 +64,10 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         Picasso.get().load("http://sublimade.mipantano.com/storage/disenos/"+Diseno).into(productoViewHolder.diseno, new Callback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(productoViewHolder.itemView.getContext(), "Simon", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onError(Exception e) {
-                Toast.makeText(productoViewHolder.itemView.getContext(), "Nel", Toast.LENGTH_LONG).show();
-
             }
         });
 
@@ -85,6 +86,8 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         TextView nombre, precio, categoria;
         ImageView diseno;
         CardView cd;
+
+
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.ProdName);
@@ -92,6 +95,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
             categoria = itemView.findViewById(R.id.ProdCat);
             diseno = itemView.findViewById(R.id.ProdImage);
             cd = itemView.findViewById(R.id.cvCatalogo);
+
         }
     }
 }
