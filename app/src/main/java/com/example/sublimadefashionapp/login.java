@@ -80,20 +80,18 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user!=null){
-
                     //metodo que lleva a activity home una vez se haya logeado
-                    goMainScreen();
-                    startActivity(new Intent(login.this, MainActivity.class));
+                    try {
+                        goMainScreen();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else
                 {
-
-
                 }
             }
         };
-
-
     }
     @Override
     public void onClick(View view) {
@@ -153,12 +151,47 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
         });
     }
 
-    private void goMainScreen() {
-        Intent intent = new Intent(this,MainActivity.class);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
+    private void goMainScreen() throws JSONException {
+
+      chequeoderegisterenbd();
+
+
     }
+
+    private void chequeoderegisterenbd() throws JSONException {
+
+        final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        JSONObject persona = new JSONObject();
+        persona.put("e_mail",firebaseUser.getEmail());
+
+
+        String url = "http://www.sublimade.mipantano.com/api/android.iniciarsession.google";
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, persona, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                if(response!=null){
+
+                    Intent intent = new Intent(login.this,MainActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Intent intent = new Intent(login.this,RegistroUsuarioActivity.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+        VolleyS.getInstance(this).getRq().add(request);
+    }
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -191,21 +224,23 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
-                        String mail = response.getString("e_mail");
-                        String id = response.getString("id_persona");
-                        String t_u = response.getString("tipo_usuario");
-                        String pass = response.getString("pass");
-                        String tkn = response.getString("api_token");
+                            if(response!=null){
+                            String mail = response.getString("e_mail");
+                            String id = response.getString("id_persona");
+                            String t_u = response.getString("tipo_usuario");
+                            String pass = response.getString("pass");
+                            String tkn = response.getString("api_token");
 
-                        User.id_persona=id;
-                        User.e_mail=mail;
-                        User.pass=pass;
-                        User.tipo_usuario=t_u;
-                        User.api_token=tkn;
+                            User.id_persona=id;
+                            User.e_mail=mail;
+                            User.pass=pass;
+                            User.tipo_usuario=t_u;
+                            User.api_token=tkn;
 
-                        Intent intent = new Intent(login.this,MainActivity.class);
-                        startActivity(intent);
-
+                            Intent intent = new Intent(login.this,MainActivity.class);
+                            startActivity(intent);
+                            }
+                        Toast.makeText(login.this, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG).show();
 
                     } catch (JSONException e) {
                         e.printStackTrace();

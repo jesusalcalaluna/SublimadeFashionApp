@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
         //Fragment Inicial del BottomNavigation
         id = "iniciofragment";
-        InicioFragment fragment = InicioFragment.newInstance("id", id);
+        final InicioFragment fragment = InicioFragment.newInstance("id", id);
         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,fragment).commit();
 
         //SideBar menux
@@ -94,11 +94,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                 celular=firebaseUser.getPhoneNumber();
                 correo=firebaseUser.getEmail();
                 uid=firebaseUser.getUid();
-            try {
-                enviarcuenta();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
         }
         //Metodo del Navigation View
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -119,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                     case R.id.cerrarsesionItem:
                         if(firebaseUser != null){
                             firebaseAuth.getInstance().signOut();
+
                             finish();
 
                         }
@@ -175,33 +172,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 //        return super.onCreateOptionsMenu(menu);
 //    }
 
-    private void enviarcuenta() throws JSONException {
 
-
-
-            JSONObject persona = new JSONObject();
-            persona.put("nombre",nombre);
-            persona.put("celular",celular);
-            persona.put("email",correo);
-            persona.put("contrasena",uid);
-
-
-            String url = "http://www.sublimade.mipantano.com/registro.usuario.android";
-
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, persona, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Log.d("Mensaje", response.toString());
-                    Toast.makeText(MainActivity.this, "Persona" + response.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                }
-            });
-            VolleyS.getInstance(this).getRq().add(request);
-        }
 
 
 

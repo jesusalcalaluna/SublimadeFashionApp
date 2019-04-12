@@ -20,6 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.google.android.gms.auth.api.Auth;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -37,6 +39,7 @@ import java.util.Map;
 
 public class RegistroUsuarioActivity extends AppCompatActivity  {
 
+    String id,nom,correo,celular,uid;
     EditText ETxtFechaNacimiento;
     Calendar calendar;
     DatePickerDialog datePicker;
@@ -59,7 +62,21 @@ public class RegistroUsuarioActivity extends AppCompatActivity  {
         masculino = (RadioButton) findViewById(R.id.radioButtonMasculino);
         femenino = (RadioButton) findViewById(R.id.radioButtonFemenino);
         registrar = (Button) findViewById(R.id.btnregistrar);
+        final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
+        final FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            nom=firebaseUser.getDisplayName();
+            celular=firebaseUser.getPhoneNumber();
+            correo=firebaseUser.getEmail();
+            uid=firebaseUser.getUid();
+
+            nombre.setText(nom);
+            telcel.setText(celular);
+            email.setText(correo);
+            contraseña.setText(uid);
+
+        }
         ETxtFechaNacimiento = (EditText) findViewById(R.id.ETxtFechaNacimiento);
         ETxtFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
