@@ -1,6 +1,8 @@
 package com.example.sublimadefashionapp;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -62,11 +64,15 @@ public class AdaptadorDetallesProducto extends RecyclerView.Adapter<AdaptadorDet
 
         productoViewHolder.np.setMinValue(1);
         productoViewHolder.np.setMaxValue(99);
+
         productoViewHolder.deseado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(productoViewHolder.deseado.){
-
+                if(productoViewHolder.deseado.getDrawable().getConstantState() == productoViewHolder.itemView.getResources().getDrawable(R.drawable.heart_gris_96, null).getConstantState()){
+                    productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
+                }
+                else {
+                    productoViewHolder.deseado.setImageResource(R.drawable.heart_gris_96);
                 }
             }
         });

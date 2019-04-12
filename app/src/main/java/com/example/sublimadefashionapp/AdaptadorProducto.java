@@ -61,7 +61,17 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         productoViewHolder.nombre.setText(Nombre);
         productoViewHolder.precio.setText(Precio);
         productoViewHolder.categoria.setText(Categoria);
-        //productoViewHolder.deseado.setImageResource(R.drawable.heart_gris_96);
+        productoViewHolder.deseado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(productoViewHolder.deseado.getDrawable().getConstantState() == productoViewHolder.itemView.getResources().getDrawable(R.drawable.heart_gris_96, null).getConstantState()){
+                    productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
+                }
+                else {
+                    productoViewHolder.deseado.setImageResource(R.drawable.heart_gris_96);
+                }
+            }
+        });
 
         productoViewHolder.cd.setOnClickListener(new View.OnClickListener() {
             @Override
