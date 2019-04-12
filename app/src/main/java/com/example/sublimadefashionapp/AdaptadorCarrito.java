@@ -8,13 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.CarritoViewHolder> {
-    List<Producto> productoList;
+    List<Carrito> lc;
 
-    public AdaptadorCarrito(List<Producto> productos){
-        this.productoList= productos;
+    public AdaptadorCarrito(List<Carrito> productos){
+        this.lc= productos;
     }
 
     @NonNull
@@ -26,26 +29,42 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.Carr
 
     @Override
     public void onBindViewHolder(@NonNull CarritoViewHolder carritoViewHolder, int i) {
-        Producto p = productoList.get(i);
+        Carrito c = lc.get(i);
 
-        String Nombre = p.getNombre();
-        String Precio = String.valueOf(p.getCosto_unitario());
-        String Categoria = String.valueOf(p.getCategoria());
-        String Diseno =  String.valueOf(p.getDiseno());
+        String Nombre = c.getNombre();
+        String Precio = String.valueOf(c.getCosto_unitario());
+        String Categoria = String.valueOf(c.getCategoria());
+        String Diseno =  String.valueOf(c.getDiseno());
+        String Talla = String.valueOf(c.getTalla());
+        String Cantidad = String.valueOf(c.getCantidad());
+        String Total = String.valueOf(c.getTotal());
 
         carritoViewHolder.nombre.setText(Nombre);
         carritoViewHolder.precio.setText(Precio);
         carritoViewHolder.categoria.setText(Categoria);
+        carritoViewHolder.cantidad.setText("Cantidad: "+Cantidad);
+        carritoViewHolder.talla.setText("Talla: "+Talla);
+        carritoViewHolder.total.setText("Total: "+Total);
+
+        Picasso.get().load("http://sublimade.mipantano.com/storage/disenos/"+Diseno).into(carritoViewHolder.diseno, new Callback() {
+            @Override
+            public void onSuccess() {
+            }
+
+            @Override
+            public void onError(Exception e) {
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return productoList.size();
+        return lc.size();
     }
 
     public class CarritoViewHolder extends RecyclerView.ViewHolder{
 
-        TextView nombre, precio, categoria;
+        TextView nombre, precio, categoria, talla, cantidad, total;
         ImageView diseno;
 
         public CarritoViewHolder(@NonNull View itemView) {
@@ -54,6 +73,9 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.Carr
             precio = itemView.findViewById(R.id.ProdPrice);
             categoria = itemView.findViewById(R.id.ProdCat);
             diseno = itemView.findViewById(R.id.ProdImage);
+            talla = itemView.findViewById(R.id.talla_cart);
+            cantidad = itemView.findViewById(R.id.cant_cart);
+            total = itemView.findViewById(R.id.total_cart);
 
         }
     }

@@ -15,7 +15,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.sublimadefashionapp.AdaptadorCarrito;
+import com.example.sublimadefashionapp.AdaptadorCarritoSub;
 import com.example.sublimadefashionapp.AdaptadorProducto;
+import com.example.sublimadefashionapp.Carrito;
+import com.example.sublimadefashionapp.Modelos.User;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
@@ -23,6 +27,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -85,17 +90,30 @@ public class CarritoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_carrito, container, false);
 
        final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
+       final RecyclerView rvCarritoSub = view.findViewById(R.id.rv_carritosub);
+
+        String id = User.id_persona;
+        JSONArray objeto = new JSONArray();
+        try {
+            objeto.put(1, id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         rvCarrito.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
-        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, "http://sublimade.mipantano.com/android/catalogo", null,
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.POST, "http://sublimade.mipantano.com/android/carrito", objeto,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
                             Gson g = new Gson();
-                            Type t = new TypeToken<List<Producto>>(){}.getType();
-                            List<Producto> lp = g.fromJson(response.toString(), t);
-                            AdaptadorProducto adapt= new AdaptadorProducto(lp, getContext());
-                            rvCarrito.setAdapter(adapt);
+                            Type t = new TypeToken<List<Carrito>>(){}.getType();
+                            List<Carrito> lc = g.fromJson(response.toString(), t);
+                            AdaptadorCarrito adapt= new AdaptadorCarrito(lc);
+                            AdaptadorCarritoSub adapt2 = new AdaptadorCarritoSub(lc);
+                            rvCarritoSub.setAdapter(adapt);
+                            rvCarrito.setAdapter(adapt2);
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
