@@ -3,10 +3,12 @@ package com.example.sublimadefashionapp;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
@@ -56,13 +58,23 @@ public class AdaptadorDetallesProducto extends RecyclerView.Adapter<AdaptadorDet
         productoViewHolder.precio.setText("MXN$"+Precio);
         productoViewHolder.diseno.setMaxHeight(250);
         productoViewHolder.diseno.setMaxHeight(450);
+        productoViewHolder.chico.toggle();
 
         productoViewHolder.np.setMinValue(1);
         productoViewHolder.np.setMaxValue(99);
-
-        productoViewHolder.añadir.setOnClickListener(new View.OnClickListener() {
+        productoViewHolder.deseado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(productoViewHolder.deseado.){
+
+                }
+            }
+        });
+
+        productoViewHolder.anadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(productoViewHolder.itemView.getContext(), "Producto añadido al carrito", Toast.LENGTH_LONG).show();
                 JSONObject prod = new JSONObject();
                 try {
                     prod.put("id", Id);
@@ -85,12 +97,11 @@ public class AdaptadorDetallesProducto extends RecyclerView.Adapter<AdaptadorDet
                 JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, "http://sublimade.mipantano.com/android/addcarrito", prod, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(productoViewHolder.itemView.getContext(), "Producto añadido al carrito", Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.d("error", error.getMessage());
                     }
                 });
 
@@ -123,7 +134,7 @@ public class AdaptadorDetallesProducto extends RecyclerView.Adapter<AdaptadorDet
         TextView nombre, precio;
         ImageView diseno, deseado;
         NumberPicker np;
-        Button añadir;
+        ImageButton anadir;
         RadioGroup talla;
         RadioButton chico, mediano, grande;
 
@@ -134,7 +145,7 @@ public class AdaptadorDetallesProducto extends RecyclerView.Adapter<AdaptadorDet
             diseno = itemView.findViewById(R.id.ProdImage);
             np = itemView.findViewById(R.id.Quantity);
             deseado = itemView.findViewById(R.id.deseado);
-            añadir = itemView.findViewById(R.id.btnAdd);
+            anadir = itemView.findViewById(R.id.btnAdd);
             talla = itemView.findViewById(R.id.ProdSize);
             chico = itemView.findViewById(R.id.SizeSmall);
             mediano = itemView.findViewById(R.id.SizeMedium);

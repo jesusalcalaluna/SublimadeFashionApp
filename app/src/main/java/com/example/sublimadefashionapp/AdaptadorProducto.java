@@ -66,7 +66,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         productoViewHolder.cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(productoViewHolder.itemView.getContext(), "Clic", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(productoViewHolder.itemView.getContext(), String.valueOf(Id), Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(productoViewHolder.itemView.getContext(), DetallesProducto.class);
                 i.putExtra("id", Id);
                 c.startActivity(i);

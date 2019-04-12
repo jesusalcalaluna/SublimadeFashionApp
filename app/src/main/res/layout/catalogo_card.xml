@@ -62,7 +62,6 @@
                         android:id="@+id/ProdPrice"
                         android:textStyle="bold"
                         android:textColor="#F44336"
-                        android:layout_toRightOf="@id/moneda"
                         android:layout_weight="1"/>
 
                 </LinearLayout>

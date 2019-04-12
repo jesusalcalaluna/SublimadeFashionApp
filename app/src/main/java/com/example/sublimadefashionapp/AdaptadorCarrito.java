@@ -50,10 +50,10 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.Carr
 
         public CarritoViewHolder(@NonNull View itemView) {
             super(itemView);
-            nombre = itemView.findViewById(R.id.ProdNameCarrito);
-            precio = itemView.findViewById(R.id.ProdPriceCarrito);
-            categoria = itemView.findViewById(R.id.ProdCarrito);
-            diseno = itemView.findViewById(R.id.ProdImageCarrito);
+            nombre = itemView.findViewById(R.id.ProdName);
+            precio = itemView.findViewById(R.id.ProdPrice);
+            categoria = itemView.findViewById(R.id.ProdCat);
+            diseno = itemView.findViewById(R.id.ProdImage);
 
         }
     }

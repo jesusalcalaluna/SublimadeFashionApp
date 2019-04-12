@@ -33,6 +33,7 @@ public class DetallesProducto extends AppCompatActivity{
 
 
 
+    RecyclerView rv;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,10 @@ public class DetallesProducto extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
 
-        final RecyclerView rv = findViewById(R.id.detailsProdrv);
+        rv = findViewById(R.id.detailsProdrv);
+        rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this ,LinearLayoutManager.VERTICAL,false));
+
 
         int id = getIntent().getExtras().getInt("id");
         JSONArray objeto = new JSONArray();

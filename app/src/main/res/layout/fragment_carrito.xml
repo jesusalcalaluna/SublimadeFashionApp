@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.CarritoFragment">
+    tools:context=".Fragments.CarritoFragment"
+    android:orientation="vertical"
+    android:background="#F2F2F2">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rvCarrito"
-        android:layout_gravity="center_horizontal">
 
-    </android.support.v7.widget.RecyclerView>
-    <TextView
-        android:id="@+id/Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/carrito"
-        android:textSize="50sp"/>
 
-</FrameLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rvCarrito"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    >
+
+                </android.support.v7.widget.RecyclerView>
+
+
+
+
+</LinearLayout>
