@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".Fragments.InicioFragment">
 
-    <TextView
-        android:id="@+id/Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/inicio"
-        android:textSize="50sp"/>
+    <com.synnapps.carouselview.CarouselView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:pageColor="#000000"
+        app:fillColor="#fff"
+        app:slideInterval="3000"
+        app:strokeColor="#ffffffff"
+        app:strokeWidth="1dp"
+        android:id="@+id/carousel">
 
-</FrameLayout>
+    </com.synnapps.carouselview.CarouselView>
+
+</LinearLayout>

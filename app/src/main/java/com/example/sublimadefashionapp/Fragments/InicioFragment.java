@@ -7,8 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.sublimadefashionapp.MainActivity;
 import com.example.sublimadefashionapp.R;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageClickListener;
+import com.synnapps.carouselview.ImageListener;
 
 
 /**
@@ -62,11 +70,37 @@ public class InicioFragment extends Fragment {
         }
     }
 
+
+
+
+
+    private  int[] mImagess = new int[]{
+        R.drawable.prueba
+};
+    private  String[] mImagesTitle = new String[]{
+           "Alcala","Jorge"
+    };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
         // Inflate the layout for this fragment
+
+        CarouselView carouselView = view.findViewById(R.id.carousel);
+       carouselView.setPageCount(2);
+        carouselView.setImageListener(new ImageListener() {
+            @Override
+            public void setImageForPosition(int position, ImageView imageView) {
+                        imageView.setImageResource(R.drawable.prueba);
+
+            }
+        });
+       carouselView.setImageClickListener(new ImageClickListener() {
+           @Override
+           public void onClick(int position) {
+            Toast.makeText(getContext(),mImagesTitle[position], Toast.LENGTH_SHORT).show();
+           }
+       });
         return view;
     }
 
