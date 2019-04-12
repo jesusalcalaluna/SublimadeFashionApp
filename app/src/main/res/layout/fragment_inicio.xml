@@ -9,7 +9,8 @@
 
     <com.synnapps.carouselview.CarouselView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
+
         app:pageColor="#000000"
         app:fillColor="#fff"
         app:slideInterval="3000"
@@ -18,5 +19,13 @@
         android:id="@+id/carousel">
 
     </com.synnapps.carouselview.CarouselView>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rvinicio">
+
+        </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>
