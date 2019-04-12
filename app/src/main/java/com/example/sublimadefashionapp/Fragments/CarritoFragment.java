@@ -109,9 +109,9 @@ public class CarritoFragment extends Fragment {
                             Type t = new TypeToken<List<Carrito>>(){}.getType();
                             List<Carrito> lc = g.fromJson(response.toString(), t);
                             AdaptadorCarrito adapt= new AdaptadorCarrito(lc);
-                            AdaptadorCarritoSub adapt2 = new AdaptadorCarritoSub(lc);
-                            rvCarritoSub.setAdapter(adapt);
-                            rvCarrito.setAdapter(adapt2);
+                            AdaptadorCarritoSub adaptsub = new AdaptadorCarritoSub(lc);
+                            //rvCarritoSub.setAdapter(adaptsub);
+                            rvCarrito.setAdapter(adapt);
 
 
                         } catch (Exception e) {
