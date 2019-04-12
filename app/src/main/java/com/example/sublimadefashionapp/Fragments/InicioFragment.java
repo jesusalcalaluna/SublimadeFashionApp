@@ -22,6 +22,7 @@ import com.example.sublimadefashionapp.MainActivity;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
+import com.example.sublimadefashionapp.adaptadorinicio;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Callback;
@@ -155,7 +156,7 @@ public class InicioFragment extends Fragment {
                             Gson g = new Gson();
                             Type t = new TypeToken<List<Producto>>(){}.getType();
                             List<Producto> lp = g.fromJson(response.toString(), t);
-                            AdaptadorProducto adapt= new AdaptadorProducto(lp, getContext());
+                            adaptadorinicio adapt= new adaptadorinicio(lp, getContext());
                             rvCatalogo.setAdapter(adapt);
                         } catch (Exception e) {
                             e.printStackTrace();
