@@ -80,6 +80,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                //firebaseAuth.getInstance().signOut();
                 if (user!=null){
 
                     //metodo que lleva a activity home una vez se haya logeado
@@ -167,7 +168,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
 
         JSONObject persona = new JSONObject();
         persona.put("e_mail",firebaseUser.getEmail());
-        
+
 
         String url = "http://www.sublimade.mipantano.com/api/android.iniciarsession.google";
 

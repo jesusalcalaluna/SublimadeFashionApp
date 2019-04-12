@@ -15,8 +15,18 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.sublimadefashionapp.Modelos.User;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.ProductoViewHolder> {
@@ -51,6 +61,8 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         productoViewHolder.nombre.setText(Nombre);
         productoViewHolder.precio.setText(Precio);
         productoViewHolder.categoria.setText(Categoria);
+        //productoViewHolder.deseado.setImageResource(R.drawable.heart_gris_96);
+
         productoViewHolder.cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +83,6 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
             }
         });
 
-
-
-
     }
 
     @Override
@@ -84,7 +93,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
     public class ProductoViewHolder extends RecyclerView.ViewHolder{
 
         TextView nombre, precio, categoria;
-        ImageView diseno;
+        ImageView diseno, deseado;
         CardView cd;
 
 
@@ -95,6 +104,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
             categoria = itemView.findViewById(R.id.ProdCat);
             diseno = itemView.findViewById(R.id.ProdImage);
             cd = itemView.findViewById(R.id.cvCatalogo);
+            deseado = itemView.findViewById(R.id.deseado);
 
         }
     }

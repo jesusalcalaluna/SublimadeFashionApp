@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".filtrosFragment">
+    tools:context=".filtrosActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -39,11 +39,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Sexo"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="40dp" />
+                android:textSize="40dp"
+                android:gravity="center"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +69,10 @@
                     android:layout_height="2dp"
                     android:layout_weight="1" />
             </LinearLayout>
-
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -77,8 +82,8 @@
                 <RadioGroup
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/sexogroup"
                     android:layout_weight="1"
+                    android:id="@+id/sexogroup"
                     android:orientation="horizontal">
 
                     <View
@@ -90,6 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Todo"
+                        android:id="@+id/all"
                         android:textColor="#000000"
                         android:textSize="20dp" />
 
@@ -102,6 +108,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hombre"
+                        android:id="@+id/hombre"
                         android:textColor="#000000"
                         android:textSize="20dp" />
 
@@ -114,6 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mujer"
+                        android:id="@+id/mujer"
                         android:textColor="#000000"
                         android:textSize="20dp" />
 
@@ -123,6 +131,10 @@
                         android:layout_weight="0.5" />
                 </RadioGroup>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
         </LinearLayout>
 
 
@@ -139,7 +151,9 @@
                 android:text="Producto"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="40dp" />
+                android:textSize="40dp"
+                android:gravity="center"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,14 +189,13 @@
                       android:layout_height="2dp"
                       android:layout_weight="1" />
 
-                 <Spinner
-                     android:layout_width="0dp"
-                     android:layout_height="match_parent"
-                     android:layout_weight="1"
-                     >
-
-                 </Spinner >
-
+                <NumberPicker
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/productopicker"
+                    >
+            </NumberPicker >
                 <View
                     android:layout_width="0dp"
                     android:layout_height="2dp"
@@ -205,7 +218,9 @@
                 android:text="Categoría"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="40dp" />
+                android:textSize="40dp"
+                android:gravity="center"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -286,6 +301,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:id="@+id/guardarcambios"
+                android:onClick="onClick"
                 android:background="@drawable/accept_button"
                 android:textColor="#ffffff"
                 android:text="Guardar Cambios"

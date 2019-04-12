@@ -28,8 +28,10 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="1">
-
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"/>
                 <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -89,12 +91,12 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/image"
+                        android:id="@+id/deseado"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/heart_gris_24"
-                        android:text="Hello World!"/>
+                        android:src="@drawable/heart_gris_96"
+                        android:text="Hello World!" />
                 </xyz.hanks.library.bang.SmallBangView>
                 <View
                     android:layout_width="match_parent"
@@ -112,7 +114,7 @@
                     android:layout_weight="0.5"/>
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="150dp"
                     android:layout_gravity="center_vertical"
                     android:id="@+id/ProdImage"
                     android:layout_weight="3"/>
