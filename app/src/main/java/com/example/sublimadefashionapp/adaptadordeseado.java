@@ -2,7 +2,6 @@ package com.example.sublimadefashionapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -26,30 +25,27 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.ProductoViewHolder> {
+public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.ProductoViewHolder>{
 
 
     List<Producto> productos;
     Context c;
 
-
-    public adaptadorinicio(List<Producto> productos, Context c) {
+    public adaptadordeseado(List<Producto> productos, Context c) {
         this.productos = productos;
         this.c = c;
     }
-
-
     @NonNull
     @Override
-    public adaptadorinicio.ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.inicio_card, null, false);
-        return new ProductoViewHolder(v);
+    public adaptadordeseado.ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.deseados_card, null, false);
+        return new adaptadordeseado.ProductoViewHolder(v);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final adaptadorinicio.ProductoViewHolder productoViewHolder, int i) {
-    Producto  p = productos.get(i);
+    public void onBindViewHolder(@NonNull final adaptadordeseado.ProductoViewHolder productoViewHolder, int i) {
+        Producto  p = productos.get(i);
 
 
         final  int Id = p.getId_producto();
@@ -83,7 +79,7 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
             private void Regitardeseados() throws JSONException {
                 JSONObject deseado = new JSONObject();
                 deseado.put("productos_id_producto",datos.id_prod);
-                deseado.put("usuarios_id_persona",User.id_persona);
+                deseado.put("usuarios_id_persona", User.id_persona);
 
 
 
@@ -93,8 +89,14 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
                     @Override
                     public void onResponse(JSONObject response) {
                         if(response!=null){
+
+                            try {
+                                datos.id_deseado=response.getInt("id_deseados");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                             Toast.makeText(productoViewHolder.itemView.getContext(), response.toString(), Toast.LENGTH_LONG).show();
-                          //  Intent intent = new Intent(login.this,MainActivity.class);
+                            //  Intent intent = new Intent(login.this,MainActivity.class);
                             //startActivity(intent);
                         }
 
@@ -103,7 +105,7 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                      //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
+                        //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
                 VolleyS.getInstance(productoViewHolder.itemView.getContext()).getRq().add(request);
@@ -112,27 +114,27 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
         });
 
 
-            productoViewHolder.cd.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            //Toast.makeText(productoViewHolder.itemView.getContext(), "Clic", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(productoViewHolder.itemView.getContext(), DetallesProducto.class);
-            i.putExtra("id", Id);
-            c.startActivity(i);
+        productoViewHolder.cd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(productoViewHolder.itemView.getContext(), "Clic", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(productoViewHolder.itemView.getContext(), DetallesProducto.class);
+                i.putExtra("id", Id);
+                c.startActivity(i);
 
-        }
-    });
+            }
+        });
         Picasso.get().load("http://sublimade.mipantano.com/storage/disenos/"+Diseno).into(productoViewHolder.diseno, new Callback() {
-        @Override
-        public void onSuccess() {
-        }
+            @Override
+            public void onSuccess() {
+            }
 
-        @Override
-        public void onError(Exception e) {
-        }
-    });
+            @Override
+            public void onError(Exception e) {
+            }
+        });
 
-}
+    }
 
     @Override
     public int getItemCount() {
