@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -90,7 +92,7 @@ public class CarritoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_carrito, container, false);
 
        final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
-       final RecyclerView rvCarritoSub = view.findViewById(R.id.rv_carritosub);
+        final TextView subtotal = view.findViewById(R.id.subtotal);
 
         String id = User.id_persona;
         JSONArray objeto = new JSONArray();
@@ -109,11 +111,10 @@ public class CarritoFragment extends Fragment {
                             Type t = new TypeToken<List<Carrito>>(){}.getType();
                             List<Carrito> lc = g.fromJson(response.toString(), t);
                             AdaptadorCarrito adapt= new AdaptadorCarrito(lc);
-                            AdaptadorCarritoSub adaptsub = new AdaptadorCarritoSub(lc);
-                            //rvCarritoSub.setAdapter(adaptsub);
                             rvCarrito.setAdapter(adapt);
-
-
+                            Toast.makeText(getContext(), String.valueOf(lc.get(1).sub_total), Toast.LENGTH_LONG).show();
+                            String valor = "Subtotal: MXN$"+lc.get(1).sub_total;
+                            subtotal.setText(valor);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
