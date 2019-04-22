@@ -1,5 +1,4 @@
 package com.example.sublimadefashionapp;
-
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -54,7 +53,6 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.Carr
             precio = itemView.findViewById(R.id.ProdPriceCarrito);
             categoria = itemView.findViewById(R.id.ProdCarrito);
             diseno = itemView.findViewById(R.id.ProdImageCarrito);
-
         }
     }
 }

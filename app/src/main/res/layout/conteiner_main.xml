@@ -30,8 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        desing:menu="@menu/menu_bottomnavigation"
-        app:itemTextColor="@color/colorSublimadeLight"
+        android:background="@color/colorSublimadeDark"
         app:itemIconTint="@color/colorSublimadeLight"
-        android:background="@color/colorSublimadeDark" />
+        app:itemTextColor="@color/colorSublimadeLight"
+        desing:menu="@menu/menu_bottomnavigation" />
 </android.support.design.widget.CoordinatorLayout>
