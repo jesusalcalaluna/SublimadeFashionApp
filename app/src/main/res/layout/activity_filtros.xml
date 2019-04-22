@@ -3,75 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/oldwhitebackground"
     android:orientation="vertical"
-    tools:context=".filtros">
+    tools:context=".filtrosActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
+        android:background="@color/colorSublimadeDark"
         android:orientation="vertical"
         >
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                />
-            <TextView
-                android:padding="10dp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:textSize="50dp"
-                android:textColor="#000000"
-                android:textAlignment="center"
-                android:background="@drawable/rectangulo_fondo"
-                android:text="Filtros"
-                />
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                />
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".3"
-            android:orientation="horizontal"
-            >
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="2dp"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="8"
-                android:layout_height="2dp"
-                android:background="#000000"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="2dp"/>
-        </LinearLayout>
-
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="1"
+             android:fontFamily="cursive"
+             android:textColor="@color/colorSublimadeLight"
+             android:text="Filtros"
+             android:textSize="50dp"
+             android:gravity="center"
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -89,11 +39,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Sexo"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="40dp" />
+                android:textSize="40dp"
+                android:gravity="center"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,7 +69,10 @@
                     android:layout_height="2dp"
                     android:layout_weight="1" />
             </LinearLayout>
-
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -128,6 +83,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:id="@+id/sexogroup"
                     android:orientation="horizontal">
 
                     <View
@@ -138,8 +94,8 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:text="Todo"
+                        android:id="@+id/all"
                         android:textColor="#000000"
                         android:textSize="20dp" />
 
@@ -152,6 +108,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hombre"
+                        android:id="@+id/hombre"
                         android:textColor="#000000"
                         android:textSize="20dp" />
 
@@ -164,6 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mujer"
+                        android:id="@+id/mujer"
                         android:textColor="#000000"
                         android:textSize="20dp" />
 
@@ -173,6 +131,10 @@
                         android:layout_weight="0.5" />
                 </RadioGroup>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
         </LinearLayout>
 
 
@@ -189,7 +151,9 @@
                 android:text="Producto"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="40dp" />
+                android:textSize="40dp"
+                android:gravity="center"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,69 +181,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight=".5"
                 android:orientation="horizontal">
 
-                <RadioGroup
+                  <View
+                      android:layout_width="0dp"
+                      android:layout_height="2dp"
+                      android:layout_weight="1" />
+
+                <NumberPicker
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:id="@+id/productopicker"
+                    >
+            </NumberPicker >
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1" />
 
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5" />
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Todo"
-                        android:textColor="#000000"
-                        android:textSize="20dp" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5" />
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Playera"
-                        android:textColor="#000000"
-                        android:textSize="20dp" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5" />
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sudadera"
-                        android:textColor="#000000"
-                        android:textSize="20dp" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5" />
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jersey"
-                        android:textColor="#000000"
-                        android:textSize="20dp" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5" />
-                </RadioGroup>
             </LinearLayout>
         </LinearLayout>
 
@@ -297,7 +218,9 @@
                 android:text="Categoría"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="40dp" />
+                android:textSize="40dp"
+                android:gravity="center"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -322,72 +245,33 @@
                     android:layout_weight="1" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
 
-                <RadioGroup
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight=".5"
+                  android:orientation="horizontal">
+
+                <View
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_height="2dp"
+                    android:layout_weight="1" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                  <NumberPicker
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:id="@+id/categoriapicker"
+                      >
+            </NumberPicker >
 
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checked="true"
-                            android:text="Todo"
-                            android:textColor="#000000"
-                            android:textSize="20dp" />
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Animales"
-                            android:textColor="#000000"
-                            android:textSize="20dp" />
-
-                        <View
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Caricaturas"
-                            android:textColor="#000000"
-                            android:textSize="20dp" />
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jersey"
-                            android:textColor="#000000"
-                            android:textSize="20dp" />
-
-                        <View
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5" />
-                    </LinearLayout>
-                </RadioGroup>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1" />
             </LinearLayout>
+
+
         </LinearLayout>
 
     </LinearLayout>
@@ -417,6 +301,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:id="@+id/guardarcambios"
+                android:onClick="onClick"
                 android:background="@drawable/accept_button"
                 android:textColor="#ffffff"
                 android:text="Guardar Cambios"

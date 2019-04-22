@@ -4,11 +4,34 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.VolleyS;
+import com.example.sublimadefashionapp.adaptadordeseado;
+import com.example.sublimadefashionapp.adaptadorinicio;
+import com.example.sublimadefashionapp.datos;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 
 /**
@@ -24,11 +47,13 @@ public class DeseadosFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_CATEGORIA="categoria";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private String categoria;
     private OnFragmentInteractionListener mListener;
 
     public DeseadosFragment() {
@@ -44,11 +69,12 @@ public class DeseadosFragment extends Fragment {
      * @return A new instance of fragment DeseadosFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DeseadosFragment newInstance(String param1, String param2) {
+    public static DeseadosFragment newInstance(String param1, String param2,String categoria) {
         DeseadosFragment fragment = new DeseadosFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_CATEGORIA,categoria);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,6 +85,7 @@ public class DeseadosFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            categoria=getArguments().getString(ARG_CATEGORIA);
         }
     }
 
@@ -66,7 +93,6 @@ public class DeseadosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_deseados, container, false);
-        // Inflate the layout for this fragment
         return view;
     }
 

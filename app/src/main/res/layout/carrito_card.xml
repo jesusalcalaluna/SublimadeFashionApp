@@ -7,86 +7,140 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:layout_width="380dp"
-        android:layout_height="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:cardCornerRadius="5dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/cvCarrito">
+        android:layout_margin="3dp"
+        android:id="@+id/carrito_card"
+        android:layout_weight="2">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="left|center_horizontal"
-                android:padding="20dp">
+                android:layout_weight=".2"/>
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:text="Producto"
                     android:textSize="20dp"
-                    android:id="@+id/ProdNameCarrito"
+                    android:id="@+id/ProdName"
                     android:textStyle="bold"
-                    android:textColor="@color/colorSublimadeDark"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MXN$"
-                    android:textSize="18dp"
-                    android:layout_below="@+id/ProdNameCarrito"
-                    android:id="@+id/monedaCarrito"
-                    android:textStyle="bold"
-                    android:textColor="#F44336"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="200"
-                    android:textSize="18dp"
+                    android:textColor="@color/colorSublimadeDark"
+                    android:layout_weight="1"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
 
-                    android:layout_below="@+id/ProdNameCarrito"
-                    android:id="@+id/ProdPriceCarrito"
-                    android:textStyle="bold"
-                    android:textColor="#F44336"
-                    android:layout_toRightOf="@id/monedaCarrito"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="MXN$200"
+                        android:textSize="18dp"
+                        android:id="@+id/ProdPrice"
+                        android:textStyle="bold"
+                        android:textColor="#F44336"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="Playera"
                     android:textSize="18dp"
-                    android:layout_below="@+id/ProdPriceCarrito"
-                    android:id="@+id/ProdCarrito"/>
-            </RelativeLayout>
+                    android:id="@+id/ProdCat"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Talla: Ch"
+                    android:layout_weight="1"
+                    android:id="@+id/talla_cart"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Cantidad: 1"
+                    android:layout_weight="1"
+                    android:id="@+id/cant_cart"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Total: MXN$300"
+                    android:layout_weight="1"
+                    android:id="@+id/total_cart"/>
+            </LinearLayout>
 
-            <xyz.hanks.library.bang.SmallBangView
-                android:id="@+id/like_heartcarrito"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="15dp"
-                android:layout_marginRight="20dp">
-
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1.7">
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"/>
                 <ImageView
-                    android:id="@+id/image_heartcarrito"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_favorite_black_24dp"
-                    android:text="Hello World!"/>
-            </xyz.hanks.library.bang.SmallBangView>
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/ProdImage"
+                    android:layout_weight="3"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.6"/>
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:id="@+id/ProdImageCarrito"
-                android:layout_marginLeft="20dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1.2"
+                    android:background="#D50000"
+                    android:id="@+id/deleteProd"
+                    android:text="X"
+                    android:textAlignment="center"
+                    android:textColor="#FFFF"
+                    android:textSize="26dp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"/>
+                
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".1">
 
+            </LinearLayout>
         </LinearLayout>
-
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

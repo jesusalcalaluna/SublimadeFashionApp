@@ -3,6 +3,7 @@
     package="com.example.sublimadefashionapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,10 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".RegistroUsuarioActivity"></activity>
-        <activity android:name=".DetallesProducto"></activity>
-        <activity android:name=".perfil"></activity>
+        <activity android:name=".filtrosActivity"></activity>
+        <activity android:name=".RegistroUsuarioActivity" />
+        <activity
+            android:name=".DetallesProducto"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat" />
+        <activity android:name=".perfil" />
         <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

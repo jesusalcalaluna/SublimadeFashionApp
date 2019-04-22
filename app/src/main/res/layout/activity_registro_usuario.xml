@@ -200,6 +200,6 @@
             android:text="Registrar"
             android:background="@drawable/btn_redondeado_negro"
             android:textColor="@color/colorTextLightPrimary"
-            android:onClick="enviar"/>
+           android:onClick="enviar"/>
     </LinearLayout>
 </LinearLayout>

@@ -10,12 +10,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.sublimadefashionapp.AdaptadorCarrito;
+import com.example.sublimadefashionapp.AdaptadorCarritoSub;
 import com.example.sublimadefashionapp.AdaptadorProducto;
+import com.example.sublimadefashionapp.Carrito;
+import com.example.sublimadefashionapp.Modelos.User;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
@@ -23,6 +29,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -84,18 +91,35 @@ public class CarritoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_carrito, container, false);
 
-        final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
+       final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
+       final TextView subtotal = view.findViewById(R.id.subtotal);
+
+        String id = User.id_persona;
+        JSONArray objeto = new JSONArray();
+        try {
+            objeto.put(1, id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         rvCarrito.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
-        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, "http://sublimade.mipantano.com/android/catalogo", null,
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.POST, "http://sublimade.mipantano.com/android/carrito", objeto,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
+                            if(response.length() == 0) {
+                                CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("todo", "todo","todo");
+                                getFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation, catalogoFragment).commit();
+                                Toast.makeText(getContext(), "No hay nada", Toast.LENGTH_SHORT).show();
+                            }
                             Gson g = new Gson();
-                            Type t = new TypeToken<List<Producto>>(){}.getType();
-                            List<Producto> lp = g.fromJson(response.toString(), t);
-                            AdaptadorProducto adapt= new AdaptadorProducto(lp);
+                            Type t = new TypeToken<List<Carrito>>(){}.getType();
+                            List<Carrito> lc = g.fromJson(response.toString(), t);
+                            AdaptadorCarrito adapt= new AdaptadorCarrito(lc);
                             rvCarrito.setAdapter(adapt);
+                            Toast.makeText(getContext(), String.valueOf(lc.get(0).sub_total), Toast.LENGTH_LONG).show();
+                            String valor = "Subtotal: MXN$"+lc.get(0).sub_total;
+                            subtotal.setText(valor);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -103,7 +127,10 @@ public class CarritoFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), "Aun no haz agregado productos", Toast.LENGTH_SHORT).show();
                 Log.d("error", error.getMessage());
+
             }
         });
         VolleyS.getInstance(getContext()).getRq().add(jar);

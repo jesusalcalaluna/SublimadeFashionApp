@@ -2,6 +2,7 @@ package com.example.sublimadefashionapp;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -9,10 +10,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Display;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -22,19 +22,19 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+
+import com.example.sublimadefashionapp.Modelos.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Objects;
+
 import com.example.sublimadefashionapp.Fragments.CarritoFragment;
 import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
 import com.example.sublimadefashionapp.Fragments.DeseadosFragment;
@@ -46,7 +46,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener, CatalogoFragment.OnFragmentInteractionListener,
         CarritoFragment.OnFragmentInteractionListener, DeseadosFragment.OnFragmentInteractionListener{
     RecyclerView rvCatalogo;
-    String id,nombre,correo,celular,uid;
+    String id,nombre,correo,celular,uid, itemselected;
     List<Producto> lp;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
         //Fragment Inicial del BottomNavigation
         id = "iniciofragment";
-        InicioFragment fragment = InicioFragment.newInstance("id", id);
+        final InicioFragment fragment = InicioFragment.newInstance("id", id,"todo");
         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,fragment).commit();
 
         //SideBar menux
@@ -77,22 +77,30 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         View header = navigationView.getHeaderView(0);
         txtNombreUsuario = (TextView) header.findViewById(R.id.txtnombreusuario);
 
+
+       if(User.api_token !=null){
+          // Toast.makeText(MainActivity.this, datos.Usuario.api_token.toString(), Toast.LENGTH_LONG).show();
+          txtNombreUsuario.setText(User.e_mail.toString());
+             Toast.makeText(MainActivity.this, User.pass, Toast.LENGTH_LONG).show();
+       }
+
+
+
+
+
         if (firebaseUser != null) {
             txtNombreUsuario.setText(firebaseUser.getDisplayName());
                 nombre=firebaseUser.getDisplayName();
                 celular=firebaseUser.getPhoneNumber();
                 correo=firebaseUser.getEmail();
                 uid=firebaseUser.getUid();
-            try {
-                enviarcuenta();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
         }
         //Metodo del Navigation View
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
                 switch (menuItem.getItemId()){
                     case R.id.perfilItem:
                         Intent intent=new Intent(MainActivity.this, perfil.class);
@@ -107,10 +115,12 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                     case R.id.cerrarsesionItem:
                         if(firebaseUser != null){
                             firebaseAuth.getInstance().signOut();
+
                             finish();
-                            Intent inten=new Intent(MainActivity.this, login.class);
-                            startActivity(inten);
+
                         }
+                        Intent inten=new Intent(MainActivity.this, login.class);
+                        startActivity(inten);
                         break;
                 }
 
@@ -125,6 +135,8 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
+                itemselected= String.valueOf(menuItem.getItemId());
+
                 switch (menuItem.getItemId()){
                     case R.id.carritoItem:
                         id = "carritofragment";
@@ -133,17 +145,17 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         break;
                     case R.id.catalogoItem:
                         id = "catalogofragment";
-                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("id", id);
+                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("todo", "todo","todo");
                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
                         break;
                     case R.id.inicioItem:
                         id = "iniciofragment";
-                        InicioFragment inicioFragment = InicioFragment.newInstance("id", id);
+                        InicioFragment inicioFragment = InicioFragment.newInstance("id", id,"todo");
                         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,inicioFragment).commit();
                         break;
                     case R.id.deseadosItem:
                         id = "deseadosfragment";
-                        DeseadosFragment deseadosFragment = DeseadosFragment.newInstance("id", id);
+                        DeseadosFragment deseadosFragment = DeseadosFragment.newInstance("id", id,"todo");
                         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,deseadosFragment).commit();
                         break;
                 }
@@ -153,33 +165,14 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         });//Final del metodo de la barra de navegacion inferior
     }
 
-    private void enviarcuenta() throws JSONException {
+//Método para toolbar
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//                getMenuInflater().inflate(R.menu.menu_catalogo_filtros, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
 
-
-            JSONObject persona = new JSONObject();
-            persona.put("nombre",nombre);
-            persona.put("celular",celular);
-            persona.put("email",correo);
-            persona.put("contrasena",uid);
-
-
-            String url = "http://www.sublimade.mipantano.com/registro.usuario.android";
-
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, persona, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Log.d("Mensaje", response.toString());
-                    Toast.makeText(MainActivity.this, "Persona" + response.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                }
-            });
-            VolleyS.getInstance(this).getRq().add(request);
-        }
 
 
 
@@ -194,6 +187,15 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case R.id.filtro:
+                Intent intent=new Intent(MainActivity.this, filtrosActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.search:
+                onSearchRequested();
+                return true;
+
             case android.R.id.home:
                 //abrir menu lateral
                 drawerLayout.openDrawer(GravityCompat.START);
