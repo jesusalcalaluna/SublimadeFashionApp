@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.sublimadefashionapp.Fragments.DeseadosFragment;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -45,7 +46,7 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
 
     @Override
     public void onBindViewHolder(@NonNull final adaptadordeseado.ProductoViewHolder productoViewHolder, int i) {
-        Producto  p = productos.get(i);
+        final Producto  p = productos.get(i);
 
 
         final  int Id = p.getId_producto();
@@ -53,7 +54,7 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
         String Precio = String.valueOf(p.getCosto_unitario());
         String Categoria = String.valueOf(p.getCategoria());
         String Diseno =  String.valueOf(p.getDiseno());
-
+        productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
         datos.id_prod=Id;
         productoViewHolder.nombre.setText(Nombre);
         productoViewHolder.precio.setText(Precio);
@@ -61,41 +62,41 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
         productoViewHolder.deseado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(productoViewHolder.deseado.getDrawable().getConstantState() == productoViewHolder.itemView.getResources().getDrawable(R.drawable.heart_gris_96, null).getConstantState()){
-                    productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
+                if(productoViewHolder.deseado.getDrawable().getConstantState() == productoViewHolder.itemView.getResources().getDrawable(R.drawable.heart_activo_96, null).getConstantState()){
+                    productoViewHolder.deseado.setImageResource(R.drawable.heart_gris_96);
+                   datos.id_boorrardeseado= p.getId_producto();
+                //    Toast.makeText(productoViewHolder.itemView.getContext(), datos.id_boorrardeseado, Toast.LENGTH_LONG).show();
+
                     try {
-                        Regitardeseados();
+                        Borrardeseados();
+
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
+                }
 
-                }
-                else {
-                    productoViewHolder.deseado.setImageResource(R.drawable.heart_gris_96);
-                }
             }
 
-            private void Regitardeseados() throws JSONException {
+            private void reload() {
+
+            }
+
+
+            private void Borrardeseados() throws JSONException {
                 JSONObject deseado = new JSONObject();
-                deseado.put("productos_id_producto",datos.id_prod);
-                deseado.put("usuarios_id_persona", User.id_persona);
+                deseado.put("id", datos.id_boorrardeseado);
 
-
-
-                String url = "http://www.sublimade.mipantano.com/api/android.obtenerproducto";
+                String url = "http://www.sublimade.mipantano.com/api/android.borrardeseado";
 
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, deseado, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         if(response!=null){
 
-                            try {
-                                datos.id_deseado=response.getInt("id_deseados");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            Toast.makeText(productoViewHolder.itemView.getContext(), response.toString(), Toast.LENGTH_LONG).show();
+                           // Toast.makeText(productoViewHolder.itemView.getContext(), "borrado", Toast.LENGTH_LONG).show();
+
                             //  Intent intent = new Intent(login.this,MainActivity.class);
                             //startActivity(intent);
                         }
@@ -105,6 +106,9 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        reload();
+                        //  Intent intent = new Intent(productoViewHolder.itemView.getContext(),adaptadordeseado.class);
+                        //startActivity(intent);
                         //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 });

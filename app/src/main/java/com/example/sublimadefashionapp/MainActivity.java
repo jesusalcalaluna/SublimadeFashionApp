@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
        if(User.api_token !=null){
           // Toast.makeText(MainActivity.this, datos.Usuario.api_token.toString(), Toast.LENGTH_LONG).show();
           txtNombreUsuario.setText(User.e_mail.toString());
-             Toast.makeText(MainActivity.this, User.pass, Toast.LENGTH_LONG).show();
+           //  Toast.makeText(MainActivity.this, User.pass, Toast.LENGTH_LONG).show();
        }
 
 

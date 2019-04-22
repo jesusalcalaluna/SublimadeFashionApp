@@ -49,7 +49,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
 
     @Override
     public void onBindViewHolder(@NonNull final AdaptadorProducto.ProductoViewHolder productoViewHolder, int i) {
-        Producto p = productos.get(i);
+        final Producto p = productos.get(i);
 
         final int Id = p.getId_producto();
         String Nombre = p.getNombre();
@@ -66,13 +66,97 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
             public void onClick(View v) {
                 if(productoViewHolder.deseado.getDrawable().getConstantState() == productoViewHolder.itemView.getResources().getDrawable(R.drawable.heart_gris_96, null).getConstantState()){
                     productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
+                    datos.StatusCorazon=1;
+                    datos.id_boorrardeseado= p.getId_producto();
+                    datos.id_prod=p.getId_producto();
+                    try {
+                        Regitardeseados();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
                 else {
                     productoViewHolder.deseado.setImageResource(R.drawable.heart_gris_96);
+                    datos.StatusCorazon=2;
+                    try {
+                        Borrardeseados();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        });
 
+            private void Borrardeseados() throws JSONException {
+                JSONObject deseado = new JSONObject();
+                deseado.put("id", datos.id_boorrardeseado);
+
+                String url = "http://www.sublimade.mipantano.com/api/android.borrardeseado";
+
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, deseado, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response!=null){
+
+                            // Toast.makeText(productoViewHolder.itemView.getContext(), "borrado", Toast.LENGTH_LONG).show();
+
+                            //  Intent intent = new Intent(login.this,MainActivity.class);
+                            //startActivity(intent);
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        //  Intent intent = new Intent(productoViewHolder.itemView.getContext(),adaptadordeseado.class);
+                        //startActivity(intent);
+                        //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+                VolleyS.getInstance(productoViewHolder.itemView.getContext()).getRq().add(request);
+
+            }
+
+            private void Regitardeseados() throws JSONException {
+                JSONObject deseado = new JSONObject();
+                deseado.put("productos_id_producto",datos.id_prod);
+                deseado.put("usuarios_id_persona",User.id_persona);
+
+
+
+                String url = "http://www.sublimade.mipantano.com/api/android.obtenerproducto";
+
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, deseado, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if(response!=null){
+
+                            try {
+                                datos.id_deseado=response.getString("usuario_id_persona");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(productoViewHolder.itemView.getContext(), response.toString(), Toast.LENGTH_LONG).show();
+                            //  Intent intent = new Intent(login.this,MainActivity.class);
+                            //startActivity(intent);
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+                VolleyS.getInstance(productoViewHolder.itemView.getContext()).getRq().add(request);
+            }
+
+        });
         productoViewHolder.cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
