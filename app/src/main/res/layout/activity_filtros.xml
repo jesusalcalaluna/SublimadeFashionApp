@@ -189,13 +189,14 @@
                       android:layout_height="2dp"
                       android:layout_weight="1" />
 
-                <NumberPicker
+                <Spinner
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/productopicker"
+                    android:id="@+id/producto"
+                    android:layout_weight="2"
                     >
-            </NumberPicker >
+
+                </Spinner >
                 <View
                     android:layout_width="0dp"
                     android:layout_height="2dp"
@@ -257,13 +258,14 @@
                     android:layout_height="2dp"
                     android:layout_weight="1" />
 
-                  <NumberPicker
+                  <Spinner
                       android:layout_width="0dp"
+                      android:id="@+id/categoria"
                       android:layout_height="match_parent"
-                      android:layout_weight="1"
-                      android:id="@+id/categoriapicker"
+                      android:layout_weight="2"
                       >
-            </NumberPicker >
+
+                </Spinner >
 
                 <View
                     android:layout_width="0dp"
