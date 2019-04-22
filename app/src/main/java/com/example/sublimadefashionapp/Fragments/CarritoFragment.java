@@ -92,7 +92,7 @@ public class CarritoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_carrito, container, false);
 
        final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
-        final TextView subtotal = view.findViewById(R.id.subtotal);
+       final TextView subtotal = view.findViewById(R.id.subtotal);
 
         String id = User.id_persona;
         JSONArray objeto = new JSONArray();
@@ -107,13 +107,18 @@ public class CarritoFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
+                            if(response.length() == 0) {
+                                CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("todo", "todo","todo");
+                                getFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation, catalogoFragment).commit();
+                                Toast.makeText(getContext(), "No hay nada", Toast.LENGTH_SHORT).show();
+                            }
                             Gson g = new Gson();
                             Type t = new TypeToken<List<Carrito>>(){}.getType();
                             List<Carrito> lc = g.fromJson(response.toString(), t);
                             AdaptadorCarrito adapt= new AdaptadorCarrito(lc);
                             rvCarrito.setAdapter(adapt);
-                            Toast.makeText(getContext(), String.valueOf(lc.get(1).sub_total), Toast.LENGTH_LONG).show();
-                            String valor = "Subtotal: MXN$"+lc.get(1).sub_total;
+                            Toast.makeText(getContext(), String.valueOf(lc.get(0).sub_total), Toast.LENGTH_LONG).show();
+                            String valor = "Subtotal: MXN$"+lc.get(0).sub_total;
                             subtotal.setText(valor);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -122,7 +127,10 @@ public class CarritoFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), "Aun no haz agregado productos", Toast.LENGTH_SHORT).show();
                 Log.d("error", error.getMessage());
+
             }
         });
         VolleyS.getInstance(getContext()).getRq().add(jar);

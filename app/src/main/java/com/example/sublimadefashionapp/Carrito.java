@@ -9,8 +9,9 @@ public class Carrito {
     public String talla;
     String nombre;
     double costo_unitario;
+    public int reg;
 
-    public Carrito(int id_carrito, double sub_total, int id_producto, int cantidad, int total, String talla, String nombre, double costo_unitario, String id_diseño, int id_tipo_producto, String categoria, String diseno) {
+    public Carrito(int reg, int id_carrito, double sub_total, int id_producto, int cantidad, int total, String talla, String nombre, double costo_unitario, String id_diseño, int id_tipo_producto, String categoria, String diseno) {
         this.id_carrito = id_carrito;
         this.sub_total = sub_total;
         this.id_producto = id_producto;
@@ -23,6 +24,7 @@ public class Carrito {
         this.id_tipo_producto = id_tipo_producto;
         this.categoria = categoria;
         this.diseno = diseno;
+        this.reg = reg;
     }
 
     String id_diseño;
@@ -128,6 +130,9 @@ public class Carrito {
     public void setTalla(String talla) {
         this.talla = talla;
     }
+    public int getReg() { return reg; }
+
+    public void setReg(int reg) { this.reg = reg; }
 
 
 
