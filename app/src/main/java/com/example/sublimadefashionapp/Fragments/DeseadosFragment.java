@@ -10,33 +10,23 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.AdaptadorDetallesProducto;
-import com.example.sublimadefashionapp.AdaptadorProducto;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.adaptadordeseado;
-import com.example.sublimadefashionapp.adaptadorinicio;
-import com.example.sublimadefashionapp.datos;
+import com.example.sublimadefashionapp.Adapters.adaptadordeseado;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.List;

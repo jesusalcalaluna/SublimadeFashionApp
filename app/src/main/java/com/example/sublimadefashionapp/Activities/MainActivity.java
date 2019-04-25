@@ -1,8 +1,7 @@
-package com.example.sublimadefashionapp;
+package com.example.sublimadefashionapp.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -11,27 +10,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import com.example.sublimadefashionapp.Modelos.User;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.reflect.TypeToken;
+import com.example.sublimadefashionapp.Producto;
+import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.login;
+import com.example.sublimadefashionapp.perfil;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -122,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         Intent inten=new Intent(MainActivity.this, login.class);
                         startActivity(inten);
                         break;
+
                 }
 
                 return true;
