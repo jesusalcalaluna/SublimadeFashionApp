@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
                         break;
                     case R.id.pedidosItem:
-
+                        Intent intentPedidos =new Intent(MainActivity.this, activity_pedidos.class);
+                        startActivity(intentPedidos);
                         break;
                     case R.id.cerrarsesionItem:
                         if(firebaseUser != null){

@@ -1,15 +1,18 @@
-<resources >
-    <string name="app_name" >SublimadeFashionApp</string >
-    <string name="inicio" >Inicio</string >
-    <string name="deseados" >Deseados</string >
-    <string name="carrito" >Carrito</string >
-    <string name="token" >379055742683-il9n9bdthvg9np0b4auq6miqlubkecqt.apps.googleusercontent.com</string >
-    <string name="catalogo" >Catalogo</string >
-    <string name="cerrar_sesion" >Cerrar Sesion</string >
-    <string name="pedidos" >Pedidos</string >
-    <string name="compras" >Compras</string >
-    <string name="perfil" >Perfil</string >
+<resources>
+    <string name="app_name">SublimadeFashionApp</string>
+    <string name="inicio">Inicio</string>
+    <string name="deseados">Deseados</string>
+    <string name="carrito">Carrito</string>
+    <string name="token">379055742683-il9n9bdthvg9np0b4auq6miqlubkecqt.apps.googleusercontent.com</string>
+    <string name="catalogo">Catalogo</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="compras">Compras</string>
+    <string name="perfil">Perfil</string>
     <string name="tienda">Tienda</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-</resources >
+</resources>

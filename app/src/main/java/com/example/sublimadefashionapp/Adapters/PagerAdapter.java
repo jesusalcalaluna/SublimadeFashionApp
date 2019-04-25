@@ -4,6 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.sublimadefashionapp.Fragments.PedidosEncursoFragment;
+import com.example.sublimadefashionapp.Fragments.PedidosRecibidosFragment;
+
 public class PagerAdapter extends FragmentStatePagerAdapter {
     private int numberOfTabs;
 
@@ -19,11 +22,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 return null;
             case 1:
                 return null;
-            case 2:
+            default:
                 return null;
 
         }
-        return null;
     }
 
     @Override
