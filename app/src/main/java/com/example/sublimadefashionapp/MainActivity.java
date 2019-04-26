@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         final InicioFragment fragment = InicioFragment.newInstance("id", id,"todo");
         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,fragment).commit();
 
+//Barra de navegacion
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottmnavigation_view);
         //SideBar menux
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         //Navigation View
@@ -77,11 +79,24 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         View header = navigationView.getHeaderView(0);
         txtNombreUsuario = (TextView) header.findViewById(R.id.txtnombreusuario);
 
+        //Abrir fragment catálogo si viene de filtro
+        if (getIntent().hasExtra("abrirfragmentcatalogo")){
+            CatalogoFragment catalogoFragment = CatalogoFragment.newInstance(getIntent().getStringExtra("sexo"),
+                    getIntent().getStringExtra("tipoproducto"),getIntent().getStringExtra("categoria"));
+            getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        }
+        else if (getIntent().hasExtra("abrirfragmentcatalogo1")){
+            CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("all","all","all");
+            getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        }
+
 
        if(User.api_token !=null){
           // Toast.makeText(MainActivity.this, datos.Usuario.api_token.toString(), Toast.LENGTH_LONG).show();
           txtNombreUsuario.setText(User.e_mail.toString());
-             Toast.makeText(MainActivity.this, User.pass, Toast.LENGTH_LONG).show();
+//             Toast.makeText(MainActivity.this, User.pass, Toast.LENGTH_LONG).show();
        }
 
 
@@ -127,8 +142,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                 return true;
             }
         });
-        //Barra de navegacion
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottmnavigation_view);
+
         //Metodo de la barra de navegacion inferior
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -145,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         break;
                     case R.id.catalogoItem:
                         id = "catalogofragment";
-                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("todo", "todo","todo");
+                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("all", "all","all");
                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
                         break;
                     case R.id.inicioItem:
