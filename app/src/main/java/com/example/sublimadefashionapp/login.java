@@ -14,15 +14,15 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.sublimadefashionapp.Activities.MainActivity;
+import com.example.sublimadefashionapp.Activities.RegistroUsuarioActivity;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +31,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -189,7 +188,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
                         User.tipo_usuario=t_u;
                         User.api_token=tkn;
 
-                        Intent intent = new Intent(login.this,MainActivity.class);
+                        Intent intent = new Intent(login.this, MainActivity.class);
                         startActivity(intent);
                     }
 
@@ -201,7 +200,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Go
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Intent intent = new Intent(login.this,RegistroUsuarioActivity.class);
+                Intent intent = new Intent(login.this, RegistroUsuarioActivity.class);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

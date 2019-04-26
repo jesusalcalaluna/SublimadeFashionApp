@@ -3,13 +3,13 @@ package com.example.sublimadefashionapp.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,18 +17,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.sublimadefashionapp.Modelos.User;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.adaptadordeseado;
-import com.example.sublimadefashionapp.adaptadorinicio;
-import com.example.sublimadefashionapp.datos;
+import com.example.sublimadefashionapp.Adapters.adaptadordeseado;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -88,13 +86,80 @@ public class DeseadosFragment extends Fragment {
             categoria=getArguments().getString(ARG_CATEGORIA);
         }
     }
-
+RecyclerView rvDeseados;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_deseados, container, false);
+        final SwipeRefreshLayout refreshLayout = view.findViewById(R.id.refresh);
+         rvDeseados = view.findViewById(R.id.rvdeseado);
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                try {
+                    descargarcatalogo();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                rvDeseados.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
+                rvDeseados.setHasFixedSize(true);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refreshLayout.setRefreshing(false);
+                    }
+                },4000);
+            }
+        });
+
+        try {
+            rvDeseados.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
+            rvDeseados.setHasFixedSize(true);
+            descargarcatalogo();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         return view;
     }
+
+    private void descargarcatalogo() throws JSONException {
+        JSONArray prod=new JSONArray();
+
+            prod.put(1, User.id_persona);
+
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.POST, "http://sublimade.mipantano.com/api/android.obtenerproductodeseado", prod,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+
+                        Gson g = new Gson();
+                        Type t = new TypeToken<List<Producto>>() {
+                        }.getType();
+                        List<Producto> lp = g.fromJson(response.toString(), t);
+                        adaptadordeseado adapt = new adaptadordeseado(lp, getContext());
+                        rvDeseados.setAdapter(adapt);
+                    }
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("error", error.getMessage());
+            }
+        });
+        VolleyS.getInstance(getContext()).getRq().add(jar);
+    }
+
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu_catalogo_filtros,menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

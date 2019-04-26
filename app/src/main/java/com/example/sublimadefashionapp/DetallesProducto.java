@@ -1,33 +1,24 @@
 package com.example.sublimadefashionapp;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.NumberPicker;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.Adapters.AdaptadorDetallesProducto;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Objects;
 
 public class DetallesProducto extends AppCompatActivity{
 

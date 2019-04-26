@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp;
+package com.example.sublimadefashionapp.Activities;
 
 import android.app.DownloadManager;
 import android.content.Intent;
@@ -11,18 +11,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
@@ -30,16 +26,15 @@ import com.example.sublimadefashionapp.Modelos.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
+import com.example.sublimadefashionapp.Categoria;
+import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.VolleyS;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Console;
-import java.lang.reflect.Type;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class filtrosActivity extends AppCompatActivity implements View.OnClickListener,CatalogoFragment.OnFragmentInteractionListener {
 
