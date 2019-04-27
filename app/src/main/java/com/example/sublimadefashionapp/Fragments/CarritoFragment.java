@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,12 +20,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.sublimadefashionapp.AdaptadorCarrito;
-import com.example.sublimadefashionapp.AdaptadorCarritoSub;
-import com.example.sublimadefashionapp.AdaptadorProducto;
+import com.example.sublimadefashionapp.Adapters.AdaptadorCarrito;
 import com.example.sublimadefashionapp.Carrito;
+import com.example.sublimadefashionapp.MainActivity;
 import com.example.sublimadefashionapp.Modelos.User;
-import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
 import com.google.gson.Gson;
@@ -114,8 +113,9 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {
                     public void onResponse(JSONArray response) {
                         try {
                             if(response.length() == 0) {
-                                CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("todo", "todo","todo");
-                                getFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation, catalogoFragment).commit();
+                                Intent intent=new Intent(getContext(), MainActivity.class);
+                                intent.putExtra("abrirfragmentcatalogo1","texto");
+                                startActivity(intent);
                                 Toast.makeText(getContext(), "No hay nada", Toast.LENGTH_SHORT).show();
                             }
                             Gson g = new Gson();

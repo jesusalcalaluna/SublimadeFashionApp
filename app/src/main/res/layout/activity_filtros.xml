@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".filtrosActivity">
+    tools:context=".Activities.filtrosActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -92,10 +92,10 @@
                         android:layout_weight="0.5" />
 
                     <RadioButton
+                        android:id="@+id/all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Todo"
-                        android:id="@+id/all"
                         android:textColor="#000000"
                         android:textSize="20dp" />
 
@@ -189,13 +189,15 @@
                       android:layout_height="2dp"
                       android:layout_weight="1" />
 
-                <NumberPicker
+                <Spinner
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/productopicker"
+                    android:id="@+id/producto"
+                    android:textDirection="firstStrong"
+                    android:layout_weight="2"
                     >
-            </NumberPicker >
+
+                </Spinner >
                 <View
                     android:layout_width="0dp"
                     android:layout_height="2dp"
@@ -257,13 +259,14 @@
                     android:layout_height="2dp"
                     android:layout_weight="1" />
 
-                  <NumberPicker
+                  <Spinner
                       android:layout_width="0dp"
+                      android:id="@+id/categoria"
                       android:layout_height="match_parent"
-                      android:layout_weight="1"
-                      android:id="@+id/categoriapicker"
+                      android:layout_weight="2"
                       >
-            </NumberPicker >
+
+                </Spinner >
 
                 <View
                     android:layout_width="0dp"

@@ -1,15 +1,12 @@
-package com.example.sublimadefashionapp;
+package com.example.sublimadefashionapp.Adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -23,6 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.Producto;
+import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.VolleyS;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 

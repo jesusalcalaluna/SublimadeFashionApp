@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="602dp"
         android:orientation="vertical">
 
         <include
@@ -19,7 +19,7 @@
         <FrameLayout
             android:id="@+id/conteiner_bottomnavigation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="545dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </LinearLayout>
@@ -30,8 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        desing:menu="@menu/menu_bottomnavigation"
-        app:itemTextColor="@color/colorSublimadeLight"
+        android:background="@color/colorSublimadeDark"
         app:itemIconTint="@color/colorSublimadeLight"
-        android:background="@color/colorSublimadeDark" />
+        app:itemTextColor="@color/colorSublimadeLight"
+        desing:menu="@menu/menu_bottomnavigation" />
 </android.support.design.widget.CoordinatorLayout>

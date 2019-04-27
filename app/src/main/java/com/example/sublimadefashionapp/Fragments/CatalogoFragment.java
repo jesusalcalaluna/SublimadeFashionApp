@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,21 +12,20 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ImageView;
+import android.widget.Toast;
+
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.AdaptadorProducto;
-import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.Adapters.AdaptadorProducto;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
@@ -103,16 +101,12 @@ public class CatalogoFragment extends Fragment {
                             final RecyclerView rvCatalogo = view.findViewById(R.id.rvCatalogo);
                             rvCatalogo.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
 
-        JSONObject filtro=new JSONObject();
-        try {
-            filtro.put("sexo", mParam1);
-            filtro.put("proucto",mParam2);
-            filtro.put("categoria",categoria);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+                            JSONArray arrayo=new JSONArray();
+                            arrayo.put(mParam1);
+                            arrayo.put(mParam2);
+                            arrayo.put(categoria);
 
-        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, "http://sublimade.mipantano.com/api/android/catalogo", null,
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.POST, "http://sublimade.mipantano.com/api/android.filtro",arrayo,
                                     new Response.Listener<JSONArray>() {
                                         @Override
                                         public void onResponse(JSONArray response) {
@@ -133,6 +127,7 @@ public class CatalogoFragment extends Fragment {
             }
         });
         VolleyS.getInstance(getContext()).getRq().add(jar);
+        Toast.makeText(getActivity(), mParam1+" "+mParam2+" "+categoria, Toast.LENGTH_SHORT).show();
         return view;
     }
 

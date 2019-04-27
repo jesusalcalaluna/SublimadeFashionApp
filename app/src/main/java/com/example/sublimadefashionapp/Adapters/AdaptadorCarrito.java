@@ -1,7 +1,5 @@
-package com.example.sublimadefashionapp;
-
+package com.example.sublimadefashionapp.Adapters;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,8 +14,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.Fragments.CarritoFragment;
+import com.example.sublimadefashionapp.Carrito;
 import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.VolleyS;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
