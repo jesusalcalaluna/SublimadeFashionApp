@@ -11,14 +11,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".activity_pedidos" >
+
+        android:theme="@style/AppTheme">
+        <activity android:name=".Pedido"></activity>
+        <activity android:name=".Activities.activity_pedidos" >
         </activity >
-        <activity android:name=".filtrosActivity" />
-        <activity android:name=".RegistroUsuarioActivity" />
+        <activity android:name=".Activities.filtrosActivity" />
+        <activity android:name=".Activities.RegistroUsuarioActivity" />
+
         <activity
             android:name=".DetallesProducto"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/Theme.AppCompat" />
         <activity android:name=".perfil" />
         <activity android:name=".login" >
@@ -29,7 +32,7 @@
             </intent-filter >
         </activity >
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.MainActivity" />
     </application >
 
 </manifest >

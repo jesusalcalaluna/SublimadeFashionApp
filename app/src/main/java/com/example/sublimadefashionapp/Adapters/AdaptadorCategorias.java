@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp;
+package com.example.sublimadefashionapp.Adapters;
 
 
 import android.content.Context;

@@ -11,6 +11,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.sublimadefashionapp.Activities.MainActivity;
 import com.example.sublimadefashionapp.Modelos.User;
 
 import org.json.JSONException;
@@ -84,8 +85,6 @@ public class perfil extends AppCompatActivity implements View.OnClickListener {
                 else {
                     JSONObject persona = new JSONObject();
                     try {
-
-
                         persona.put("id", User.id_persona);
                         persona.put("telefono_casa", telefonocasa.getText().toString());
                         persona.put("telefono_celular", telefonocel.getText().toString());

@@ -1,8 +1,7 @@
-package com.example.sublimadefashionapp;
+package com.example.sublimadefashionapp.Activities;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -11,27 +10,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import com.example.sublimadefashionapp.Modelos.User;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.reflect.TypeToken;
+import com.example.sublimadefashionapp.Producto;
+import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.login;
+import com.example.sublimadefashionapp.perfil;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -70,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         final InicioFragment fragment = InicioFragment.newInstance("id", id,"todo");
         getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,fragment).commit();
 
+//Barra de navegacion
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottmnavigation_view);
         //SideBar menux
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         //Navigation View
@@ -77,11 +68,25 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         View header = navigationView.getHeaderView(0);
         txtNombreUsuario = (TextView) header.findViewById(R.id.txtnombreusuario);
 
+        //Abrir fragment catálogo si viene de filtro
+        if (getIntent().hasExtra("abrirfragmentcatalogo")){
+            CatalogoFragment catalogoFragment = CatalogoFragment.newInstance(getIntent().getStringExtra("sexo"),
+                    getIntent().getStringExtra("tipoproducto"),getIntent().getStringExtra("categoria"));
+            getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        }
+        else if (getIntent().hasExtra("abrirfragmentcatalogo1")){
+            CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("all","all","all");
+            getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        }
+
 
        if(User.api_token !=null){
           // Toast.makeText(MainActivity.this, datos.Usuario.api_token.toString(), Toast.LENGTH_LONG).show();
           txtNombreUsuario.setText(User.e_mail.toString());
            //  Toast.makeText(MainActivity.this, User.pass, Toast.LENGTH_LONG).show();
+
        }
 
 
@@ -110,7 +115,8 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
                         break;
                     case R.id.pedidosItem:
-
+                        Intent intentPedidos =new Intent(MainActivity.this, activity_pedidos.class);
+                        startActivity(intentPedidos);
                         break;
                     case R.id.cerrarsesionItem:
                         if(firebaseUser != null){
@@ -122,13 +128,13 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         Intent inten=new Intent(MainActivity.this, login.class);
                         startActivity(inten);
                         break;
+
                 }
 
                 return true;
             }
         });
-        //Barra de navegacion
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottmnavigation_view);
+
         //Metodo de la barra de navegacion inferior
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -145,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         break;
                     case R.id.catalogoItem:
                         id = "catalogofragment";
-                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("todo", "todo","todo");
+                        CatalogoFragment catalogoFragment = CatalogoFragment.newInstance("all", "all","all");
                        getSupportFragmentManager().beginTransaction().replace(R.id.conteiner_bottomnavigation,catalogoFragment).commit();
                         break;
                     case R.id.inicioItem:

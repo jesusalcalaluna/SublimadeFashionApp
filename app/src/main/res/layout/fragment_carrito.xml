@@ -84,7 +84,8 @@
                         android:textColor="#FFF"
                         android:layout_weight="1"
                         android:background="@drawable/btn_pill_azul"
-                        android:layout_margin="3dp"/>
+                        android:layout_margin="3dp"
+                        android:id="@+id/btnBuy"/>
                     <View
                         android:layout_width="0dp"
                         android:layout_height="match_parent"

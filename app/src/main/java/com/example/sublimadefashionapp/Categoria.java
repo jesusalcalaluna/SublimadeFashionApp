@@ -2,7 +2,7 @@ package com.example.sublimadefashionapp;
 
 public class Categoria {
 
-    String categoria;
+    public String categoria;
 
     public Categoria(){
     }

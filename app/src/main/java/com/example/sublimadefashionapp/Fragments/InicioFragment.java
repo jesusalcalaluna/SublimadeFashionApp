@@ -19,16 +19,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.sublimadefashionapp.AdaptadorProducto;
-import com.example.sublimadefashionapp.MainActivity;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.adaptadorinicio;
+import com.example.sublimadefashionapp.Adapters.adaptadorinicio;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
@@ -175,7 +171,7 @@ public class InicioFragment extends Fragment {
     }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_catalogo_filtros,menu);
+//        inflater.inflate(R.menu.menu_catalogo_filtros,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
