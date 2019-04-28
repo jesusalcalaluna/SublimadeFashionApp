@@ -22,8 +22,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.sublimadefashionapp.Adapters.AdaptadorCarrito;
 import com.example.sublimadefashionapp.Carrito;
-import com.example.sublimadefashionapp.MainActivity;
+import com.example.sublimadefashionapp.Activities.MainActivity;
 import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.Pedido;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
 import com.google.gson.Gson;
@@ -169,7 +170,8 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent comprar = new Intent(Intent.ACTION_VIEW, Uri.parse("http://sublimade.mipantano.com/pagoAndroid?subtotal="+valorsubtotal+"&id_client="+User.id_persona));
+        Intent comprar = new Intent(getContext(), Pedido.class);
+        comprar.putExtra("subtotal",valorsubtotal);
         startActivity(comprar);
     }
 
