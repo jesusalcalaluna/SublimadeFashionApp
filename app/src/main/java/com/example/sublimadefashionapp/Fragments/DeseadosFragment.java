@@ -21,7 +21,7 @@ import com.example.sublimadefashionapp.Modelos.User;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.Adapters.adaptadordeseado;
+import com.example.sublimadefashionapp.adaptadordeseado;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
