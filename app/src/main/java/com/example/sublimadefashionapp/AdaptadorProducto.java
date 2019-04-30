@@ -49,8 +49,8 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
 
         final int Id = p.getId_producto();
         String Nombre = p.getNombre();
-        String Precio = String.valueOf(p.getCosto_unitario());
-        String Categoria = String.valueOf(p.getCategoria());
+        String Precio = "MXN$"+p.getCosto_unitario();
+        String Categoria = p.getCategoria();
         String Diseno =  String.valueOf(p.getDiseno());
 
 

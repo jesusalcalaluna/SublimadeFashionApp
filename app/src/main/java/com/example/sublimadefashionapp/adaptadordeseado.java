@@ -40,11 +40,10 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
         return new adaptadordeseado.ProductoViewHolder(v);
 
     }
-    List<Carrito> lc;
+
     @Override
     public void onBindViewHolder(@NonNull final adaptadordeseado.ProductoViewHolder productoViewHolder, final int i) {
         final Producto  p = productos.get(i);
-
 
 
         final  int Id = p.getId_producto();
@@ -67,6 +66,8 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
 
                     try {
                         Borrardeseados();
+                        productos.remove(i);
+                        notifyDataSetChanged();
 
 
                     } catch (JSONException e) {
@@ -104,8 +105,7 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        productos.remove(i);
-                        notifyDataSetChanged();
+                        reload();
                         //  Intent intent = new Intent(productoViewHolder.itemView.getContext(),adaptadordeseado.class);
                         //startActivity(intent);
                         //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();

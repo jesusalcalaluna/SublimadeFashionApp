@@ -13,6 +13,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
+import android.widget.Toast;
+
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -97,16 +101,12 @@ public class CatalogoFragment extends Fragment {
                             final RecyclerView rvCatalogo = view.findViewById(R.id.rvCatalogo);
                             rvCatalogo.setLayoutManager(new LinearLayoutManager(getContext() ,LinearLayoutManager.VERTICAL,false));
 
-        JSONObject filtro=new JSONObject();
-        try {
-            filtro.put("sexo", mParam1);
-            filtro.put("proucto",mParam2);
-            filtro.put("categoria",categoria);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+                            JSONArray arrayo=new JSONArray();
+                            arrayo.put(mParam1);
+                            arrayo.put(mParam2);
+                            arrayo.put(categoria);
 
-        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.GET, "http://sublimade.mipantano.com/api/android/catalogo", null,
+        JsonArrayRequest jar = new JsonArrayRequest(Request.Method.POST, "http://sublimade.mipantano.com/api/android.filtro",arrayo,
                                     new Response.Listener<JSONArray>() {
                                         @Override
                                         public void onResponse(JSONArray response) {
@@ -127,6 +127,7 @@ public class CatalogoFragment extends Fragment {
             }
         });
         VolleyS.getInstance(getContext()).getRq().add(jar);
+        Toast.makeText(getActivity(), mParam1+" "+mParam2+" "+categoria, Toast.LENGTH_SHORT).show();
         return view;
     }
 

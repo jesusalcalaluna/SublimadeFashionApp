@@ -171,7 +171,7 @@ public class InicioFragment extends Fragment {
     }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_catalogo_filtros,menu);
+//        inflater.inflate(R.menu.menu_catalogo_filtros,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

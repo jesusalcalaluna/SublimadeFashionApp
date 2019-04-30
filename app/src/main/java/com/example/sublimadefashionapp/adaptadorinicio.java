@@ -38,7 +38,6 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
 
     }
 
-
     @NonNull
     @Override
     public adaptadorinicio.ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -62,6 +61,40 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
         productoViewHolder.nombre.setText(Nombre);
         productoViewHolder.precio.setText(Precio);
         productoViewHolder.categoria.setText(Categoria);
+
+        JSONObject deseadocorazon = new JSONObject();
+        try {
+            deseadocorazon.put("id", Id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            deseadocorazon.put("id_persona",User.id_persona);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        String url = "http://www.sublimade.mipantano.com/api/android.corazon";
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, deseadocorazon, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                if(response!=null){
+
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        VolleyS.getInstance(productoViewHolder.itemView.getContext()).getRq().add(request);
+
+
+
         productoViewHolder.deseado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +106,7 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
 
                     try {
                         Regitardeseados();
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -102,10 +136,6 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
                     public void onResponse(JSONObject response) {
                         if(response!=null){
 
-                            // Toast.makeText(productoViewHolder.itemView.getContext(), "borrado", Toast.LENGTH_LONG).show();
-
-                            //  Intent intent = new Intent(login.this,MainActivity.class);
-                            //startActivity(intent);
                         }
 
 
@@ -114,9 +144,6 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        //  Intent intent = new Intent(productoViewHolder.itemView.getContext(),adaptadordeseado.class);
-                        //startActivity(intent);
-                        //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
                 VolleyS.getInstance(productoViewHolder.itemView.getContext()).getRq().add(request);
@@ -143,6 +170,9 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
                                 e.printStackTrace();
                             }
                             Toast.makeText(productoViewHolder.itemView.getContext(), response.toString(), Toast.LENGTH_LONG).show();
+                            productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
+
+
                           //  Intent intent = new Intent(login.this,MainActivity.class);
                             //startActivity(intent);
                         }

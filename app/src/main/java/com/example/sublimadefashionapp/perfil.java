@@ -84,8 +84,6 @@ public class perfil extends AppCompatActivity implements View.OnClickListener {
                 else {
                     JSONObject persona = new JSONObject();
                     try {
-
-
                         persona.put("id", User.id_persona);
                         persona.put("telefono_casa", telefonocasa.getText().toString());
                         persona.put("telefono_celular", telefonocel.getText().toString());
