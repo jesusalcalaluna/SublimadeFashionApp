@@ -22,7 +22,7 @@
         </activity >
         <activity android:name=".filtrosActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/AppTheme" />
 
         <activity android:name=".RegistroUsuarioActivity" />
 
@@ -30,9 +30,11 @@
             android:name=".DetallesProducto"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat" />
+
+
         <activity android:name=".perfil"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/AppTheme" />
 
         <activity android:name=".login">
             <intent-filter>
