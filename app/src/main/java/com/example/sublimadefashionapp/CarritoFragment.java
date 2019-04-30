@@ -1,10 +1,9 @@
-package com.example.sublimadefashionapp.Fragments;
+package com.example.sublimadefashionapp;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,13 +19,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.sublimadefashionapp.AdaptadorCarrito;
-import com.example.sublimadefashionapp.Carrito;
 import com.example.sublimadefashionapp.MainActivity;
+import com.example.sublimadefashionapp.AdaptadorCarrito;
+import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.Carrito;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.example.sublimadefashionapp.Pedido;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -124,7 +125,6 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {
                             List<Carrito> lc = g.fromJson(response.toString(), t);
                             AdaptadorCarrito adapt= new AdaptadorCarrito(lc);
                             rvCarrito.setAdapter(adapt);
-                            Toast.makeText(getContext(), String.valueOf(lc.get(0).sub_total), Toast.LENGTH_LONG).show();
                             String valor = "Subtotal: MXN$"+lc.get(0).sub_total;
                             subtotal.setText(valor);
                             valorsubtotal = String.valueOf(lc.get(0).sub_total);

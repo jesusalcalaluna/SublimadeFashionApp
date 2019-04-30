@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.example.sublimadefashionapp.Modelos.User;
 
@@ -26,6 +27,10 @@ public class Pedido extends AppCompatActivity {
         });
         browser.loadUrl("http://sublimade.mipantano.com/pagoAndroid?subtotal="+subtotal+"&id_client="+ User.id_persona);
 
+        //Toast.makeText(this, browser.getUrl(), Toast.LENGTH_SHORT).show();
+        if(browser.getUrl() == "http://sublimade.mipantano.com/"){
+            onBackPressed();
+        }
     }
 
 }

@@ -169,7 +169,7 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            Toast.makeText(productoViewHolder.itemView.getContext(), response.toString(), Toast.LENGTH_LONG).show();
+
                             productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
 
 

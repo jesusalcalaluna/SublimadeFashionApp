@@ -18,11 +18,14 @@ import android.widget.TextView;
 import com.example.sublimadefashionapp.Activities.ComprasActivity;
 import com.example.sublimadefashionapp.Activities.activity_pedidos;
 import com.example.sublimadefashionapp.Modelos.User;
-
-
+import com.example.sublimadefashionapp.Producto;
+import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.filtrosActivity;
+import com.example.sublimadefashionapp.login;
+import com.example.sublimadefashionapp.perfil;
 import java.util.List;
 
-import com.example.sublimadefashionapp.Fragments.CarritoFragment;
+import com.example.sublimadefashionapp.CarritoFragment;
 import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
 import com.example.sublimadefashionapp.Fragments.DeseadosFragment;
 import com.example.sublimadefashionapp.Fragments.InicioFragment;
@@ -112,10 +115,6 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                     case R.id.comprasItem:
                         Intent intentCompras =new Intent(MainActivity.this, ComprasActivity.class);
                         startActivity(intentCompras);
-                        break;
-                    case R.id.pedidosItem:
-                        Intent intentPedidos =new Intent(MainActivity.this, activity_pedidos.class);
-                        startActivity(intentPedidos);
                         break;
                     case R.id.cerrarsesionItem:
                         if(firebaseUser != null){

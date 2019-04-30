@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -17,8 +20,8 @@
         <activity android:name=".Pedido"></activity>
         <activity android:name=".Activities.activity_pedidos" >
         </activity >
-        <activity android:name=".Activities.filtrosActivity" />
-        <activity android:name=".Activities.RegistroUsuarioActivity" />
+        <activity android:name=".filtrosActivity" />
+        <activity android:name=".RegistroUsuarioActivity" />
 
         <activity
             android:name=".DetallesProducto"
@@ -33,7 +36,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity" />
-    </application>
-
+        <activity android:name=".MainActivity"/>
+    </application >
 </manifest>

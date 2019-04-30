@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +25,13 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.ProductoViewHolder> {
+public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.ProductoViewHolder>{
 
     List<Producto> productos;
+    List<Producto> productosfiltrados;
     Context c;
 
     public AdaptadorProducto(List<Producto> productos, Context c) {
@@ -60,11 +64,11 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
         productoViewHolder.deseado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(productoViewHolder.deseado.getDrawable().getConstantState() == productoViewHolder.itemView.getResources().getDrawable(R.drawable.heart_gris_96, null).getConstantState()){
+                if (productoViewHolder.deseado.getDrawable().getConstantState() == productoViewHolder.itemView.getResources().getDrawable(R.drawable.heart_gris_96, null).getConstantState()) {
                     productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
-                    datos.StatusCorazon=1;
-                    datos.id_boorrardeseado= p.getId_producto();
-                    datos.id_prod=p.getId_producto();
+                    datos.StatusCorazon = 1;
+                    datos.id_boorrardeseado = p.getId_producto();
+                    datos.id_prod = p.getId_producto();
                     try {
                         Regitardeseados();
                     } catch (JSONException e) {
@@ -72,10 +76,9 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
                     }
 
 
-                }
-                else {
+                } else {
                     productoViewHolder.deseado.setImageResource(R.drawable.heart_gris_96);
-                    datos.StatusCorazon=2;
+                    datos.StatusCorazon = 2;
                     try {
                         Borrardeseados();
 
@@ -179,6 +182,44 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
     public int getItemCount() {
         return productos.size();
     }
+/////////////////////////////////////////////////////////////////////////////////////BUSCADOR//////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   /* @Override
+    public Filter getFilter() {
+
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    productosfiltrados = productos;
+                } else {
+                    List<Producto> filteredList = new ArrayList<>();
+                    for (Producto row : productos) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getNombre().toLowerCase().contains(charString.toLowerCase()) || row.getCategoria().contains(charString)) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    productosfiltrados = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = productosfiltrados;
+                return filterResults;
+            }
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                productosfiltrados = (ArrayList<Producto>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }*/
+/////////////////////////////////////////////////////////////////////////////////////BUSCADOR//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public class ProductoViewHolder extends RecyclerView.ViewHolder{
 
