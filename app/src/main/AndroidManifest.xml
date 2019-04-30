@@ -20,7 +20,8 @@
         <activity android:name=".Pedido"></activity>
         <activity android:name=".Activities.activity_pedidos" >
         </activity >
-        <activity android:name=".filtrosActivity" />
+        <activity android:name=".filtrosActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".RegistroUsuarioActivity" />
 
         <activity

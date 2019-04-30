@@ -48,6 +48,12 @@ public class filtrosActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtros);
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
+
         todo=findViewById(R.id.all);
         hombre=findViewById(R.id.hombre);
         mujer=findViewById(R.id.mujer);

@@ -196,10 +196,6 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                 startActivity(intent);
                 return true;
 
-            case R.id.search:
-                onSearchRequested();
-                return true;
-
             case android.R.id.home:
                 //abrir menu lateral
                 drawerLayout.openDrawer(GravityCompat.START);
