@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/tiendaItem"
-            android:icon="@drawable/ic_shop_black_24dp"
-            android:title="@string/tienda"
-            />
-        <item
             android:id="@+id/perfilItem"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/perfil"
@@ -15,11 +10,6 @@
             android:id="@+id/comprasItem"
             android:icon="@drawable/ic_access_time_black_24dp"
             android:title="@string/compras"
-            />
-        <item
-            android:id="@+id/pedidosItem"
-            android:icon="@drawable/ic_local_shipping_black_24dp"
-            android:title="@string/pedidos"
             />
 
     </group>

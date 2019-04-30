@@ -126,7 +126,6 @@ public class CarritoFragment extends Fragment implements View.OnClickListener {
                             List<Carrito> lc = g.fromJson(response.toString(), t);
                             AdaptadorCarrito adapt= new AdaptadorCarrito(lc);
                             rvCarrito.setAdapter(adapt);
-                            Toast.makeText(getContext(), String.valueOf(lc.get(0).sub_total), Toast.LENGTH_LONG).show();
                             String valor = "Subtotal: MXN$"+lc.get(0).sub_total;
                             subtotal.setText(valor);
                             valorsubtotal = String.valueOf(lc.get(0).sub_total);
