@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp.Adapters;
+package com.example.sublimadefashionapp;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,10 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.Carrito;
 import com.example.sublimadefashionapp.Modelos.User;
-import com.example.sublimadefashionapp.R;
-import com.example.sublimadefashionapp.VolleyS;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -45,21 +42,21 @@ public class AdaptadorCarrito extends RecyclerView.Adapter<AdaptadorCarrito.Carr
         final Carrito c = lc.get(i);
 
         String Nombre = c.getNombre();
-        String Precio = String.valueOf(c.getCosto_unitario());
-        String Categoria = String.valueOf(c.getCategoria());
+        String Precio = "C/u: MXN$"+c.getCosto_unitario();
+        String Categoria = c.getCategoria();
         String Diseno =  String.valueOf(c.getDiseno());
-        String Talla = String.valueOf(c.getTalla());
-        String Cantidad = String.valueOf(c.getCantidad());
-        String Total = String.valueOf(c.getTotal());
+        String Talla = "Talla: "+c.getTalla();
+        String Cantidad = "Unidades: "+c.getCantidad();
+        String Total = "Costo total: MXN$"+c.getTotal();
         final int reg = c.getReg();
         final int id_prod = c.getId_producto();
 
         carritoViewHolder.nombre.setText(Nombre);
         carritoViewHolder.precio.setText(Precio);
         carritoViewHolder.categoria.setText(Categoria);
-        carritoViewHolder.cantidad.setText("Cantidad: "+Cantidad);
-        carritoViewHolder.talla.setText("Talla: "+Talla);
-        carritoViewHolder.total.setText("Total: "+Total);
+        carritoViewHolder.cantidad.setText(Cantidad);
+        carritoViewHolder.talla.setText(Talla);
+        carritoViewHolder.total.setText(Total);
         carritoViewHolder.eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

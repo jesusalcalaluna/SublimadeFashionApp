@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp.Adapters;
+package com.example.sublimadefashionapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,12 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.DetallesProducto;
 import com.example.sublimadefashionapp.Modelos.User;
-import com.example.sublimadefashionapp.Producto;
-import com.example.sublimadefashionapp.R;
-import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.datos;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -58,8 +53,8 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
 
         final int Id = p.getId_producto();
         String Nombre = p.getNombre();
-        String Precio = String.valueOf(p.getCosto_unitario());
-        String Categoria = String.valueOf(p.getCategoria());
+        String Precio = "MXN$"+p.getCosto_unitario();
+        String Categoria = p.getCategoria();
         String Diseno =  String.valueOf(p.getDiseno());
 
 

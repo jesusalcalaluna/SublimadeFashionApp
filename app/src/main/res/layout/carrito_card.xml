@@ -12,7 +12,8 @@
         app:cardCornerRadius="5dp"
         android:layout_margin="3dp"
         android:id="@+id/carrito_card"
-        android:layout_weight="2">
+        android:layout_weight="3"
+        android:paddingBottom="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,24 +41,7 @@
                     android:id="@+id/ProdName"
                     android:textStyle="bold"
                     android:textColor="@color/colorSublimadeDark"
-                    android:layout_weight="1"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="MXN$200"
-                        android:textSize="18dp"
-                        android:id="@+id/ProdPrice"
-                        android:textStyle="bold"
-                        android:textColor="#F44336"
-                        android:layout_weight="1"/>
-
-                </LinearLayout>
+                    android:layout_weight="1.3"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -66,6 +50,12 @@
                     android:textSize="18dp"
                     android:id="@+id/ProdCat"
                     android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Costo Unitario"
+                    android:layout_weight="1"
+                    android:id="@+id/ProdPrice"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -81,9 +71,14 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:text="Total: MXN$300"
-                    android:layout_weight="1"
-                    android:id="@+id/total_cart"/>
+                    android:text="Costo total"
+                    android:textSize="18dp"
+                    android:id="@+id/total_cart"
+                    android:textStyle="bold"
+                    android:textColor="#F44336"
+                    android:layout_weight="2.5"/>
+
+
             </LinearLayout>
 
             <LinearLayout

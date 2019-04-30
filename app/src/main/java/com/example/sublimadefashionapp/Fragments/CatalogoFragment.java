@@ -25,7 +25,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.sublimadefashionapp.Adapters.AdaptadorProducto;
+import com.example.sublimadefashionapp.AdaptadorProducto;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;

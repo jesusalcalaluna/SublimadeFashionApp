@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp.Adapters;
+package com.example.sublimadefashionapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +15,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.Carrito;
-import com.example.sublimadefashionapp.DetallesProducto;
-import com.example.sublimadefashionapp.Producto;
-import com.example.sublimadefashionapp.R;
-import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.datos;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -46,11 +40,10 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
         return new adaptadordeseado.ProductoViewHolder(v);
 
     }
-    List<Carrito> lc;
+
     @Override
     public void onBindViewHolder(@NonNull final adaptadordeseado.ProductoViewHolder productoViewHolder, final int i) {
         final Producto  p = productos.get(i);
-
 
 
         final  int Id = p.getId_producto();
@@ -73,6 +66,8 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
 
                     try {
                         Borrardeseados();
+                        productos.remove(i);
+                        notifyDataSetChanged();
 
 
                     } catch (JSONException e) {
@@ -110,8 +105,7 @@ public class adaptadordeseado  extends RecyclerView.Adapter<adaptadordeseado.Pro
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        productos.remove(i);
-                        notifyDataSetChanged();
+                        reload();
                         //  Intent intent = new Intent(productoViewHolder.itemView.getContext(),adaptadordeseado.class);
                         //startActivity(intent);
                         //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();

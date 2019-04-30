@@ -26,53 +26,41 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.2"/>
+                    android:layout_weight="0.2" />
+
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="Producto"
-                android:textSize="20dp"
-                android:id="@+id/ProdName"
-                android:textStyle="bold"
-                android:textColor="@color/colorSublimadeDark"
-                    android:layout_weight="1"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/ProdName"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="1">
+                    android:layout_weight="0.5"
+                    android:text="Producto"
+                    android:textColor="@color/colorSublimadeDark"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="MXN$"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:textColor="#F44336"
-                        android:layout_weight="0.5"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="200"
-                        android:textSize="18dp"
                         android:id="@+id/ProdPrice"
-                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.5"
+                        android:text="200"
                         android:textColor="#F44336"
-                        android:layout_weight="1"/>
-
-                </LinearLayout>
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:text="Playera"
-                    android:textSize="18dp"
                     android:id="@+id/ProdCat"
-                    android:layout_weight="1"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Playera"
+                    android:textSize="18dp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"

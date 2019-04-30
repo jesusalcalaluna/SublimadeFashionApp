@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.activity_pedidos"
-    android:orientation="vertical"
-    >
+    tools:context=".Activities.ComprasActivity"
+    android:orientation="vertical">
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/rvPedidos"
+        android:id="@+id/rvCompras"
         android:layout_gravity="center_horizontal"
         android:layout_weight="7">
 
     </android.support.v7.widget.RecyclerView>
 
-
-</LinearLayout >
+</LinearLayout>

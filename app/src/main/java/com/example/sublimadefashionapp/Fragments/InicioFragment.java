@@ -22,7 +22,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
 import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.Adapters.adaptadorinicio;
+import com.example.sublimadefashionapp.adaptadorinicio;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.synnapps.carouselview.CarouselView;

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +19,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.sublimadefashionapp.Activities.MainActivity;
-import com.example.sublimadefashionapp.Adapters.AdaptadorCarrito;
+import com.example.sublimadefashionapp.MainActivity;
+import com.example.sublimadefashionapp.AdaptadorCarrito;
 //import com.example.sublimadefashionapp.MainActivity;
 import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.Carrito;
+import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.Pedido;
+import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.VolleyS;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -40,11 +47,13 @@ import java.util.List;
  * Use the {@link CarritoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CarritoFragment extends Fragment {
+public class CarritoFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    TextView subtotal;
+    String valorsubtotal;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -87,9 +96,11 @@ public class CarritoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_carrito, container, false);
+        Button comprar = view.findViewById(R.id.btnBuy);
+        comprar.setOnClickListener(this);
 
        final RecyclerView rvCarrito = view.findViewById(R.id.rvCarrito);
-       final TextView subtotal = view.findViewById(R.id.subtotal);
+       subtotal = view.findViewById(R.id.subtotal);
 
         String id = User.id_persona;
         JSONArray objeto = new JSONArray();
@@ -118,6 +129,7 @@ public class CarritoFragment extends Fragment {
                             Toast.makeText(getContext(), String.valueOf(lc.get(0).sub_total), Toast.LENGTH_LONG).show();
                             String valor = "Subtotal: MXN$"+lc.get(0).sub_total;
                             subtotal.setText(valor);
+                            valorsubtotal = String.valueOf(lc.get(0).sub_total);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -125,10 +137,8 @@ public class CarritoFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 Toast.makeText(getContext(), "Aun no haz agregado productos", Toast.LENGTH_SHORT).show();
                 Log.d("error", error.getMessage());
-
             }
         });
         VolleyS.getInstance(getContext()).getRq().add(jar);
@@ -158,6 +168,13 @@ public class CarritoFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent comprar = new Intent(getContext(), Pedido.class);
+        comprar.putExtra("subtotal",valorsubtotal);
+        startActivity(comprar);
     }
 
     /**

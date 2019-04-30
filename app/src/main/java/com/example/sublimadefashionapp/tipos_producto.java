@@ -2,8 +2,8 @@ package com.example.sublimadefashionapp;
 
 public class tipos_producto {
 
-    int id_tipo_producto;
-    String nombre;
+    public int id_tipo_producto;
+    public String nombre;
 
     public tipos_producto(int id_tipo_producto, String nombre){
 

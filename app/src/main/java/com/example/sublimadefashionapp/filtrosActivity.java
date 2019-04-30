@@ -16,8 +16,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.sublimadefashionapp.Activities.MainActivity;
+import com.example.sublimadefashionapp.MainActivity;
 import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
+import com.example.sublimadefashionapp.Modelos.User;
+import com.example.sublimadefashionapp.tipos_producto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
