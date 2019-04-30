@@ -64,12 +64,8 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
 
         JSONObject deseadocorazon = new JSONObject();
         try {
-            deseadocorazon.put("id", Id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
             deseadocorazon.put("id_persona",User.id_persona);
+            deseadocorazon.put("id", p.getId_producto());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -80,8 +76,9 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
             @Override
             public void onResponse(JSONObject response) {
                 if(response!=null){
-
+                    productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
                 }
+
 
 
             }
@@ -169,7 +166,7 @@ public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.Produc
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
+                          //  Toast.makeText(productoViewHolder.itemView.getContext(), response.toString(), Toast.LENGTH_LONG).show();
                             productoViewHolder.deseado.setImageResource(R.drawable.heart_activo_96);
 
 

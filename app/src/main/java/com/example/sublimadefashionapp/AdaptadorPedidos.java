@@ -47,9 +47,7 @@ public class AdaptadorPedidos extends RecyclerView.Adapter<AdaptadorPedidos.Pedi
         public PedidosViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            TxtFechaPedido = itemView.findViewById(R.id.TxtFechaPedido);
-            TxtEstadoPedido = itemView.findViewById(R.id.TxtEstadoPedido);
-            TxtTotalPedido = itemView.findViewById(R.id.TxtTotalPedido);
+
 
         }
     }
