@@ -15,8 +15,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.Activities.MainActivity;
-import com.example.sublimadefashionapp.Activities.RegistroUsuarioActivity;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

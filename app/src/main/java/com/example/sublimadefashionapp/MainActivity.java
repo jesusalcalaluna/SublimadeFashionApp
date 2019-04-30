@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp.Activities;
+package com.example.sublimadefashionapp;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -15,11 +15,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.sublimadefashionapp.Activities.ComprasActivity;
+import com.example.sublimadefashionapp.Activities.activity_pedidos;
 import com.example.sublimadefashionapp.Modelos.User;
-import com.example.sublimadefashionapp.Producto;
-import com.example.sublimadefashionapp.R;
-import com.example.sublimadefashionapp.login;
-import com.example.sublimadefashionapp.perfil;
 
 
 import java.util.List;
@@ -96,7 +94,8 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         startActivity(intent);
                         break;
                     case R.id.comprasItem:
-
+                        Intent intentCompras =new Intent(MainActivity.this, ComprasActivity.class);
+                        startActivity(intentCompras);
                         break;
                     case R.id.pedidosItem:
                         Intent intentPedidos =new Intent(MainActivity.this, activity_pedidos.class);

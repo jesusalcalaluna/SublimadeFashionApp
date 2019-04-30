@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp.Adapters;
+package com.example.sublimadefashionapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,12 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.DetallesProducto;
 import com.example.sublimadefashionapp.Modelos.User;
-import com.example.sublimadefashionapp.Producto;
-import com.example.sublimadefashionapp.R;
-import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.datos;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -30,29 +25,34 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.ProductoViewHolder> {
+public class adaptadorinicio extends RecyclerView.Adapter<adaptadorinicio.ProductoViewHolder> {
+
 
     List<Producto> productos;
     Context c;
 
-    public AdaptadorProducto(List<Producto> productos, Context c) {
 
+    public adaptadorinicio(List<Producto> productos, Context c) {
         this.productos = productos;
         this.c = c;
+
     }
+
 
     @NonNull
     @Override
-    public AdaptadorProducto.ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.catalogo_card, null, false);
+    public adaptadorinicio.ProductoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.inicio_card, null, false);
         return new ProductoViewHolder(v);
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final AdaptadorProducto.ProductoViewHolder productoViewHolder, int i) {
-        final Producto p = productos.get(i);
+    public void onBindViewHolder(@NonNull final adaptadorinicio.ProductoViewHolder  productoViewHolder, int i) {
+    final Producto  p = productos.get(i);
 
-        final int Id = p.getId_producto();
+
+        final  int Id = p.getId_producto();
         String Nombre = p.getNombre();
         String Precio = String.valueOf(p.getCosto_unitario());
         String Categoria = String.valueOf(p.getCategoria());
@@ -70,6 +70,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
                     datos.StatusCorazon=1;
                     datos.id_boorrardeseado= p.getId_producto();
                     datos.id_prod=p.getId_producto();
+
                     try {
                         Regitardeseados();
                     } catch (JSONException e) {
@@ -142,7 +143,7 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
                                 e.printStackTrace();
                             }
                             Toast.makeText(productoViewHolder.itemView.getContext(), response.toString(), Toast.LENGTH_LONG).show();
-                            //  Intent intent = new Intent(login.this,MainActivity.class);
+                          //  Intent intent = new Intent(login.this,MainActivity.class);
                             //startActivity(intent);
                         }
 
@@ -151,47 +152,46 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(login.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
                 VolleyS.getInstance(productoViewHolder.itemView.getContext()).getRq().add(request);
             }
 
         });
-        productoViewHolder.cd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(productoViewHolder.itemView.getContext(), String.valueOf(Id), Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(productoViewHolder.itemView.getContext(), DetallesProducto.class);
-                i.putExtra("id", Id);
-                c.startActivity(i);
 
-            }
-        });
+
+            productoViewHolder.cd.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //Toast.makeText(productoViewHolder.itemView.getContext(), "Clic", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(productoViewHolder.itemView.getContext(), DetallesProducto.class);
+            i.putExtra("id", Id);
+            c.startActivity(i);
+
+        }
+    });
         Picasso.get().load("http://sublimade.mipantano.com/storage/disenos/"+Diseno).into(productoViewHolder.diseno, new Callback() {
-            @Override
-            public void onSuccess() {
-            }
+        @Override
+        public void onSuccess() {
+        }
 
-            @Override
-            public void onError(Exception e) {
-            }
-        });
+        @Override
+        public void onError(Exception e) {
+        }
+    });
 
-    }
+}
 
     @Override
     public int getItemCount() {
         return productos.size();
     }
 
-    public class ProductoViewHolder extends RecyclerView.ViewHolder{
-
+    public class ProductoViewHolder extends RecyclerView.ViewHolder {
         TextView nombre, precio, categoria;
         ImageView diseno, deseado;
         CardView cd;
-
-
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.ProdName);
@@ -200,7 +200,6 @@ public class AdaptadorProducto extends RecyclerView.Adapter<AdaptadorProducto.Pr
             diseno = itemView.findViewById(R.id.ProdImage);
             cd = itemView.findViewById(R.id.cvCatalogo);
             deseado = itemView.findViewById(R.id.deseado);
-
         }
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sublimadefashionapp" >
+    package="com.example.sublimadefashionapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -11,25 +11,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".Activities.activity_pedidos" >
-        </activity >
-        <activity android:name=".Activities.filtrosActivity" />
-        <activity android:name=".Activities.RegistroUsuarioActivity" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activities.ComprasActivity"></activity>
+        <activity android:name=".Activities.activity_pedidos"></activity>
+        <activity android:name=".filtrosActivity" />
+        <activity android:name=".RegistroUsuarioActivity" />
         <activity
             android:name=".DetallesProducto"
-            android:parentActivityName=".Activities.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat" />
         <activity android:name=".perfil" />
-        <activity android:name=".login" >
-            <intent-filter >
+        <activity android:name=".login">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter >
-        </activity >
+            </intent-filter>
+        </activity>
         <activity android:name=".Register" />
-        <activity android:name=".Activities.MainActivity" />
-    </application >
+        <activity android:name=".MainActivity" />
+    </application>
 
-</manifest >
+</manifest>

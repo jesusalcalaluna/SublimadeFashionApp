@@ -6,7 +6,4 @@ public class User {
     public static String e_mail;
     public static String tipo_usuario;
     public  static String api_token;
-
-
-
 }

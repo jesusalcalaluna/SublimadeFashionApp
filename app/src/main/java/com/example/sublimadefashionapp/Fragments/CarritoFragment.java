@@ -17,7 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.sublimadefashionapp.Adapters.AdaptadorCarrito;
+import com.example.sublimadefashionapp.AdaptadorCarrito;
 import com.example.sublimadefashionapp.Carrito;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.example.sublimadefashionapp.R;

@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp.Activities;
+package com.example.sublimadefashionapp;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -15,8 +15,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.sublimadefashionapp.Modelos.User;
-import com.example.sublimadefashionapp.R;
-import com.example.sublimadefashionapp.VolleyS;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
