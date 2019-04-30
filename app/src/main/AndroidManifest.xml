@@ -21,7 +21,9 @@
         <activity android:name=".Activities.activity_pedidos" >
         </activity >
         <activity android:name=".filtrosActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat" />
+
         <activity android:name=".RegistroUsuarioActivity" />
 
         <activity
@@ -29,7 +31,9 @@
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat" />
         <activity android:name=".perfil"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat" />
+
         <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
