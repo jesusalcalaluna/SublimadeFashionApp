@@ -51,7 +51,7 @@ import static android.support.v4.content.ContextCompat.getSystemService;
  * Use the {@link CatalogoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CatalogoFragment extends Fragment{
+public class CatalogoFragment extends Fragment implements MenuItem.OnMenuItemClickListener{
 
 
     private List<Producto> productlist;
@@ -152,8 +152,6 @@ public class CatalogoFragment extends Fragment{
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_catalogo_filtros,menu);
         super.onCreateOptionsMenu(menu, inflater);
-
-//        MenuItem item=menu.findItem(R.id.search);
        /* SearchView searchView=(SearchView) item.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -192,6 +190,12 @@ public class CatalogoFragment extends Fragment{
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+
+        return false;
     }
 
 
