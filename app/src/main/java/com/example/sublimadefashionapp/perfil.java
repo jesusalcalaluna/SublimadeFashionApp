@@ -16,6 +16,8 @@ import com.example.sublimadefashionapp.Modelos.User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class perfil extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -29,7 +31,7 @@ public class perfil extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
 
         try {
