@@ -153,8 +153,8 @@ public class CatalogoFragment extends Fragment{
         inflater.inflate(R.menu.menu_catalogo_filtros,menu);
         super.onCreateOptionsMenu(menu, inflater);
 
-        MenuItem item=menu.findItem(R.id.search);
-        SearchView searchView=(SearchView) item.getActionView();
+//        MenuItem item=menu.findItem(R.id.search);
+       /* SearchView searchView=(SearchView) item.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -167,7 +167,7 @@ public class CatalogoFragment extends Fragment{
                 mAdapter.getFilter().filter(newText);
                 return false;
             }
-        });
+        });*/
     }
 
     // TODO: Rename method, update argument and hook method into UI event
