@@ -18,13 +18,14 @@ import android.widget.TextView;
 import com.example.sublimadefashionapp.Modelos.User;
 import com.example.sublimadefashionapp.Producto;
 import com.example.sublimadefashionapp.R;
+import com.example.sublimadefashionapp.filtrosActivity;
 import com.example.sublimadefashionapp.login;
 import com.example.sublimadefashionapp.perfil;
 
 
 import java.util.List;
 
-import com.example.sublimadefashionapp.Fragments.CarritoFragment;
+import com.example.sublimadefashionapp.CarritoFragment;
 import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
 import com.example.sublimadefashionapp.Fragments.DeseadosFragment;
 import com.example.sublimadefashionapp.Fragments.InicioFragment;

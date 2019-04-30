@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme" >
         <activity android:name=".Activities.activity_pedidos" >
         </activity >
-        <activity android:name=".Activities.filtrosActivity" />
+        <activity android:name=".filtrosActivity" />
         <activity android:name=".Activities.RegistroUsuarioActivity" />
         <activity
             android:name=".DetallesProducto"
@@ -29,7 +29,7 @@
             </intent-filter >
         </activity >
         <activity android:name=".Register" />
-        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.MainActivity"/>
     </application >
 
 </manifest >

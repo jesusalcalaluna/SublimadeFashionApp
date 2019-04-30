@@ -1,13 +1,9 @@
-package com.example.sublimadefashionapp.Activities;
+package com.example.sublimadefashionapp;
 
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.net.Uri;
-import android.net.sip.SipSession;
-import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,22 +15,17 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.sublimadefashionapp.Activities.MainActivity;
 import com.example.sublimadefashionapp.Fragments.CatalogoFragment;
-import com.example.sublimadefashionapp.Modelos.User;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
-import com.example.sublimadefashionapp.Categoria;
-import com.example.sublimadefashionapp.R;
-import com.example.sublimadefashionapp.VolleyS;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class filtrosActivity extends AppCompatActivity implements View.OnClickListener,CatalogoFragment.OnFragmentInteractionListener {
 
@@ -150,31 +141,6 @@ public class filtrosActivity extends AppCompatActivity implements View.OnClickLi
 
             }
         });
-
-
-        RadioGroup rGroup = (RadioGroup)findViewById(R.id.sexogroup);
-// This will get the radiobutton in the radiogroup that is checked
-        RadioButton checkedRadioButton = (RadioButton)rGroup.findViewById(rGroup.getCheckedRadioButtonId());
-
-
-
-//        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-//        {
-//            public void onCheckedChanged(RadioGroup group, int checkedId)
-//            {
-//                // This will get the radiobutton that has changed in its check state
-//                RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
-//                // This puts the value (true/false) into the variable
-//                boolean isChecked = checkedRadioButton.isChecked();
-//                // If the radiobutton that has changed in check state is now checked...
-//
-//                if (isChecked)
-//                {
-//                    Toast.makeText(filtrosActivity.this, sexo, Toast.LENGTH_SHORT).show();
-//
-//                }
-//            }
-//        });
     }
 
     @Override
