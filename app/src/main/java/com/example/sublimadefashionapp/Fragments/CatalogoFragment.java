@@ -154,21 +154,21 @@ public class CatalogoFragment extends Fragment{
         super.onCreateOptionsMenu(menu, inflater);
 
 //        MenuItem item=menu.findItem(R.id.search);
-//        SearchView searchView=(SearchView) item.getActionView();
-////        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-////            @Override
-////            public boolean onQueryTextSubmit(String query) {
-////                mAdapter.getFilter().filter(query);
-////                return false;
-////            }
-////
-////            @Override
-////            public boolean onQueryTextChange(String newText) {
-////                mAdapter.getFilter().filter(newText);
-////                return false;
-////            }
-//        });
-//    }
+       /* SearchView searchView=(SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });*/
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
