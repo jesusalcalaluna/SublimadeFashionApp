@@ -22,7 +22,7 @@
         </activity >
         <activity android:name=".filtrosActivity"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
 
         <activity android:name=".RegistroUsuarioActivity" />
 
@@ -34,7 +34,7 @@
 
         <activity android:name=".perfil"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
 
         <activity android:name=".login">
             <intent-filter>
