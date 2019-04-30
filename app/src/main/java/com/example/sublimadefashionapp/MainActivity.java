@@ -116,10 +116,6 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                         Intent intentCompras =new Intent(MainActivity.this, ComprasActivity.class);
                         startActivity(intentCompras);
                         break;
-                    case R.id.pedidosItem:
-                        Intent intentPedidos =new Intent(MainActivity.this, activity_pedidos.class);
-                        startActivity(intentPedidos);
-                        break;
                     case R.id.cerrarsesionItem:
                         if(firebaseUser != null){
                             firebaseAuth.getInstance().signOut();
