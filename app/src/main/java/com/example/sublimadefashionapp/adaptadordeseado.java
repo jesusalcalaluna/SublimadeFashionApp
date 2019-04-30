@@ -1,4 +1,4 @@
-package com.example.sublimadefashionapp.Adapters;
+package com.example.sublimadefashionapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +15,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.sublimadefashionapp.Carrito;
-import com.example.sublimadefashionapp.DetallesProducto;
-import com.example.sublimadefashionapp.Producto;
-import com.example.sublimadefashionapp.R;
-import com.example.sublimadefashionapp.VolleyS;
-import com.example.sublimadefashionapp.datos;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
