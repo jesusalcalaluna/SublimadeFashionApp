@@ -27,7 +27,8 @@
             android:name=".DetallesProducto"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat" />
-        <activity android:name=".perfil" />
+        <activity android:name=".perfil"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
